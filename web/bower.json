@@ -1,0 +1,23 @@
+{
+  "name": "my_project",
+  "description": "",
+  "main": "",
+  "authors": [
+    "wangshan"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sanyiwangshan/my_space",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.20",
+    "jquery": "~2.1.4",
+    "angular": "angularjs#~1.4.7"
+  }
+}
