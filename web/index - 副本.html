@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件夹的压缩和解压</title>
+  	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Endless -->
+    <link href="app/css/endless.css" rel="stylesheet">
+    <link href="app/css/endless-skin.css" rel="stylesheet">
+  </head>
+  <body>
+  <div class="preload">
+    <div id="top-nav" class="skin-6 fixed">
+      <div class="brand">
+        <span>Endless</span>
+        <span> Admin</span>
+      </div>
+    </div>
+    <aside class="fixed skin-6">
+      <div class="sidebar-inner scrollable-sidebar">
+        <div class="size-toggle">
+          <a class="btn btn-sm" id="sizeToggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+        </div>
+        <div class="user-block clearfix">
+          <img src="img/user.jpg" alt="User Avatar">
+          <div class="detail">
+            <strong>John Doe</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
+            <ul class="list-inline">
+              <li><a href="profile.html">Profile</a></li>
+              <li><a href="inbox.html" class="no-margin">Inbox</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="search-block">
+          <div class="input-group">
+            <input type="text" class="form-control input-sm" placeholder="search here...">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        </div>
+        <div class="main-menu">
+          <ul>
+            <li>
+              <a href="index.html">
+                <span class="menu-icon">
+                  <i class="fa fa-desktop fa-lg"></i>
+                </span>
+                <span class="text">
+                  Dashboard
+                </span>
+                <span class="menu-hover"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+   <!--  <div class="well" style="max-width: 340px; padding: 8px 0;">
+      <ul class="nav nav-list">
+        <li class="nav-header">列表头</li>
+        <li class="active"><a href="#">首页</a></li>
+        <li><a href="#">库</a></li>
+        <li><a href="#">应用程序</a></li>
+        <li class="nav-header">其它列表头</li>
+        <li><a href="#">简介</a></li>
+        <li><a href="#">设置</a></li>
+        <li class="divider"></li>
+        <li><a href="#">帮助</a></li>
+      </ul>
+    </div> -->
+
+    <div>
+      <div class="row row-merge">
+        <div class="col-sm-3 bg-primary custom-grid menu-grid">
+          <button type="button" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="menu-header">
+            Folder
+            <a class="btn btn-sm pull-right" href="#newFolder" data-toggle="modal"><i class="fa fa-plus"></i></a>
+          </div>
+          <ul class="inbox-menu" id="inboxMenu">
+            <li class="active">
+              <a href="#">
+                <i class="fa fa-inbox fa-lg"></i>
+                <span class="m-left-xs">Inbox</span>
+                <span class="badge badge-success pull-right">19</span>
+              </a>
+            </li>
+            <li>
+              <a class="collapsed" href="#secondLevel" data-toggle="collapse">
+                More <span class="m-left-xs"><i class="fa fa-chevron-down"></i></span>
+              </a>
+              <ul class="collapse submenu" id="secondLevel">
+                <li class="active"><a href="#">Chats</a></li>
+                <li><a href="#">Spam<span class="badge badge-info pull-right">1</span></a></li>
+                <li><a href="#">Trash</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9">
+          <div class="panel panel-default inbox-panel">
+            <div class="panel-heading">
+              <div class="input-group">
+                <input type="text" class="form-control input-sm" placeholder="Search here...">
+                  <span class="input-group-btn">
+                  <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <label class="label-checkbox inline">
+                <input type="checkbox" id="chk-all">
+                 <span class="custom-checkbox"></span>
+              </label>
+              <a class="btn btn-sm btn-danger"><i class="fa fa-plus"></i> Write Mail</a>
+              <a class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i> Delete</a>
+
+              <div class="pull-right">
+                <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-refresh"></i></a>
+                <div class="btn-group" id="inboxFilter">
+                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    All
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="#">Read</a></li>
+                    <li><a href="#">Unread</a></li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Unstarred</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item clearfix inbox-item">
+                <label class="label-checkbox inline">
+                  <input type="checkbox" class="chk-item">
+                  <span class="custom-checkbox"></span>
+                </label>
+                <span class="starred"><i class="fa fa-star fa-lg"></i></span>
+                <span class="from">John Doe</span>
+
+                <span class="detail">
+                  <span class="label label-danger">Important</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
+                </span>
+                <span class="inline-block pull-right">
+                  <span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
+                  <span class="time">2:32 Am</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4>Create new folder</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="folderName">Folder Name</label>
+                <input type="text" class="form-control input-sm" id="folderName" placeholder="Folder name here...">
+              </div>
+            </form>
+          </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+            <a href="#" class="btn btn-danger btn-sm">Save changes</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- build:js(app) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app/javascript/requirejs_config.js"></script>
+    <script>
+    require([
+      "angular"
+      ])
+    </script>
+  </body>
+</html>
