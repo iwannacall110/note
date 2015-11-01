@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文件夹的压缩和解压</title>
+    <title>copy</title>
   	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link href="app/css/main.css" rel="stylesheet">
   </head>
@@ -27,6 +27,13 @@
       require(["angular"], function(){
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
+			$scope.getBrand = function(){
+			var url = '/home/api/snap/brand/' + '3' ;
+			$http.get(url).success(function(data){
+			  $scope.brand = data.brand;
+			})
+		  }
+		  $scope.getBrand()
         })
         angular.bootstrap(document, ["spaceApp"])
       })
