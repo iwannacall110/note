@@ -13,7 +13,7 @@ hs_err_pid*
 
 node_modules
 dist
-oss
+.idea
 *.zip
 .tmp
 .sass-cache
