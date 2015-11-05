@@ -17,5 +17,3 @@ dist
 *.zip
 .tmp
 .sass-cache
-bower_components
-WEB-INF
