@@ -28,10 +28,10 @@
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
 			$scope.getBrand = function(){
-			var url = '/home/api/snap/brand/' + '3' ;
-			$http.get(url).success(function(data){
-			  $scope.brand = data.brand;
-			})
+  			var url = 'hello/mvc';
+  			$http.get(url).success(function(data){
+  			  console.log("======================data: " + data)
+  			})
 		  }
 		  $scope.getBrand()
         })
