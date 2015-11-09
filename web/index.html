@@ -28,7 +28,7 @@
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
 			$scope.getBrand = function(){
-  			var url = 'hello/mvc';
+  			var url = 'test/mvc';
   			$http.get(url).success(function(data){
   			  console.log("======================data: " + data)
   			})
