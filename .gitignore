@@ -17,3 +17,5 @@ dist
 *.zip
 .tmp
 .sass-cache
+*.log4j
+*.iml
