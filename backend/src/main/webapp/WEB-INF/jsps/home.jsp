@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	HELLO MVC110!
+Hello Spring MVC!
+Here is iMooc!
 </body>
 </html>
