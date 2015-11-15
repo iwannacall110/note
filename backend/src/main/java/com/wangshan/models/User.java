@@ -8,6 +8,12 @@ public class User {
     private String name;
     private Integer state;
 
+    public User(){}
+    public User(String name, Integer state){
+        this.name = name;
+        this.state = state;
+    }
+
     public Long getId() {
         return id;
     }

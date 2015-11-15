@@ -1,4 +1,6 @@
+com\wangshan\controllers\UserController.class
 com\wangshan\controllers\HelloMvcController.class
 com\wangshan\service\UserService.class
 com\wangshan\models\User.class
+com\wangshan\service\impl\UserServiceImpl.class
 com\wangshan\dao\UserDao.class

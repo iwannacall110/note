@@ -14,4 +14,8 @@
         #{state})
     </insert>
 
+    <select id="selectUser" resultType="User">
+        select * from user
+    </select>
+
 </mapper>

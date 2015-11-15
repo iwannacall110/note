@@ -8,14 +8,16 @@
 *.war
 *.ear
 
+*.idea
+*.zip
+*.tmp
+*.sass-cache
+*.log4j
+*.iml
+*.MF
+*.lst
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 node_modules
 dist
-.idea
-*.zip
-.tmp
-.sass-cache
-*.log4j
-*.iml
