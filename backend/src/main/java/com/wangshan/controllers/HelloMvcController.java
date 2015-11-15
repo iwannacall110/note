@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Controller
-@RequestMapping("/hello")
+@RequestMapping("/test")
 public class HelloMvcController {
 	private static Logger log = LoggerFactory.getLogger(HelloMvcController.class);
 	@RequestMapping("/mvc")

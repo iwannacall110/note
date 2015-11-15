@@ -1,4 +1,3 @@
-com\wangshan\serviceimpl\UserServiceImpl.class
 com\wangshan\controllers\HelloMvcController.class
 com\wangshan\service\UserService.class
 com\wangshan\models\User.class
