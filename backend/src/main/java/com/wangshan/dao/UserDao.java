@@ -11,4 +11,6 @@ import java.util.List;
 public interface UserDao {
     public int insertUser(User user);
     public List<User> selectUser();
+
+    List<User> selectNote();
 }

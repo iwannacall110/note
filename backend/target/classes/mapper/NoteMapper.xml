@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangshan.dao.NoteDao">
+
+    <insert id="insertNote" parameterType="User" keyProperty="id">
+        insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)
+        values
+        (#{name},#{noteBookGroup},#{noteBook},#{content},#{remark},#{state},#{createon},#{updateon})
+    </insert>
+
+    <select id="selectNotes" resultType="Note">
+        select * from Note
+    </select>
+
+</mapper>

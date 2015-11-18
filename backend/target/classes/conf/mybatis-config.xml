@@ -6,6 +6,7 @@
     <!-- 命名空间 -->
     <typeAliases>
         <typeAlias alias="User" type="com.wangshan.models.User"/>
+        <typeAlias alias="Note" type="com.wangshan.models.Note"/>
     </typeAliases>
 
     <!-- 映射map -->
