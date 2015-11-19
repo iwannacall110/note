@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteDao">
-
-    <insert id="insertNote" parameterType="User" keyProperty="id">
+    <resultMap id="NoteResult" type="Note">
+        <id property="id" column="id"/>
+        <result property="name" column="name111" />
+        <result property="noteBookGroup" column="note_book_group_id"/>
+        <result property="noteBook" column="note_book_id"/>
+        <result property="title" column="title"/>
+        <result property="digest" column="digest"/>
+        <result property="media" column="media"/>
+        <result property="content" column="content" />
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
+    </resultMap>
+    <insert id="insertNote" parameterType="Note" keyProperty="id">
         insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)
         values
         (#{name},#{noteBookGroup},#{noteBook},#{content},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
-    <select id="selectNotes" resultType="Note">
+    <select id="selectNotes" resultMap="NoteResult">
         select * from Note
     </select>
 

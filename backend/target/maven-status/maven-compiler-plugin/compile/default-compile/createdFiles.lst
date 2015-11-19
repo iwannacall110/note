@@ -2,6 +2,8 @@ com\wangshan\dao\NoteDao.class
 com\wangshan\service\NoteService.class
 com\wangshan\controllers\UserController.class
 com\wangshan\service\impl\NoteServiceImpl.class
+com\wangshan\units\CustomObjectMapper$1.class
+com\wangshan\units\CustomObjectMapper.class
 com\wangshan\controllers\HelloMvcController.class
 com\wangshan\service\UserService.class
 com\wangshan\models\User.class

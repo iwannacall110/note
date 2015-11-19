@@ -1,6 +1,6 @@
 package com.wangshan.models;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Administrator on 2015/11/15.
@@ -11,11 +11,14 @@ public class Note {
     private String name;
     private Long noteBookGroup;
     private Long noteBook;
+    private String title;
+    private String digest;
+    private String media;
     private Byte[] content;
     private String remark;
     private Integer state;
-    private Date createon;
-    private Date updateon;
+    private Timestamp createon;
+    private Timestamp updateon;
 
     public Note(){}
 
@@ -75,19 +78,43 @@ public class Note {
         this.remark = remark;
     }
 
-    public Date getCreateon() {
+    public Timestamp getCreateon() {
         return createon;
     }
 
-    public void setCreateon(Date createon) {
+    public void setCreateon(Timestamp createon) {
         this.createon = createon;
     }
 
-    public Date getUpdateon() {
+    public Timestamp getUpdateon() {
         return updateon;
     }
 
-    public void setUpdateon(Date updateon) {
+    public void setUpdateon(Timestamp updateon) {
         this.updateon = updateon;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDigest() {
+        return digest;
+    }
+
+    public void setDigest(String digest) {
+        this.digest = digest;
+    }
+
+    public String getMedia() {
+        return media;
+    }
+
+    public void setMedia(String media) {
+        this.media = media;
     }
 }
