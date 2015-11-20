@@ -26,14 +26,7 @@
 		annotation-driven HandlerMapping -->
 
 	<!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="objectMapper" ref="customObjectMapper"></property>
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-	<bean id="customObjectMapper" class="com.wangshan.units.CustomObjectMapper"></bean>
+	<mvc:annotation-driven></mvc:annotation-driven>
 	<!--200*1024*1024即200M resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

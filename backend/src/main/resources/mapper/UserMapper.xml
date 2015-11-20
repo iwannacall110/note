@@ -3,7 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.UserDao">
-
+    <resultMap id="UserResult" type="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
+    </resultMap>
     <insert id="insertUser" parameterType="User" keyProperty="id">
         insert into user(
         name,
@@ -14,7 +21,7 @@
         #{state})
     </insert>
 
-    <select id="selectUser" resultType="User">
+    <select id="selectUser" resultMap="UserResult">
         select * from user
     </select>
 

@@ -6,6 +6,9 @@
     <!-- 命名空间 -->
     <typeAliases>
         <typeAlias alias="User" type="com.wangshan.models.User"/>
+        <typeAlias alias="UserHasNoteBookGroup" type="com.wangshan.models.UserHasNoteBookGroup"/>
+        <typeAlias alias="NoteBookGroup" type="com.wangshan.models.NoteBookGroup"/>
+        <typeAlias alias="NoteBook" type="com.wangshan.models.NoteBook"/>
         <typeAlias alias="Note" type="com.wangshan.models.Note"/>
     </typeAliases>
 
