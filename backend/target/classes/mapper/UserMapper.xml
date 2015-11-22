@@ -12,13 +12,7 @@
         <result property="updateon" column="update_on"/>
     </resultMap>
     <insert id="insertUser" parameterType="User" keyProperty="id">
-        insert into user(
-        name,
-        state)
-        values
-        (
-        #{name},
-        #{state})
+        insert into user(name, state)values(#{name}, #{state})
     </insert>
 
     <select id="selectUser" resultMap="UserResult">

@@ -10,10 +10,9 @@
         <result property="createon" column="create_on"/>
         <result property="updateon" column="update_on"/>
     </resultMap>
-    <insert id="insertNoteBookGroup" parameterType="Note" keyProperty="id">
+    <insert id="insertNoteBookGroup" parameterType="NoteBookGroup" keyProperty="id">
         insert into note_book_group( name, remark, state, createon, updateon)
-        values
-        (#{name},#{remark},#{state},#{createon},#{updateon})
+        values (#{name},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteBookGroupDao">
-    <resultMap id="NoteBookGroupResult" type="Note">
+    <resultMap id="NoteBookGroupResult" type="NoteBookGroup">
         <id property="id" column="id"/>
         <result property="name" column="name" />
         <result property="remark" column="remark"/>
@@ -10,14 +10,13 @@
         <result property="createon" column="create_on"/>
         <result property="updateon" column="update_on"/>
     </resultMap>
-    <insert id="insertNoteBookGroup" parameterType="Note" keyProperty="id">
-        insert into note( name, remark, state, createon, updateon)
-        values
-        (#{name},#{remark},#{state},#{createon},#{updateon})
+    <insert id="insertNoteBookGroup" parameterType="NoteBookGroup" keyProperty="id">
+        insert into note_book_group( name, remark, state, createon, updateon)
+        values (#{name},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">
-        select * from Note
+        select * from note_book_group
     </select>
 
 </mapper>
