@@ -10,6 +10,12 @@
         <result property="createon" column="create_on"/>
         <result property="updateon" column="update_on"/>
     </resultMap>
+
+    <resultMap id="NoteBookGroupFormResult" type="NoteBookGroupForm">
+        <association property="noteBookGroup" javaType="NoteBookGroup" resultMap="NoteBookGroupResult"/>
+        <collection property="noteBookFormList" ofType="NoteBookForm" resultMap="com.wangshan.dao.NoteBookDao.NoteBookFormResult"></collection>
+    </resultMap>
+
     <insert id="insertNoteBookGroup" parameterType="NoteBookGroup" keyProperty="id">
         insert into note_book_group( name, remark, state, createon, updateon)
         values (#{name},#{remark},#{state},#{createon},#{updateon})

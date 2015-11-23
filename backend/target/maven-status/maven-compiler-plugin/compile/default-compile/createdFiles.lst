@@ -1,5 +1,6 @@
 com\wangshan\models\Forms\NoteBookGroupForm.class
 com\wangshan\service\impl\NoteServiceImpl.class
+com\wangshan\dao\UserHasNoteBookGroupDao.class
 com\wangshan\units\CustomObjectMapper.class
 com\wangshan\controllers\HelloMvcController.class
 com\wangshan\models\User.class
@@ -18,3 +19,4 @@ com\wangshan\models\Forms\NoteBookForm.class
 com\wangshan\models\Note.class
 com\wangshan\controllers\NoteController.class
 com\wangshan\dao\NoteBookDao.class
+com\wangshan\dao\NoteBookGroupDao.class

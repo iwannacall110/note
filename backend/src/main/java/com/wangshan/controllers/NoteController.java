@@ -2,6 +2,7 @@ package com.wangshan.controllers;
 
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 import com.wangshan.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,5 +42,15 @@ public class NoteController {
             System.out.println("================: " + note.getCreateon());
         }
         return noteService.getNoteBooks();
+    }
+
+    @RequestMapping(value = "/group", method = RequestMethod.GET)
+    @ResponseBody       /*此注解的作用是将返回的内容直接写入http response body里*/
+    public List<NoteBookGroup> getNoteBookGropByUser(){
+        System.out.println("=====================: " + noteService.getNotes().getClass());
+        for (Note note : noteService.getNotes()){
+            System.out.println("================: " + note.getCreateon());
+        }
+        return noteService.getNoteBookGroupByUser();
     }
 }

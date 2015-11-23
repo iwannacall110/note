@@ -2,8 +2,10 @@ package com.wangshan.service.impl;
 
 import com.wangshan.dao.NoteBookDao;
 import com.wangshan.dao.NoteDao;
+import com.wangshan.dao.UserHasNoteBookGroupDao;
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 import com.wangshan.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +21,14 @@ public class NoteServiceImpl implements NoteService {
     private NoteDao noteDao;
     @Autowired
     private NoteBookDao noteBookDao;
+    @Autowired
+    private UserHasNoteBookGroupDao userHasNoteBookGroupDao;
 
     @Override
     public int insertNote(Note note){
         return noteDao.insertNote(note);
     }
+
     @Override
     public List<Note> getNotes(){
         return noteDao.selectNotes();
@@ -31,4 +36,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteBook> getNoteBooks(){ return noteBookDao.selectNoteBooks();}
+
+    @Override
+    public List<NoteBookGroup> getNoteBookGroupByUser(){
+        return userHasNoteBookGroupDao.selectNoteBookGroupByUser();
+    }
 }

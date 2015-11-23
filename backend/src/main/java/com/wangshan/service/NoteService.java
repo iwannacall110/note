@@ -2,6 +2,7 @@ package com.wangshan.service;
 
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface NoteService {
     public int insertNote(Note note);
     public List<Note> getNotes();
     public List<NoteBook> getNoteBooks();
+    public List<NoteBookGroup> getNoteBookGroupByUser();
 }

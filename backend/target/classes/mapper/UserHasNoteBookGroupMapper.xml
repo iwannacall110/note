@@ -11,4 +11,15 @@
         <result property="updateon" column="update_on"/>
     </resultMap>
 
+    <resultMap id="UserHasNoteBookGroupFormResult" type="UserHasNoteBookGroupForm">
+        <association property="user" javaType="User" resultMap="com.wangshan.dao.UserDao.UserResult"/>
+        <collection property="noteBookGroupFormList" ofType="NoteBookGroupForm" resultMap="com.wangshan.dao.NoteBookGroupDao.NoteBookGroupFormResult"></collection>
+    </resultMap>
+
+    <select id="selectNoteBookGroupByUser" resultMap="UserHasNoteBookGroupFormResult">
+        select * from user left join user_has_note_book_group uhn on uhn.user_id = user.id  left join note_book_group nbg
+          on nbg.id = uhn.note_book_group_id left join note_book nb on nb.note_book_group_id = nbg.id left join note on
+          note.note_book_id = nb.id
+    </select>
+
 </mapper>

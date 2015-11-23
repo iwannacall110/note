@@ -10,6 +10,8 @@
         <typeAlias alias="NoteBookGroup" type="com.wangshan.models.NoteBookGroup"/>
         <typeAlias alias="NoteBook" type="com.wangshan.models.NoteBook"/>
         <typeAlias alias="Note" type="com.wangshan.models.Note"/>
+        <typeAlias alias="UserHasNoteBookGroupForm" type="com.wangshan.models.forms.UserHasNoteBookGroupForm"/>
+        <typeAlias alias="NoteBookGroupForm" type="com.wangshan.models.forms.NoteBookGroupForm"/>
         <typeAlias alias="NoteBookForm" type="com.wangshan.models.forms.NoteBookForm"/>
     </typeAliases>
 
