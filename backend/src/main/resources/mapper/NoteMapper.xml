@@ -3,18 +3,18 @@
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteDao">
 <resultMap id="NoteResult" type="Note">
-    <id property="id" column="id"/>
-    <result property="name" column="name" />
-    <result property="noteBookGroup" column="note_book_group_id"/>
-    <result property="noteBook" column="note_book_id"/>
+    <id property="id" column="n_id"/>
+    <result property="name" column="n_name" />
+    <result property="noteBookGroup" column="n_note_book_group_id"/>
+    <result property="noteBook" column="n_note_book_id"/>
     <result property="title" column="title"/>
     <result property="digest" column="digest"/>
     <result property="media" column="media"/>
     <result property="content" column="content" />
-    <result property="remark" column="remark"/>
-    <result property="state" column="state_id"/>
-    <result property="createon" column="create_on"/>
-    <result property="updateon" column="update_on"/>
+    <result property="remark" column="n_remark"/>
+    <result property="state" column="n_state_id"/>
+    <result property="createon" column="n_create_on"/>
+    <result property="updateon" column="n_update_on"/>
 </resultMap>
 <insert id="insertNote" parameterType="Note" keyProperty="id">
     insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)

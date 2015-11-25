@@ -76,4 +76,7 @@
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
           p:dataSource-ref="dataSource"/>
+
+    <!-- 事务注解驱动，标注@Transactional的类和方法将具有事务性 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

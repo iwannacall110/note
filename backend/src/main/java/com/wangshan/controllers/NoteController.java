@@ -1,17 +1,17 @@
 package com.wangshan.controllers;
 
 import com.wangshan.models.Note;
-import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import java.util.List;
 
@@ -45,9 +45,10 @@ public class NoteController {
         return noteService.getNoteBooks();
     }
 
-    @RequestMapping(value = "/group", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{user}", method = RequestMethod.GET)
     @ResponseBody       /*��ע��������ǽ����ص�����ֱ��д��h�http response body��*/
-    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(){
+    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(@PathVariable("user") Long user){
+        log.info("=======================================user: " + user);
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
             System.out.println("================: " + note.getCreateon());
