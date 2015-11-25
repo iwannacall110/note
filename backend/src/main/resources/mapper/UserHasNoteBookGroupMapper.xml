@@ -17,7 +17,11 @@
     </resultMap>
 
     <select id="selectNoteBookGroupByUser" resultMap="UserHasNoteBookGroupFormResult">
-        select * from user left join user_has_note_book_group uhn on uhn.user_id = user.id  left join note_book_group nbg
+        select user.id, user.name, user.gender, user.mobile, nbg.id, nbg.name as nbg_name, nbg.state_id, nbg.update_on,
+          nb.id, nb.name, nb.note_book_group_id, nb.order, nb.create_on, nb.update_on, note.id, note.name,
+          note.note_book_group_id, note.note_book_id, note.title, note.digest, note.media, note.content, note.remark,
+          note.create_on, note.update_on
+          from user left join user_has_note_book_group uhn on uhn.user_id = user.id  left join note_book_group nbg
           on nbg.id = uhn.note_book_group_id left join note_book nb on nb.note_book_group_id = nbg.id left join note on
           note.note_book_id = nb.id
     </select>

@@ -1,6 +1,8 @@
 package com.wangshan.dao;
 
 import com.wangshan.models.NoteBookGroup;
+import com.wangshan.models.UserHasNoteBookGroup;
+import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 
 import java.util.List;
 
@@ -9,5 +11,5 @@ import java.util.List;
  */
 
 public interface UserHasNoteBookGroupDao {
-    public List<NoteBookGroup> selectNoteBookGroupByUser();
+    public List<UserHasNoteBookGroupForm> selectNoteBookGroupByUser();
 }

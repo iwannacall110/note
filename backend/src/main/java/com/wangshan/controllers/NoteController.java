@@ -1,8 +1,8 @@
 package com.wangshan.controllers;
 
 import com.wangshan.models.Note;
+import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.models.NoteBook;
-import com.wangshan.models.NoteBookGroup;
 import com.wangshan.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class NoteController {
     private NoteService noteService;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    @ResponseBody       /*´Ë×¢½âµÄ×÷ÓÃÊÇ½«·µ»ØµÄÄÚÈÝÖ±½ÓÐ´Èëh¥http response bodyÀï*/
+    @ResponseBody       /*ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð´ï¿½ï¿½hï¿½http response bodyï¿½ï¿½*/
     public List<Note> getUser(){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
@@ -35,7 +36,7 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
-    @ResponseBody       /*´Ë×¢½âµÄ×÷ÓÃÊÇ½«·µ»ØµÄÄÚÈÝÖ±½ÓÐ´Èëh¥http response bodyÀï*/
+    @ResponseBody       /*ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð´ï¿½ï¿½hï¿½http response bodyï¿½ï¿½*/
     public List<NoteBook> getNoteBook(){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
@@ -45,8 +46,8 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/group", method = RequestMethod.GET)
-    @ResponseBody       /*´Ë×¢½âµÄ×÷ÓÃÊÇ½«·µ»ØµÄÄÚÈÝÖ±½ÓÐ´Èëh¥http response bodyÀï*/
-    public List<NoteBookGroup> getNoteBookGropByUser(){
+    @ResponseBody       /*ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð´ï¿½ï¿½hï¿½http response bodyï¿½ï¿½*/
+    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
             System.out.println("================: " + note.getCreateon());

@@ -6,6 +6,8 @@ import com.wangshan.dao.UserHasNoteBookGroupDao;
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
 import com.wangshan.models.NoteBookGroup;
+import com.wangshan.models.UserHasNoteBookGroup;
+import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +40,7 @@ public class NoteServiceImpl implements NoteService {
     public List<NoteBook> getNoteBooks(){ return noteBookDao.selectNoteBooks();}
 
     @Override
-    public List<NoteBookGroup> getNoteBookGroupByUser(){
+    public List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(){
         return userHasNoteBookGroupDao.selectNoteBookGroupByUser();
     }
 }
