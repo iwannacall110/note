@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class NoteController {
     private NoteService noteService;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    @ResponseBody       /*��ע��������ǽ����ص�����ֱ��д��h�http response body��*/
+    @ResponseBody
     public List<Note> getUser(){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
@@ -36,7 +33,7 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
-    @ResponseBody       /*��ע��������ǽ����ص�����ֱ��д��h�http response body��*/
+    @ResponseBody
     public List<NoteBook> getNoteBook(){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
@@ -46,12 +43,13 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/user/{user}", method = RequestMethod.GET)
-    @ResponseBody       /*��ע��������ǽ����ص�����ֱ��д��h�http response body��*/
-    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(@PathVariable("user") Long user){
+    @ResponseBody /* 此注解是将返回的数据直接写入response的body中*/
+    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(
+            @PathVariable(value = "user") Long user){
         log.info("=======================================user: " + user);
-        System.out.println("=====================: " + noteService.getNotes().getClass());
-        for (Note note : noteService.getNotes()){
-            System.out.println("================: " + note.getCreateon());
+        //log.info("=======================================token: " + token);
+        for (UserHasNoteBookGroupForm note : noteService.getNoteBookGroupByUser()){
+            System.out.println("================: " + note.getClass());
         }
         return noteService.getNoteBookGroupByUser();
     }
