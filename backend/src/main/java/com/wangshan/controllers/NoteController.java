@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -17,14 +19,15 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/backend/note")
-public class NoteController {
+@SessionAttributes("token")
+public class NoteController extends javax.servlet.http.HttpServlet{
     private static Logger log = LoggerFactory.getLogger(NoteController.class);
     @Autowired
     private NoteService noteService;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
-    public List<Note> getUser(){
+    public List<Note> getUser(HttpServletRequest request, HttpSession session){
         System.out.println("=====================: " + noteService.getNotes().getClass());
         for (Note note : noteService.getNotes()){
             System.out.println("================: " + note.getCreateon());
