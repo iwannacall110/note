@@ -21,9 +21,9 @@
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="app/javascript/requirejs_config.js"></script>
-
     <script>
-      require(["angular"], function(){
+      require(["angular", "sha1"], function(){
+		console.log("====================================sha1: " +  hex_sha1('测试sha1!!!'))
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
 			$scope.getBrand = function(){
