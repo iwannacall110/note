@@ -12,7 +12,7 @@ import java.security.SecureRandom;
  */
 public class RandomUtil {
 
-    static int r3(int n) {
+    static int getRandom() {
         final int offset = 1150207666;  // offset为固定值，避免被猜到种子来源（和密码学中的加salt有点类似）
         long seed = System.currentTimeMillis() + offset;
         SecureRandom secureRandom;
@@ -32,6 +32,6 @@ public class RandomUtil {
         byte bytes[] = new byte[20];
         random.nextBytes(bytes);
          RandomUtil ru = new RandomUtil();
-        System.out.print(ru.r3(90));
+        System.out.print(ru.getRandom());
     }
 }

@@ -12,6 +12,10 @@ import java.sql.Timestamp;
 public class User {
     private Long id;
     private String name;
+    private String password;
+    private String mobile;
+    private String email;
+    private String salt;
     private String remark;
     private Integer state;
     private Timestamp createon;

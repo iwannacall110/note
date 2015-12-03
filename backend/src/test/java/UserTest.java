@@ -23,9 +23,9 @@ public class UserTest {
 
     @Test
     public void addUser(){
-        System.out.println("=================================ÄãºÃ");
+        System.out.println("test");
         User user = new User();
-        user.setName("ÄãºÃ");
+        user.setName("test");
         user.setState(2);
         System.out.println(userService.insertUser(user));
     }

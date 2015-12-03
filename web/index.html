@@ -27,12 +27,20 @@
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
 			$scope.getBrand = function(){
-  			var url = 'backend/note/get';
-  			$http.get(url).success(function(data){
-  			  console.log("======================data: " + data)
-  			})
-		  }
-		  $scope.getBrand()
+				var url = 'backend/note/get';
+				$http.get(url).success(function(data){
+				  console.log("======================data: " + data)
+				})
+			}
+			$scope.getBrand()
+			$scope.postUser = function(){
+				var url = 'backend/user/post';
+				var user = {"id": 111111, "name": "wangshan"}
+				$http.post(url, user).success(function(data){
+				  console.log("======================data: " + data)
+				})
+			}
+			$scope.postUser()
         })
         angular.bootstrap(document, ["spaceApp"])
       })
