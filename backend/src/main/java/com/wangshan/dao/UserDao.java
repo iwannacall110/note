@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserDao {
     public int insertUser(User user);
     public List<User> selectUser();
+    public User getUserByEmail(String email);
 }
