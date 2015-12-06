@@ -24,7 +24,7 @@
         select * from user
     </select>
 
-    <select id="getUserByEmail" parameterType="email" resultMap="UserResult">
+    <select id="getUserByEmail" parameterType="String" resultMap="UserResult">
         select * from user where email = #{email}
     </select>
 

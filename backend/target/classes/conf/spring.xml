@@ -9,4 +9,5 @@
 
     <!-- 扫描文件（自动将servicec层注入） -->
     <context:component-scan base-package="com.wangshan.service"/>
+    <context:component-scan base-package="com.wangshan.dao"/>
 </beans>

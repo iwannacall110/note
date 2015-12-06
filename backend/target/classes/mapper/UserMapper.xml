@@ -6,17 +6,26 @@
     <resultMap id="UserResult" type="User">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="salt" column="salt"/>
         <result property="remark" column="remark"/>
         <result property="state" column="state_id"/>
         <result property="createon" column="create_on"/>
         <result property="updateon" column="update_on"/>
     </resultMap>
+
     <insert id="insertUser" parameterType="User" keyProperty="id">
         insert into user(name, state)values(#{name}, #{state})
     </insert>
 
     <select id="selectUser" resultMap="UserResult">
         select * from user
+    </select>
+
+    <select id="getUserByEmail" parameterType="String" resultMap="UserResult">
+        select * from user where email = #{email}
     </select>
 
 </mapper>

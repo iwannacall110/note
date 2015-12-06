@@ -23,7 +23,6 @@
     <script src="app/javascript/requirejs_config.js"></script>
     <script>
       require(["angular", "sha1"], function(){
-		console.log("====================================sha1: " +  hex_sha1('测试sha1!!!'))
         var app = angular.module('spaceApp',[]);
         app.controller('appController',function($scope, $http){
 			$scope.getBrand = function(){
@@ -32,12 +31,14 @@
 				  console.log("======================data: " + data)
 				})
 			}
-			$scope.getBrand()
+			//$scope.getBrand()
 			$scope.postUser = function(){
-				var url = 'backend/user/post';
-				var user = {"id": 111111, "name": "wangshan"}
+				var url = 'backend/user/login';
+				var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
 				$http.post(url, user).success(function(data){
-				  console.log("======================data: " + data)
+					console.log("=================================")
+					var len = document.cookie.length
+					console.log("=================length: " + len)
 				})
 			}
 			$scope.postUser()

@@ -1,7 +1,9 @@
 package com.wangshan.service.impl;
 
 import com.wangshan.dao.UserDao;
+import com.wangshan.models.User;
 import com.wangshan.service.ValidateService;
+import com.wangshan.utils.gabriel.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,9 @@ public class ValidateServiceImpl implements ValidateService{
 
     @Override
     public Boolean validatePassword(String email, String password){
-        if(password.equals(userDao.getUserByEmail(email))){
+        User user = userDao.getUserByEmail(email);
+        System.out.println("=====================password: " + user.getPassword());
+        if(new EncryptUtil().encrypt(password + user.getSalt(), "SHA-1").equals(user.getPassword())){
             return true;
         } else {
             return false;

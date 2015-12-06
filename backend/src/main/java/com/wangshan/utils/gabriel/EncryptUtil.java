@@ -39,7 +39,7 @@ public class EncryptUtil {
 
     public static void main(String[] args) {
         EncryptUtil te = new EncryptUtil();
-        String strSrc = "测试sha1!!!";
+        String strSrc = "qq1150207666";
         System.out.println("Source String:"+strSrc);
         System.out.println("Encrypted String:");
         System.out.println("Use Def:"+te.encrypt(strSrc,null));
