@@ -37,20 +37,4 @@ public class UserController {
         System.out.println("====================" + session.getAttribute("userId"));
         return userService.getUser();
     }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public Object login(@RequestBody User user, HttpSession session, HttpServletResponse response){
-        if(validateService.validatePassword(user.getEmail(), user.getPassword())){
-            EncryptUtil encryptUtil = new EncryptUtil();
-            String token = encryptUtil.encrypt(user.getEmail() + user.getPassword() + DateTime.now(),"SHA-1");
-            session.setAttribute("token", token);
-            Cookie cookie = new Cookie("token", token);
-            cookie.setMaxAge(60);
-            response.addCookie(cookie);
-            return "";
-        } else {
-            return Trys.notFound;
-        }
-    }
 }
