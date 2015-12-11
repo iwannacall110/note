@@ -1,0 +1,15 @@
+<div class="text-center" ng-if="recordCount>0">
+<nav>
+	<ul class="pagination">
+		<li ng-if="currentPage>1" ng-class="{'disable' : minPageNum<=1}"><a href="" ng-click="chosePage(currentPage-1)">&laquo;</a></li>
+		<li ng-if="minPageNum>1 && pageCount>1" ng-class="{'active' : currentPage==1}"><a href="" ng-click="chosePage(1)">1</a></li>
+		<li ng-if="minPageNum>2"><span>...</span></li>
+		<li ng-repeat=" pageNum in pageArray" ng-if="pageNum<=maxPageNum && pageNum>=minPageNum" ng-class="{'active' : currentPage==pageNum}">
+			<a href="" ng-click="chosePage(pageNum)">{{pageNum}}</a>
+		</li>
+		<li ng-if="pageCount>maxPageNum"><span>...</span></li>
+		<li ng-class="{'active' : currentPage==pageCount}" ng-if="recordCount>pageSize"><a href="" ng-click="chosePage(pageCount)">{{pageCount}}</a></li>
+		<li ng-if="currentPage<pageCount" ng-class="{'disable' : maxPageNum>=pageCount}"><a href="" ng-click="chosePage(currentPage+1)">&raquo;</a></li>
+	</ul>
+</nav>
+</div>

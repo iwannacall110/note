@@ -1,9 +1,3 @@
-/**
- * @ngdoc overview
- * @name wangshanApp
- * @description
- * # wangshanApp
- *
- * angular的初始化
- */
-var wangshanApp = angular.module('wangshanApp', [])
+define(["angular"],function(){
+    return angular.module("spaceApp",[]);
+})

@@ -8,11 +8,13 @@
   </head>
   <body>
     <div ng-controller="appController" class="page-wrap">
-      <span ng-include="'app/html/header_message_area.html'"></span>
+      <!--<span ng-include="'app/html/header_message_area.html'"></span>
       <span ng-include="'app/html/header_status_area.html'"></span>
       <span ng-include="'app/html/main_first_area.html'"></span>
       <span ng-include="'app/html/main_second_area.html'"></span>
-      <span ng-include="'app/html/main_third_area.html'"></span>
+      <span ng-include="'app/html/main_third_area.html'"></span>-->
+      <!--<span ng-include="'app/html/doc_edit.html'"></span>-->
+      <div editbox></div>
     </div>
     <!-- build:js(app) scripts/vendor.js -->
     <!-- bower:js -->
@@ -20,31 +22,40 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="app/javascript/requirejs_config.js"></script>
+    <script src="app/javascript/require_config.js"></script>
     <script>
-      require(["angular", "sha1"], function(){
-        var app = angular.module('spaceApp',[]);
+      require(["app", "sha1", "editbox"], function(app, sha1){
         app.controller('appController',function($scope, $http){
-			$scope.getBrand = function(){
-				var url = 'backend/note/get';
-				$http.get(url).success(function(data){
-				  console.log("======================data: " + data)
-				})
-			}
-			//$scope.getBrand()
 			$scope.postUser = function(){
 				var url = 'backend/user/login';
 				var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
 				$http.post(url, user).success(function(data){
-					console.log("=================================")
 					var len = document.cookie.length
-					console.log("=================length: " + len)
 				})
 			}
 			$scope.postUser()
         })
         angular.bootstrap(document, ["spaceApp"])
       })
+    </script>
+    <script>
+      var abc = function(){
+        var doms = document.getElementsByClassName("editc")
+        for(var i in doms){
+          doms[i].onclick = function(){
+            switch(this.getAttribute("data-name")){
+              case "h1":
+              case "h2":
+              default:
+                console.log("======================= " + this.getAttribute("data-name"))
+                document.execCommand(this.getAttribute("data-name"), false, null)
+                break
+            }
+          }
+        }
+      }
+      //setTimeout(abc(),2000);
+      abc()
     </script>
   </body>
 </html>
