@@ -46,7 +46,7 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     }
 
     @RequestMapping(value = "/user/{user}", method = RequestMethod.GET)
-    @ResponseBody /* 此注解是将返回的数据直接写入response的body中*/
+    @ResponseBody
     public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(
             @PathVariable(value = "user") Long user){
         log.info("=======================================user: " + user);

@@ -7,13 +7,10 @@ package com.wangshan.utils.zeus;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-/**
- * 随机数处理
- */
 public class RandomUtil {
 
     static int getRandom() {
-        final int offset = 1150207666;  // offset为固定值，避免被猜到种子来源（和密码学中的加salt有点类似）
+        final int offset = 1150207666;
         long seed = System.currentTimeMillis() + offset;
         SecureRandom secureRandom;
         try {
