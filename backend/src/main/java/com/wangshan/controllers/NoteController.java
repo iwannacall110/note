@@ -2,6 +2,7 @@ package com.wangshan.controllers;
 
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
 import org.slf4j.Logger;
@@ -47,13 +48,13 @@ public class NoteController extends javax.servlet.http.HttpServlet{
 
     @RequestMapping(value = "/user/{user}", method = RequestMethod.GET)
     @ResponseBody
-    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(
-            @PathVariable(value = "user") Long user){
-        log.info("=======================================user: " + user);
-        //log.info("=======================================token: " + token);
-        for (UserHasNoteBookGroupForm note : noteService.getNoteBookGroupByUser()){
-            System.out.println("================: " + note.getClass());
-        }
+    public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(@PathVariable(value = "user") Long user){
         return noteService.getNoteBookGroupByUser();
+    }
+
+    @RequestMapping(value="/group/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup){
+        return true;
     }
 }
