@@ -1,24 +1,26 @@
 require.config({
   paths: {
+    "domReady": "app/javascript/domReady",
     "angular": "bower_components/angular/angular",
-    "app": "app/javascript/app",
-    "main": "app/javascript/main",
-	"sha1": "app/javascript/units/sha1",
-    "editbox": "app/javascript/directive_js/editbox",
     "angular_bootstrap": "app/javascript/angular_bootstrap",
-	"mainController": "app/javascript/mainController",
-	"appController": "app/javascript/appController",
-	"module": "app/javascript/module"
+    "app": "app/javascript/app",
+
+    "directive_define": "app/javascript/directives/directive_define",
+    "editbox": "app/javascript/directives/editbox",
+
+    "controller_define": "app/javascript/controllers/controller_define",
+	"mainController": "app/javascript/controllers/mainController",
+	"appController": "app/javascript/controllers/appController",
+
+    "main": "app/javascript/main",
+    "sha1": "app/javascript/units/sha1"
   },
   shim: {
-    "app": {
-      deps: ["angular"]
-    },
-    "main": {
-      deps: ["app"]
-    },
-    "editbox": {
-      deps: ["app"]
-    }
-  }
+     'angular': {
+        exports: 'angular'
+     }
+  },
+  deps: [
+    'angular_bootstrap'
+  ]
 })
