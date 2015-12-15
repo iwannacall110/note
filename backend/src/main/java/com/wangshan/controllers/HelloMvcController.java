@@ -11,10 +11,6 @@ public class HelloMvcController {
 	private static Logger log = LoggerFactory.getLogger(HelloMvcController.class);
 	@RequestMapping("/mvc")
 	public String helloMvc() {
-		log.info("======================================Œ“»’");
-		System.out.println("================================");
-		log.info("==========================================");
-
 		return "home";
 	}
 }
