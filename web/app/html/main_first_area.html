@@ -5,7 +5,6 @@
         <h1 class="note-logo">我的工作空间</h1>
       </a>
     </div>
-    {{groups}}
     <div class="blk-bd fit-size">
       <div class="func list list-expanded list-categories func-expandable">
         <div class="func-hd root-notebook on">
@@ -25,7 +24,19 @@
         </div>
         <div class="func-bd">
           <ul>
-            <li class="notebook on" data-id="/F960E08BAF7645F0A8333950204A7787">
+            <li ng-repeat="group in groups" class="notebook" ng-class="{notebook-fold: 2>1}">
+              <a class="list-item">
+                <i class="ico ico-book"></i>
+                <span class="titele-num">
+                  <span class="title" ng-bind="group.name"></span>
+                  <span class="form title-edit item-invisiable">
+                    <input type="text" class="text" value="javascript">
+                  </span>
+                  <span class="num" ng-bind="group.count"></span>
+                </span>
+              </a>
+            </li>
+            <li class="notebook on">
               <a class="list-item">
                 <i class="ico ico-book"></i>
                 <span class="title-num">

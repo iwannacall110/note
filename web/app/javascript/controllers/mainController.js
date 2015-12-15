@@ -7,6 +7,7 @@ define(['controller_define'], function (controllers) {
                 "isDefault": true,
                 "order": 12,
                 "remark": "备注",
+                "noteCount": 150,
                 "notebooks": [
                     {
                         "id": 1121,
