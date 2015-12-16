@@ -2,16 +2,6 @@ html,body{font:12px/1 "Microsoft Yahei","微软雅黑","黑体","SimHei",Arial,s
 a{text-decoration:none;color:#3790ce;outline:none;}
 input,textarea{padding:0;margin:0;border:none;outline:none;}
 img{border:none;}
-body{overflow:hidden;margin:0px;padding:0px;}
-.page-wrap{height:100%;}
-.blk-aside{position:relative;float:left;height:100%;background:#f8f8f8;border-right:1px solid #d2d2d2;}
-.top{height:30px;padding:0 12px;overflow:hidden;line-height:30px;color:#fff;background:#3790ce;}
-
-
-html,body{font:12px/1 "Microsoft Yahei","微软雅黑","黑体","SimHei",Arial,sans-serif;color:#2E2E2E;height:100%;}
-a{text-decoration:none;color:#3790ce;outline:none;}
-input,textarea{padding:0;margin:0;border:none;outline:none;}
-img{border:none;}
 table{border-collapse:collapse;border-spacing:0;}
 table td{padding:0;}
 h2{font-size:16px;}
@@ -901,5 +891,3 @@ td.datepickerSpecial.datepickerSelected a{background:#dae7f2;color:#fff;text-sha
 .atc-lightbox .atclb-toolbar{position:absolute;bottom:25px;}
 .atc-lightbox .atclb-btn{width:37px;height:35px;display:inline-block;background-color:#000;filter:alpha(opacity=70);opacity:0.7;margin-right:6px;-webkit-transition:all 0.3s ease-out;transition:all 0.3s ease-out;}
 .atc-lightbox .disabled{background-color:#c6c6c6;filter:alpha(opacity=30);opacity:0.3;}
-
-

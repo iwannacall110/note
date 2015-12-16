@@ -11,7 +11,7 @@ define(['controller_define'], function (controllers) {
                 "notebooks": [
                     {
                         "id": 1121,
-                        "groups": 123,
+                        "group": 123,
                         "name": "测试笔记",
                         "isDefault": true,
                         "order": 1,
@@ -21,6 +21,13 @@ define(['controller_define'], function (controllers) {
                 ]
             }
         ]
+        $scope.totalNoteCount = 230
+        $scope.openRoot = true              //展开全部笔记目录
+        $scope.focusRoot = false            //选中全部笔记目录
+        $scope.openGroup = 123             //展开笔记本组目录
+        $scope.focusGroup = 123           //选中笔记本组目录
+        $scope.openNotebook = -1             //展开笔记本右侧目录
+        $scope.focusNotebook = -1           //选中笔记本目录
         $scope.postUser = function(){
             var url = 'backend/user/login';
             var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
