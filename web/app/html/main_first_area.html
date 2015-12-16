@@ -24,9 +24,11 @@
         </div>
         <div class="func-bd">
           <ul>
-            <li ng-repeat="group in groups" class="notebook" ng-class="{notebook-fold: 2>1}">
+            <li ng-repeat="group in groups" class = "notebook" ng-class="{'notebook-fold': group.notebooks.length >= 1}">
               <a class="list-item">
+                <i class="ico ico-list-arrow-gray ico-expandable"></i>
                 <i class="ico ico-book"></i>
+                <i class="ico ico-book-group"></i>
                 <span class="titele-num">
                   <span class="title" ng-bind="group.name"></span>
                   <span class="form title-edit item-invisiable">
