@@ -2,12 +2,18 @@
   <div style="width:204px;">
     <div style="height: 45px !important;">
       <a title="" href="/?auto=1">
-        <h1 class="note-logo">我的工作空间</h1>
+        <!--<h1 class="note-logo">我的工作空间</h1>-->
       </a>
     </div>
     <div>
+      <div class="">
+        <a class="item" href="#">测试</a>
+      </div>
       <div class="func list" ng-class="{'list-expanded': openRoot == true}">
-        <div class="func-hd root-notebook" ng-class="{'on': focusRoot == true}">
+        <div class = "func-hd root-notebook on">
+          <!--<span>全部笔记</span>-->
+        </div>
+        <!--<div class="func-hd root-notebook" ng-class="{'on': focusRoot == true}">
           <a class="list-item">
             <span class="title-num">
               <span class="title">全部笔记11</span>
@@ -18,7 +24,7 @@
               <i class="add-icon"></i>
             </div>
           </a>
-        </div>
+        </div>-->
         <!--<div class="func-bd">
           <ul>
             <li ng-repeat="group in groups" class = "notebook" ng-class="{'notebook-fold ': openGroup != group.id, 'on': focusGroup == group.id}">

@@ -25,3 +25,15 @@
 .add-icon{
 	background: url(../image/icons.png) no-repeat -220px -5px;
 }
+
+a{text-decoration:none;color:#333339;outline:none;}
+.item{
+	display: block;
+	background-color: #f8f8f8;
+}
+.item:focus{
+	background-color: #dae7f2;
+}
+.item:hover{
+	background-color: #edeff0;
+}
