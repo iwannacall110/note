@@ -1,0 +1,27 @@
+.ico{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	margin:3px 0 -3px;
+}
+.triangle-up-icon{
+	background: url(../image/icons.png) no-repeat -485px -28px;
+}
+.triangle-down-icon{
+	background: url(../image/icons.png) no-repeat -485px -5px;
+}
+.triangle-left-icon{
+	background: url(../image/icons.png) no-repeat -508px -28px;
+}
+.triangle-right-icon{
+	background: url(../image/icons.png) no-repeat -508px -5px;
+}
+.book-group-icon{
+	background: url(../image/icons.png) no-repeat -53px -28px;
+}
+.book-icon{
+	background: url(../image/icons.png) no-repeat -4px -5px;
+}
+.add-icon{
+	background: url(../image/icons.png) no-repeat -220px -5px;
+}
