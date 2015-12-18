@@ -1,4 +1,5 @@
-.ico{
+.aside{position:relative;float:left;height:100%;background:#f8f8f8;border-right:1px solid #d2d2d2;}
+.icon{
 	display:inline-block;
 	width:16px;
 	height:16px;
@@ -29,11 +30,35 @@
 a{text-decoration:none;color:#333339;outline:none;}
 .item{
 	display: block;
+	line-height: 22px;
+	outline: none;
 	background-color: #f8f8f8;
+	cursor: pointer;
+}
+.item:hover{
+	background-color: #edeff0;
 }
 .item:focus{
 	background-color: #dae7f2;
 }
-.item:hover{
-	background-color: #edeff0;
+.bold{
+	font-weight: bold;
+}
+.big-font{
+	font-size: 18px;
+}
+.title-area{
+	text-align: center;
+	display: block;
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 1px solid #d2d2d2;
+}
+.text-center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+}
+.on{
+
 }

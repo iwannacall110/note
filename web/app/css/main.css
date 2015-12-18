@@ -1,4 +1,8 @@
-html,body{font:12px/1 "Microsoft Yahei","微软雅黑","黑体","SimHei",Arial,sans-serif;color:#2E2E2E;height:100%;}
+html,body{font:14px "Microsoft Yahei","微软雅黑","黑体","SimHei",Arial,sans-serif;color:#2E2E2E;height:100%;}
+
+body {
+    font:12px/1 "Microsoft Yahei","微软雅黑","黑体","SimHei",Arial,sans-serif;color:#2E2E2E;height:100%;
+}
 
 input,textarea{padding:0;margin:0;border:none;outline:none;}
 h2{font-size:16px;}
