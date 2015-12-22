@@ -5,17 +5,23 @@
 	height:16px;
 	margin:3px 0 -3px;
 }
-.triangle-up-icon{
+.triangle-up-black-icon{
 	background: url(../image/icons.png) no-repeat -485px -28px;
 }
-.triangle-down-icon{
+.triangle-down-black-icon{
 	background: url(../image/icons.png) no-repeat -485px -5px;
 }
-.triangle-left-icon{
+.triangle-down-gray-icon{
+	background: url(../image/icons.png) no-repeat -532px -5px;
+}
+.triangle-left-black-icon{
 	background: url(../image/icons.png) no-repeat -508px -28px;
 }
-.triangle-right-icon{
+.triangle-right-black-icon{
 	background: url(../image/icons.png) no-repeat -508px -5px;
+}
+.triangle-right-gray-icon{
+	background: url(../image/icons.png) no-repeat -555px -5px;
 }
 .book-group-icon{
 	background: url(../image/icons.png) no-repeat -53px -28px;
@@ -59,6 +65,22 @@ a{text-decoration:none;color:#333339;outline:none;}
 	margin-right: auto;
 	text-align:center;
 }
-.on{
-
+.margin-left-20 {
+	margin-left: 20px;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.padding-left-3 {
+	padding-left: 3px;
+}
+.small {
+	font-size: 11px !important;
+}
+.gray-small {
+	font-size: 11px !important;
+	color: #b4b4b4;
 }
