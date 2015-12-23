@@ -8,7 +8,7 @@ define(['controller_define'], function (controllers) {
                 "order": 12,
                 "remark": "备注",
                 "noteCount": 150,
-                "notebooks": [
+                "noteBooks": [
                     {
                         "id": 1121,
                         "group": 123,
@@ -22,7 +22,7 @@ define(['controller_define'], function (controllers) {
             }
         ]
         $scope.totalNoteCount = 230
-        $scope.openRoot = true              //展开全部笔记目录
+        $scope.isFold = true              //收起文件夹
         $scope.focusRoot = false            //选中全部笔记目录
         $scope.openGroup = 123             //展开笔记本组目录
         $scope.focusGroup = 123           //选中笔记本组目录
