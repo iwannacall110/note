@@ -13,7 +13,7 @@
           <span class="padding-left-3 gray-small">(<span ng-bind="group.noteCount"></span>)</span>
           <i class="icon triangle-down-black-hide-icon float-right"></i>
         </div>
-        <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': isFold = true}" ng-repeat="noteBook in group.noteBooks">
+        <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold == true}" ng-repeat="noteBook in group.noteBooks">
           <i class="icon book-icon"></i>
           <span class="padding-left-3" ng-bind="noteBook.name"></span>
           <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>

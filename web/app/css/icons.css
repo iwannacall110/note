@@ -1,113 +1,113 @@
 .main-page{
-	height: 100%;
+    height: 100%;
 }
 .aside{
-	position: relative;
-	float: left;
-	width: 204px;
-	height: 100%;
-	background: #f8f8f8;
-	border-right: 1px solid #d2d2d2;
+    position: relative;
+    float: left;
+    width: 204px;
+    height: 100%;
+    background: #f8f8f8;
+    border-right: 1px solid #d2d2d2;
 }
 .icon{
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	margin: 3px 0 -3px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 3px 0 -3px;
 }
 .triangle-up-black-icon{
-	background: url(../image/icons.png) no-repeat -485px -28px;
+    background: url(../image/icons.png) no-repeat -485px -28px;
 }
 .triangle-down-black-icon{
-	background: url(../image/icons.png) no-repeat -485px -5px;
+    background: url(../image/icons.png) no-repeat -485px -5px;
 }
 .triangle-down-black-hide-icon{
-	background: url(../image/icons.png) no-repeat -485px -5px;
-	visibility: hidden;
+    background: url(../image/icons.png) no-repeat -485px -5px;
+    visibility: hidden;
 }
 .triangle-down-gray-icon{
-	background: url(../image/icons.png) no-repeat -532px -5px;
+    background: url(../image/icons.png) no-repeat -532px -5px;
 }
 .triangle-left-black-icon{
-	background: url(../image/icons.png) no-repeat -508px -28px;
+    background: url(../image/icons.png) no-repeat -508px -28px;
 }
 .triangle-right-black-icon{
-	background: url(../image/icons.png) no-repeat -508px -5px;
+    background: url(../image/icons.png) no-repeat -508px -5px;
 }
 .triangle-right-gray-icon{
-	background: url(../image/icons.png) no-repeat -555px -5px;
+    background: url(../image/icons.png) no-repeat -555px -5px;
 }
 .book-group-icon{
-	background: url(../image/icons.png) no-repeat -53px -28px;
+    background: url(../image/icons.png) no-repeat -53px -28px;
 }
 .book-icon{
-	background: url(../image/icons.png) no-repeat -4px -5px;
+    background: url(../image/icons.png) no-repeat -4px -5px;
 }
 .add-icon{
-	background: url(../image/icons.png) no-repeat -220px -5px;
+    background: url(../image/icons.png) no-repeat -220px -5px;
 }
 a{
-	text-decoration:none;
-	color:#333339;
-	outline:none;
+    text-decoration:none;
+    color:#333339;
+    outline:none;
 }
 .item{
-	display: block;
-	line-height: 22px;
-	outline: none;
-	background-color: #f8f8f8;
-	cursor: pointer;
+    display: block;
+    line-height: 22px;
+    outline: none;
+    background-color: #f8f8f8;
+    cursor: pointer;
 }
 .item:hover .triangle-down-black-hide-icon{
-	background-color: #edeff0;
-	visibility: visible;
+    background-color: #edeff0;
+    visibility: visible;
 }
 .item:focus{
-	background-color: #dae7f2;
+    background-color: #dae7f2;
 }
 .bold{
-	font-weight: bold;
+    font-weight: bold;
 }
 .big-font{
-	font-size: 18px;
+    font-size: 18px;
 }
 .title-area{
-	text-align: center;
-	display: block;
-	height: 45px;
-	line-height: 45px;
-	border-bottom: 1px solid #d2d2d2;
+    text-align: center;
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #d2d2d2;
 }
 .text-center {
-	margin-left: auto;
-	margin-right: auto;
-	text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
 }
 .margin-left-20 {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 .margin-left-25 {
-	margin-left: 25px;
+    margin-left: 25px;
 }
 .float-left {
-	float: left;
+    float: left;
 }
 .float-right {
-	float: right;
+    float: right;
 }
 .padding-left-3 {
-	padding-left: 3px;
+    padding-left: 3px;
 }
 .small {
-	font-size: 11px !important;
+    font-size: 11px !important;
 }
 .gray-small {
-	font-size: 11px !important;
-	color: #b4b4b4;
+    font-size: 11px !important;
+    color: #b4b4b4;
 }
 .hidden {
-	display: none;
+    display: none;
 }
 .visible {
-	display: block;
+    display: block;
 }
