@@ -11,6 +11,7 @@ define(['controller_define'], function (controllers) {
                 "remark": "备注",
                 "noteCount": 150,
                 "isFold": false,
+                "isExpand": false,
                 "noteBooks": [
                     {
                         "id": 1121,
@@ -50,6 +51,15 @@ define(['controller_define'], function (controllers) {
             var url = 'backend/note/' + note
             $http.get(url).success(function(data){
 
+            })
+        }
+
+        /*收起或展开笔记本组的扩展*/
+        $scope.groupExpand = function(id){
+            $scope.groups.forEach(function(group){
+                if(group.id == id){
+                    group.isExpand = !group.isExpand
+                }
             })
         }
 
