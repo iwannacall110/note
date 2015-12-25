@@ -13,7 +13,9 @@ require.config({
 	"appController": "app/javascript/controllers/appController",
 
     "main": "app/javascript/main",
-    "sha1": "app/javascript/units/sha1"
+    "sha1": "app/javascript/units/sha1",
+	
+	"property": "app/javascript/property"
   },
   shim: {
      'angular': {

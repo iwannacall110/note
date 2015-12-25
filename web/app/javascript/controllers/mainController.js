@@ -1,14 +1,16 @@
 define(['controller_define'], function (controllers) {
     controllers.controller('mainController',function($scope, $http){
+        $scope.groupPopupItems = groupPopupItems
+        $scope.notebookPopupItems = notebookPopupItems
         $scope.groups = [
             {
                 "id": 123,
-                "name": "测试组",
+                "name": "测试组1",
                 "isDefault": true,
                 "order": 12,
                 "remark": "备注",
                 "noteCount": 150,
-                "isFold" true,
+                "isFold": false,
                 "noteBooks": [
                     {
                         "id": 1121,
@@ -22,6 +24,35 @@ define(['controller_define'], function (controllers) {
                 ]
             }
         ]
+        /*收起或展开笔记本组*/
+        $scope.foldGroup = function(id){
+            $scope.groups.forEach(function(group){
+                if(group.id == id){
+                    group.isFold = !group.isFold
+                    return
+                }
+            })
+        }
+
+        /*根据笔记本组id或笔记本id获取笔记*/
+        $scope.getNotes = function(group, notebook){
+            var url = 'backend/group/' + group + '/notes'
+            if(notebook != undefined){
+                url = 'backend/group/' + group + '/notebook/' + notebook + '/notes'
+            }
+            $http.get(url).success(function(data){
+
+            })
+        }
+
+        /*根据笔记id获取笔记详情*/
+        $scope.getNoteDetail = function(note){
+            var url = 'backend/note/' + note
+            $http.get(url).success(function(data){
+
+            })
+        }
+
         $scope.totalNoteCount = 230
         $scope.isFold = false              //收起文件夹
         $scope.focusRoot = false            //选中全部笔记目录

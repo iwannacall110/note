@@ -65,6 +65,9 @@ a{
 .item:focus{
     background-color: #dae7f2;
 }
+.item:focus .triangle-down-black-hide-icon{
+    visibility: visible;
+}
 .bold{
     font-weight: bold;
 }
@@ -110,4 +113,32 @@ a{
 }
 .visible {
     display: block;
+}
+.popup {
+    width: 125px;
+    left: 180px;
+    background-color: white;
+    border: 1px lightgray solid;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 2px 2px 5px #9fa8b0;
+}
+.popup-item {
+    line-height: 30px;
+    height: 30px;
+    padding-left: 8px;
+}
+
+.popup-item:hover {
+    background-color: #edeff0;
+}
+.cover{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background-color: #ffffff;
+    opacity: 0.5;
 }

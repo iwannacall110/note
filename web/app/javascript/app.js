@@ -1,7 +1,8 @@
 define([
     'angular',
     'editbox',
-    "mainController"
+    'mainController',
+	'property'
 ], function (angular) {
     return angular.module('webapp', ['controllers','directives']);
 });
