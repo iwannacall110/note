@@ -11,16 +11,19 @@
           <i class="icon book-group-icon"></i>
           <span class="padding-left-3" ng-bind="group.name" ng-click="getNotes(group.id)"></span>
           <span class="padding-left-3 gray-small">(<span ng-bind="group.noteCount"></span>)</span>
-          <i class="icon triangle-down-black-hide-icon float-right" ng-click="groupExpand(group.id)"></i>
-          <div class="popup" ng-if="group.isExpand">
-            <div class="popup-item" ng-repeat="popItem in groupPopupItems"><span ng-bind="popItem.value"></span></div>
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right"></div>
+          <div class="menu-bar">
+            <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
         <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold}" ng-repeat="noteBook in group.noteBooks">
           <i class="icon book-icon"></i>
           <span class="padding-left-3" ng-bind="noteBook.name"></span>
           <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>
-          <i class="icon triangle-down-black-hide-icon float-right"></i>
+          <i tabindex="0" class="icon triangle-down-black-hide-icon float-right"></i>
+          <div class="menu-bar">
+            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems"><span ng-bind="popItem.value"></span></div>
+          </div>
         </div>
       </div>
     </div>
