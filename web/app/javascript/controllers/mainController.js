@@ -25,6 +25,7 @@ define(['controller_define'], function (controllers) {
                 ]
             }
         ]
+        $scope.currentGroup = undefined
         /*收起或展开笔记本组*/
         $scope.foldGroup = function(id){
             $scope.groups.forEach(function(group){
