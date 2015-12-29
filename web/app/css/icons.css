@@ -66,6 +66,7 @@ a{
     height: 150px;
     outline: none;
     cursor: pointer;
+    border-bottom: 1px solid #d2d2d2;
     background-color: #f8f8f8;
 }
 .item{

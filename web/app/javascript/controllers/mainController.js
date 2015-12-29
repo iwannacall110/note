@@ -25,6 +25,19 @@ define(['controller_define'], function (controllers) {
                 ]
             }
         ]
+
+        $scope.noteLites = [
+            {
+                "id": 123,
+                "name": "测试组1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "noteCount": 150,
+                "isFold": false,
+                "isExpand": false,
+            }
+        ]
         $scope.currentGroup = undefined
         /*收起或展开笔记本组*/
         $scope.foldGroup = function(id){
