@@ -16,7 +16,8 @@ define(['controller_define'], function (controllers) {
                     {
                         "id": 1121,
                         "group": 123,
-                        "name": "测试笔记",
+                        "title": "测试笔记",
+                        "content": "山东省肯德基的的时代精神抖擞抖擞抖擞抖擞...",
                         "isDefault": true,
                         "order": 1,
                         "noteCount": 18,

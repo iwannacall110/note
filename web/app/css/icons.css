@@ -37,6 +37,9 @@
 .add-icon{
     background: url(../image/icons.png) no-repeat -220px -5px;
 }
+.search-ico {
+    background: url(../image/icons.png) no-repeat -460px -5px;
+}
 .main-page {
     height: 100%;
 }
@@ -67,6 +70,8 @@ a{
     outline: none;
     cursor: pointer;
     border-bottom: 1px solid #d2d2d2;
+}
+.item-area:focus{
     background-color: #eaf0fb;
 }
 .item{
@@ -193,4 +198,8 @@ a{
 }
 .margin-top {
     margin-top: 15px;
+}
+.search-area {
+    height: 90px;
+    line-height: 90px;
 }
