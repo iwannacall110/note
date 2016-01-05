@@ -40,6 +40,9 @@
 .search-ico {
     background: url(../image/icons.png) no-repeat -460px -5px;
 }
+.gray-star-ico{
+    background: url(../image/icons.png) no-repeat -75px -5px;
+}
 .main-page {
     height: 100%;
 }
@@ -198,6 +201,27 @@ a{
 }
 .margin-top {
     margin-top: 15px;
+}
+.search-block {
+    //border-bottom-color: #415160;
+    -webkit-box-shadow: 0 1px 0 #506274;
+    padding: 10px;
+    border-bottom: 1px solid #2c2d3e;
+    box-sizing: border-box;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+}
+.input-sm {
+    background: #fff;
+    color: #BECFE0;
+    border-color: #dfdfdf;
+    -webkit-box-shadow: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .search-area {
     height: 90px;

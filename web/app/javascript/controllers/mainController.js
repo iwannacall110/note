@@ -29,9 +29,28 @@ define(['controller_define'], function (controllers) {
 
         $scope.noteLites = [
             {
-                "id": 123,
-                "name": "测试组1",
+                "id": 001,
+                "name": "测试笔记1",
                 "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "noteCount": 150,
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "isFold": false,
+                "isExpand": false,
+            },{
+                "id": 002,
+                "name": "测试笔记2",
+                "isDefault": false,
+                "order": 12,
+                "remark": "备注",
+                "noteCount": 150,
+                "isFold": false,
+                "isExpand": false,
+            },{
+                "id": 003,
+                "name": "测试笔记3",
+                "isDefault": false,
                 "order": 12,
                 "remark": "备注",
                 "noteCount": 150,
