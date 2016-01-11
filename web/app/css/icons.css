@@ -43,6 +43,27 @@
 .gray-star-ico{
     background: url(../image/icons.png) no-repeat -75px -5px;
 }
+.gray-edit-align-bold-ico{
+    background: url(../image/icons2.png) no-repeat -54px -62px;
+}
+.gray-edit-align-italic-ico{
+    background: url(../image/icons2.png) no-repeat -77px -62px;
+}
+.gray-edit-align-underline-ico{
+    background: url(../image/icons2.png) no-repeat -102px -62px;
+}
+.gray-edit-align-crossline-ico{
+    background: url(../image/icons2.png) no-repeat -125px -62px;
+}
+.gray-edit-align-left-ico{
+    background: url(../image/icons2.png) no-repeat -149px -62px;
+}
+.gray-edit-align-center-ico{
+    background: url(../image/icons2.png) no-repeat -174px -62px;
+}
+.gray-edit-align-right-ico{
+     background: url(../image/icons2.png) no-repeat -197px -62px;
+ }
 .main-page {
     height: 100%;
 }
