@@ -46,24 +46,56 @@
 .gray-edit-align-bold-ico{
     background: url(../image/icons2.png) no-repeat -54px -62px;
 }
+.blue-edit-align-bold-ico{
+    background: url(../image/icons2.png) no-repeat -54px -158px;
+}
 .gray-edit-align-italic-ico{
     background: url(../image/icons2.png) no-repeat -77px -62px;
 }
+.blue-edit-align-italic-ico{
+    background: url(../image/icons2.png) no-repeat -77px -158px;
+}
 .gray-edit-align-underline-ico{
-    background: url(../image/icons2.png) no-repeat -102px -62px;
+     background: url(../image/icons2.png) no-repeat -102px -62px;
+}
+.blue-edit-align-underline-ico{
+    background: url(../image/icons2.png) no-repeat -102px -158px;
 }
 .gray-edit-align-crossline-ico{
     background: url(../image/icons2.png) no-repeat -125px -62px;
 }
+.blue-edit-align-crossline-ico{
+    background: url(../image/icons2.png) no-repeat -125px -158px;
+}
 .gray-edit-align-left-ico{
     background: url(../image/icons2.png) no-repeat -149px -62px;
+}
+.blue-edit-align-left-ico{
+    background: url(../image/icons2.png) no-repeat -149px -158px;
 }
 .gray-edit-align-center-ico{
     background: url(../image/icons2.png) no-repeat -174px -62px;
 }
+.blue-edit-align-center-ico{
+    background: url(../image/icons2.png) no-repeat -174px -158px;
+}
 .gray-edit-align-right-ico{
-     background: url(../image/icons2.png) no-repeat -197px -62px;
- }
+    background: url(../image/icons2.png) no-repeat -197px -62px;
+}
+.blue-edit-align-right-ico{
+    background: url(../image/icons2.png) no-repeat -197px -158px;
+}
+.icon-div{
+    margin-left: 5px;
+    padding: 2px;
+}
+.icon-div:hover{
+    border: 1px solid #a4a8a7;
+}
+.icon-div:focus{
+    -webkit-box-shadow: inset 1px 1px 2px #d5d5d5;
+    outline: none;
+}
 .main-page {
     height: 100%;
 }

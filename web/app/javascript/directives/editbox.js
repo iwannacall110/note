@@ -10,11 +10,11 @@ define(['directive_define'], function (directive_define) {
 					var doms = document.getElementsByClassName("editc")
 					for(var i in doms){
 						doms[i].onclick = function(){
-							switch(this.getAttribute("data-name")){
+							switch(this.getAttribute("data-role")){
 								case "h1":
 								case "h2":
 								default:
-									document.execCommand(this.getAttribute("data-name"), true, null)
+									document.execCommand(this.getAttribute("data-role"), true, true)
 									break
 							}
 						}

@@ -97,6 +97,29 @@ define(['controller_define'], function (controllers) {
             })
         }
 
+        
+		$scope.test = function(){
+			var abc = document.getElementById("editContent")
+			console.log("======================= " + abc.innerHTML)
+		}
+		
+		$scope.retest = function(){
+			var html = "<b><i><u><strike>dsdnsj桑德斯柯达开始倒计时</strike></u></i></b>"
+			var abc = document.getElementById("editContent")
+			abc.innerHTML = html
+			console.log("======================= " + abc.innerHTML)
+		}
+		
+		$scope.keyDown = function(event){
+			event.stopPropagation()
+			event.preventDefault()
+			if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
+				console.log("save")
+				var abc = document.getElementById("editContent")
+				console.log("======================= " + abc.innerHTML)
+			}
+		}
+		
         $scope.totalNoteCount = 230
         $scope.postUser = function(){
             var url = 'backend/user/login';
