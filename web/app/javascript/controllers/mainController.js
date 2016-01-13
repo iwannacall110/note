@@ -1,5 +1,5 @@
 define(['controller_define'], function (controllers) {
-    controllers.controller('mainController',function($scope, $http){
+    controllers.controller('mainController',["$scope", "$http", "$location", "$timeout", "$document",function($scope, $http, $location, $timeout, $document){
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
         $scope.groups = [
@@ -109,17 +109,35 @@ define(['controller_define'], function (controllers) {
 			abc.innerHTML = html
 			console.log("======================= " + abc.innerHTML)
 		}
-		
+
+        /**
+         * 保存文档
+         * @param event
+         */
+        function saveNote(){
+            var url = "backend/note/" + $scope.currentNote + "/save"
+        }
+
 		$scope.keyDown = function(event){
-			event.stopPropagation()
-			event.preventDefault()
 			if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
 				console.log("save")
 				var abc = document.getElementById("editContent")
 				console.log("======================= " + abc.innerHTML)
 			}
 		}
-		
+
+        /**
+         * 阻止浏览器的默认行为
+         * @param event
+         */
+        $document[0].onkeydown = function(event){
+            event = window.event || event
+            if(event.ctrlKey && event.keyCode == 83){
+                console.log("ban save")
+                event.returnValue = false
+            }
+        }
+
         $scope.totalNoteCount = 230
         $scope.postUser = function(){
             var url = 'backend/user/login';
@@ -129,5 +147,5 @@ define(['controller_define'], function (controllers) {
             })
         }
         $scope.postUser()
-    })
+    }])
 })

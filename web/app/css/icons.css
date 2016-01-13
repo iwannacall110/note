@@ -280,3 +280,9 @@ a{
     height: 90px;
     line-height: 90px;
 }
+.editContent {
+    min-height: 768px;
+    outline:0;
+    padding: 20px;
+    overflow-y: auto;
+}
