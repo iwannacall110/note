@@ -111,18 +111,45 @@ define(['controller_define'], function (controllers) {
 		}
 
         /**
+         * 将文档内容填充到页面中
+         * @param content
+         */
+        function showContent(content){
+            document.getElementById("editContent").innerHTML = content
+        }
+
+        /**
+         * 获取文档内容
+         */
+        function getNote(note){
+            var url = "backend/note/" + note
+            $http.get(url).success(function(data){
+                showContent(data)
+            })
+        }
+
+        /**
          * 保存文档
          * @param event
          */
-        function saveNote(){
+        function saveNote(content){
             var url = "backend/note/" + $scope.currentNote + "/save"
+            var postModel = {}
+            postModel.content = content
+            $http.post(url, postModel).success(function(data){
+
+            })
         }
 
+        /**
+         * 键盘事件
+         * @param event
+         */
 		$scope.keyDown = function(event){
 			if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
-				console.log("save")
-				var abc = document.getElementById("editContent")
-				console.log("======================= " + abc.innerHTML)
+				var content = document.getElementById("editContent")
+				console.log("======================= " + content.innerHTML)
+                saveNote(content.innerHTML)
 			}
 		}
 
