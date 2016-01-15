@@ -280,7 +280,13 @@ a{
     height: 90px;
     line-height: 90px;
 }
-.editContent {
+.edit-box {
+    text-align:center;
+    border: 1px solid #a4a8a7;
+    height: 28px;
+    padding:5px;
+}
+.edit-content {
     min-height: 768px;
     outline:0;
     padding: 20px;

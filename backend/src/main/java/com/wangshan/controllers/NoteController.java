@@ -57,4 +57,10 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     public Boolean AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup){
         return true;
     }
+
+    @RequestMapping(value="/note/{note}", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup){
+        return true;
+    }
 }

@@ -4,7 +4,7 @@ package com.wangshan.base;
  * Created by Administrator on 2015/12/6.
  */
 public class Trys {
-    public static final Error notFound = new Error(1, "Êı¾İ¸ñÊ½´íÎó!!!");
+    public static final Error notFound = new Error(1, "æ²¡æ‰¾åˆ°æ•°æ®æ–‡ä»¶!!!");
 }
 
 class Error {
