@@ -26,4 +26,8 @@
     select * from note
 </select>
 
+<select id="selectNote" resultMap="NoteResult">
+    select * from note where id = id
+</select>
+
 </mapper>

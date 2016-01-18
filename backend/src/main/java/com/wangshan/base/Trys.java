@@ -4,7 +4,7 @@ package com.wangshan.base;
  * Created by Administrator on 2015/12/6.
  */
 public class Trys {
-    public static final Error notFound = new Error(1, "没找到数据文件!!!");
+    public static final Error notFound = new Error(1, "No data!!!");
 }
 
 class Error {

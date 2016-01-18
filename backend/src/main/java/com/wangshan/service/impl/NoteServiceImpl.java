@@ -43,4 +43,8 @@ public class NoteServiceImpl implements NoteService {
     public List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(){
         return userHasNoteBookGroupDao.selectNoteBookGroupByUser();
     }
+
+    public Note getNote(Long id){
+        return noteDao.selectNote(id);
+    }
 }

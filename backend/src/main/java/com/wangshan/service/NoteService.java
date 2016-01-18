@@ -16,4 +16,5 @@ public interface NoteService {
     public List<Note> getNotes();
     public List<NoteBook> getNoteBooks();
     public List<UserHasNoteBookGroupForm> getNoteBookGroupByUser();
+    public Note getNote(Long id);
 }

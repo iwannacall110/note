@@ -11,4 +11,5 @@ import java.util.List;
 public interface NoteDao {
     public int insertNote(Note note);
     public List<Note> selectNotes();
+    public Note selectNote(Long id);
 }
