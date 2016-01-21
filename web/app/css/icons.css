@@ -37,52 +37,52 @@
 .add-icon{
     background: url(../image/icons.png) no-repeat -220px -5px;
 }
-.search-ico {
+.search-icon {
     background: url(../image/icons.png) no-repeat -460px -5px;
 }
-.gray-star-ico{
+.gray-star-icon{
     background: url(../image/icons.png) no-repeat -75px -5px;
 }
-.gray-edit-align-bold-ico{
+.gray-edit-align-bold-icon{
     background: url(../image/icons2.png) no-repeat -54px -62px;
 }
-.blue-edit-align-bold-ico{
+.blue-edit-align-bold-icon{
     background: url(../image/icons2.png) no-repeat -54px -158px;
 }
-.gray-edit-align-italic-ico{
+.gray-edit-align-italic-icon{
     background: url(../image/icons2.png) no-repeat -77px -62px;
 }
-.blue-edit-align-italic-ico{
+.blue-edit-align-italic-icon{
     background: url(../image/icons2.png) no-repeat -77px -158px;
 }
-.gray-edit-align-underline-ico{
+.gray-edit-align-underline-icon{
      background: url(../image/icons2.png) no-repeat -102px -62px;
 }
-.blue-edit-align-underline-ico{
+.blue-edit-align-underline-icon{
     background: url(../image/icons2.png) no-repeat -102px -158px;
 }
-.gray-edit-align-crossline-ico{
+.gray-edit-align-crossline-icon{
     background: url(../image/icons2.png) no-repeat -125px -62px;
 }
-.blue-edit-align-crossline-ico{
+.blue-edit-align-crossline-icon{
     background: url(../image/icons2.png) no-repeat -125px -158px;
 }
-.gray-edit-align-left-ico{
+.gray-edit-align-left-icon{
     background: url(../image/icons2.png) no-repeat -149px -62px;
 }
-.blue-edit-align-left-ico{
+.blue-edit-align-left-icon{
     background: url(../image/icons2.png) no-repeat -149px -158px;
 }
-.gray-edit-align-center-ico{
+.gray-edit-align-center-icon{
     background: url(../image/icons2.png) no-repeat -174px -62px;
 }
-.blue-edit-align-center-ico{
+.blue-edit-align-center-icon{
     background: url(../image/icons2.png) no-repeat -174px -158px;
 }
-.gray-edit-align-right-ico{
+.gray-edit-align-right-icon{
     background: url(../image/icons2.png) no-repeat -197px -62px;
 }
-.blue-edit-align-right-ico{
+.blue-edit-align-right-icon{
     background: url(../image/icons2.png) no-repeat -197px -158px;
 }
 .icon-div{
@@ -105,15 +105,15 @@
     width: 204px;
     height: 100%;
     background: #f8f8f8;
-    border-right: 1px solid #d2d2d2;
+    border-right: 1px solid #e0e1e5;
 }
 .second-area{
     position: relative;
     float: left;
-    width: 256px;
+    width: 300px;
     height: 100%;
-    background: #f8f8f8;
-    border-right: 1px solid #d2d2d2;
+    background: #ffffff;
+    border-right: 1px solid #e0e1e5;
 }
 a{
     text-decoration:none;
@@ -121,11 +121,16 @@ a{
     outline:none;
 }
 .item-area{
-    line-height: 90px;
-    height: 90px;
+	padding: 20px;
+    height: 100px;
+	line-height: 1.8;
     outline: none;
     cursor: pointer;
-    border-bottom: 1px solid #d2d2d2;
+	background-color: #ffffff;
+    border-bottom: 1px solid #e0e1e5;
+}
+.item-area:hover{
+    background-color: #f6f7f9;
 }
 .item-area:focus{
     background-color: #eaf0fb;
@@ -157,7 +162,7 @@ a{
     display: block;
     height: 45px;
     line-height: 45px;
-    border-bottom: 1px solid #d2d2d2;
+    border-bottom: 1px solid #e0e1e5;
 }
 .text-center {
     margin-left: auto;
@@ -259,7 +264,7 @@ a{
     //border-bottom-color: #415160;
     -webkit-box-shadow: 0 1px 0 #506274;
     padding: 10px;
-    border-bottom: 1px solid #2c2d3e;
+    border-bottom: 1px solid #e0e1e5;
     box-sizing: border-box;
 }
 .input-group {
@@ -283,7 +288,7 @@ a{
 .edit-box {
     text-align:center;
     border: 1px solid #a4a8a7;
-    height: 28px;
+    height: 20px;
     padding:5px;
 }
 .edit-content {

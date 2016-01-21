@@ -1,11 +1,11 @@
 <div class="second-area">
-    <div tabindex="0" class="item">
-
-    </div>
-    <div ng-repeat="noteLite in noteLites" tabindex="0" class="item-area text-center">
-        <div>
-            <span class="gray-star-ico"></span>
-        </div>
-        <span ng-bind="noteLite.name"></span>
+    <div tabindex="0" class="item"></div>
+    <div ng-repeat="noteLite in noteLites" tabindex="0" class="item-area">
+		<div><i class="icon gray-star-icon"></i><span ng-bind="noteLite.name" style="margin-left:5px;"></span></div>
+		<div style="color: #898993;margin-top:6px;"><span ng-bind="noteLite.digest"></span></div>
+		<div style="color: #c2c9d6;font-size:9px;margin-top:6px;">
+			<span ng-bind="noteLite.updateon"></span>
+			<span ng-bind="noteLite.size" style="magin-left:10px;"></span>
+		</div>
     </div>
 </div>

@@ -34,28 +34,12 @@ define(['controller_define'], function (controllers) {
                 "isDefault": true,
                 "order": 12,
                 "remark": "备注",
-                "noteCount": 150,
                 "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+				"size": 2121212121,
+				"createon": "2015-10-11",
+				"updateon": "2015-10-11",
                 "isFold": false,
-                "isExpand": false,
-            },{
-                "id": 002,
-                "name": "测试笔记2",
-                "isDefault": false,
-                "order": 12,
-                "remark": "备注",
-                "noteCount": 150,
-                "isFold": false,
-                "isExpand": false,
-            },{
-                "id": 003,
-                "name": "测试笔记3",
-                "isDefault": false,
-                "order": 12,
-                "remark": "备注",
-                "noteCount": 150,
-                "isFold": false,
-                "isExpand": false,
+                "isExpand": false
             }
         ]
         $scope.currentGroup = undefined

@@ -10,14 +10,16 @@ import java.sql.Timestamp;
  */
 
 public class Note {
-    private Long id;
+    private Long id;                    //主键
+    private String sn;                  //笔记的sn,全局唯一
     private String name;
     private Long noteBookGroup;
     private Long noteBook;
-    private String title;
-    private String digest;
-    private String media;
-    private Byte[] content;
+    private String title;               //标题
+    private String digest;              //摘要
+    private String media;               //附件(url)
+    private Byte[] content;             //文档主体
+    private Long size;                  //文档大小(B)
     private String remark;
     private Integer state;
     private Timestamp createon;
