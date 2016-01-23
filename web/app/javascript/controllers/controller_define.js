@@ -1,4 +1,3 @@
-define(['angular'], function (angular) {
-    'use strict';
+define(['angular', 'cookie'], function (angular) {
     return angular.module('controllers', []);
 });

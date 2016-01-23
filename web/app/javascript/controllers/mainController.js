@@ -1,4 +1,26 @@
 define(['controller_define'], function (controllers) {
+    /**
+     * 在header中添加token
+     * */
+    var customRequest = {
+        method: 'POST',
+        url: 'http://example.com',
+        headers: {
+            'Content-Type': undefined
+        },
+        data: { test: 'test' }
+    }
+
+    function getRequest(md, url, params, headers){
+        var req = {
+            method: md,
+            url: url,
+            headers: headers,
+            data: params
+        }
+        return req
+    }
+
     controllers.controller('mainController',["$scope", "$http", "$location", "$timeout", "$document",function($scope, $http, $location, $timeout, $document){
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
@@ -38,6 +60,118 @@ define(['controller_define'], function (controllers) {
 				"size": 2121212121,
 				"createon": "2015-10-11",
 				"updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },
+            {
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },
+            {
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },{
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },
+            {
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },{
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },{
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },{
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },{
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
+                "isFold": false,
+                "isExpand": false
+            },
+            {
+                "id": 001,
+                "name": "测试笔记1",
+                "isDefault": true,
+                "order": 12,
+                "remark": "备注",
+                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
+                "size": 2121212121,
+                "createon": "2015-10-11",
+                "updateon": "2015-10-11",
                 "isFold": false,
                 "isExpand": false
             }
@@ -149,12 +283,15 @@ define(['controller_define'], function (controllers) {
             }
         }
 
+        setCookie("token", "1212121", 120)
+
         $scope.totalNoteCount = 230
         $scope.postUser = function(){
             var url = 'backend/user/login';
             var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
-            $http.post(url, user).success(function(data){
-                var len = document.cookie.length
+            var headers = {'token': getCookie("token")}
+            $http(getRequest('POST',url,user,headers)).success(function(){
+
             })
         }
         $scope.postUser()

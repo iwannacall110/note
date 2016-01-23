@@ -1,6 +1,7 @@
 define([
     'angular',
     'editbox',
+	'scroll',
     'mainController',
 	'property'
 ], function (angular) {

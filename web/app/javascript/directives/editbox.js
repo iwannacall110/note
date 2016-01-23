@@ -6,7 +6,7 @@ define(['directive_define'], function (directive_define) {
 			transclude:true,
 			scope:false,
 			link:function(scope,element,attrs){
-				var abc = function(){
+				var func = function(){
 					var doms = document.getElementsByClassName("editc")
 					for(var i in doms){
 						doms[i].onclick = function(){
@@ -20,7 +20,7 @@ define(['directive_define'], function (directive_define) {
 						}
 					}
 				}
-				abc()
+				func()
 			}
 		}
 	}])
