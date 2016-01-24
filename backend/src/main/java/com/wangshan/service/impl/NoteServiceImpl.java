@@ -44,7 +44,23 @@ public class NoteServiceImpl implements NoteService {
         return userHasNoteBookGroupDao.selectNoteBookGroupByUser();
     }
 
+    @Override
     public Note getNote(Long id){
         return noteDao.selectNote(id);
+    }
+
+    @Override
+    public List<Note> getNoteLitesByGroup(Long group){
+        return noteDao.selectNoteLitesByGroup(group);
+    }
+
+    @Override
+    public List<Note> getNoteLitesByBook(Long noteBook){
+        return noteDao.selectNoteLitesByBook(noteBook);
+    }
+
+    @Override
+    public List<Note> getNoteLites(){
+        return noteDao.selectNoteLites();
     }
 }

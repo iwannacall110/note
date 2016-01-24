@@ -52,10 +52,27 @@ public class NoteController extends javax.servlet.http.HttpServlet{
         return noteService.getNoteBookGroupByUser();
     }
 
-    @RequestMapping(value="/group/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/group/add", method = RequestMethod.POST)
     @ResponseBody
     public Boolean AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup){
         return true;
+    }
+
+    @RequestMapping(value = "/lite/list", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Note> getNoteLites(HttpServletRequest request, HttpSession session){
+        log.info("=======================");
+        String group = request.getParameter("group");
+        String noteBook = request.getParameter("noteBook");
+        List<Note> result = null;
+        if(noteBook != null){
+            result = noteService.getNoteLitesByBook(Long.valueOf(noteBook));
+        } else if(group != null){
+            result =  noteService.getNoteLitesByGroup(Long.valueOf(group));
+        } else {
+            result = noteService.getNoteLites();
+        }
+        return result;
     }
 
     @RequestMapping(value="/note/{id}", method = RequestMethod.GET)

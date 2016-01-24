@@ -2,32 +2,47 @@
         <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteDao">
-<resultMap id="NoteResult" type="Note">
-    <id property="id" column="n_id"/>
-    <result property="name" column="n_name" />
-    <result property="noteBookGroup" column="n_note_book_group_id"/>
-    <result property="noteBook" column="n_note_book_id"/>
-    <result property="title" column="title"/>
-    <result property="digest" column="digest"/>
-    <result property="media" column="media"/>
-    <result property="content" column="content" />
-    <result property="remark" column="n_remark"/>
-    <result property="state" column="n_state_id"/>
-    <result property="createon" column="n_create_on"/>
-    <result property="updateon" column="n_update_on"/>
-</resultMap>
-<insert id="insertNote" parameterType="Note" keyProperty="id">
-    insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)
-    values
-    (#{name},#{noteBookGroup},#{noteBook},#{content},#{remark},#{state},#{createon},#{updateon})
-</insert>
+    <resultMap id="NoteResult" type="Note">
+        <id property="id" column="id"/>
+        <result property="name" column="name" />
+        <result property="noteBookGroup" column="note_book_group_id"/>
+        <result property="noteBook" column="note_book_id"/>
+        <result property="title" column="title"/>
+        <result property="digest" column="digest"/>
+        <result property="media" column="media"/>
+        <result property="content" column="content" />
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
+    </resultMap>
 
-<select id="selectNotes" resultMap="NoteResult">
-    select * from note
-</select>
+    <insert id="insertNote" parameterType="Note" keyProperty="id">
+        insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)
+        values
+        (#{name},#{noteBookGroup},#{noteBook},#{content},#{remark},#{state},#{createon},#{updateon})
+    </insert>
 
-<select id="selectNote" resultMap="NoteResult">
-    select * from note where id = id
-</select>
+    <select id="selectNotes" resultMap="NoteResult">
+        select * from note
+    </select>
 
+    <select id="selectNote" resultMap="NoteResult">
+        select * from note where id = id
+    </select>
+
+    <select id="selectNoteLitesByGroup" resultMap="NoteResult">
+        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+          from note where note_book_group_id = #{group}
+    </select>
+
+    <select id="selectNoteLitesByBook" resultMap="NoteResult">
+        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+          from note where note_book_id = #{noteBook}
+    </select>
+
+    <select id="selectNoteLites" resultMap="NoteResult">
+        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+        from note
+    </select>
 </mapper>

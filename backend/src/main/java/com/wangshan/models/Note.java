@@ -18,7 +18,7 @@ public class Note {
     private String title;               //标题
     private String digest;              //摘要
     private String media;               //附件(url)
-    private Byte[] content;             //文档主体
+    private Object content;             //文档主体,此处不能是type[],必须是Obect类型,否则无法转换
     private Long size;                  //文档大小(B)
     private String remark;
     private Integer state;
@@ -67,11 +67,11 @@ public class Note {
         this.noteBookGroup = noteBookGroup;
     }
 
-    public Byte[] getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContent(Byte[] content) {
+    public void setContent(Object content) {
         this.content = content;
     }
 
