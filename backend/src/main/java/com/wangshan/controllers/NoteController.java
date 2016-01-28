@@ -1,5 +1,6 @@
 package com.wangshan.controllers;
 
+import com.wangshan.models.Forms.NoteForm;
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
 import com.wangshan.models.NoteBookGroup;
@@ -61,7 +62,6 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @RequestMapping(value = "/lite/list", method = RequestMethod.GET)
     @ResponseBody
     public List<Note> getNoteLites(HttpServletRequest request, HttpSession session){
-        log.info("=======================");
         String group = request.getParameter("group");
         String noteBook = request.getParameter("noteBook");
         List<Note> result = null;
@@ -75,9 +75,16 @@ public class NoteController extends javax.servlet.http.HttpServlet{
         return result;
     }
 
-    @RequestMapping(value="/note/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Note getNoteById(@RequestBody Long id){
+    public Note getNoteById(@PathVariable(value = "id") Long id){
         return noteService.getNote(id);
+    }
+
+    @RequestMapping(value = "/{id}/save", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean saveNote(@PathVariable(value = "id") Long id, @RequestBody NoteForm body){
+        System.out.println("===============: " + body.getContent());
+        return true;
     }
 }

@@ -2,21 +2,22 @@ define(['controller_define'], function (controllers) {
     /**
      * 在header中添加token
      * */
-    var customRequest = {
-        method: 'POST',
-        url: 'http://example.com',
-        headers: {
-            'Content-Type': undefined
-        },
-        data: { test: 'test' }
+    function postRequest(url, data){
+        var req = {
+            method: 'POST',
+            url: url,
+            headers: {'token': getCookie("token")},
+            data: data
+        }
+        return req
     }
 
-    function getRequest(md, url, params, headers){
+    function getRequest(url, params){
         var req = {
-            method: md,
+            method: 'GET',
             url: url,
-            headers: headers,
-            data: params
+            headers: {'token': getCookie("token")},
+            params: params     //路径参数
         }
         return req
     }
@@ -65,7 +66,9 @@ define(['controller_define'], function (controllers) {
             }
         ]
         $scope.currentGroup = undefined
-        /*收起或展开笔记本组*/
+        /**
+         * 收起或展开笔记本组
+         * */
         $scope.foldGroup = function(id){
             $scope.groups.forEach(function(group){
                 if(group.id == id){
@@ -75,26 +78,9 @@ define(['controller_define'], function (controllers) {
             })
         }
 
-        /*根据笔记本组id或笔记本id获取笔记*/
-        $scope.getNotes = function(group, notebook){
-            var url = 'backend/group/' + group + '/notes'
-            if(notebook != undefined){
-                url = 'backend/group/' + group + '/notebook/' + notebook + '/notes'
-            }
-            $http.get(url).success(function(data){
-
-            })
-        }
-
-        /*根据笔记id获取笔记详情*/
-        $scope.getNoteDetail = function(note){
-            var url = 'backend/note/' + note
-            $http.get(url).success(function(data){
-
-            })
-        }
-
-        /*收起或展开笔记本组的扩展*/
+        /**
+         * 收起或展开笔记本组的扩展
+         * */
         $scope.groupExpand = function(id){
             $scope.groups.forEach(function(group){
                 if(group.id == id){
@@ -103,36 +89,38 @@ define(['controller_define'], function (controllers) {
             })
         }
 
-        
-		$scope.test = function(){
-			var abc = document.getElementById("editContent")
-			console.log("======================= " + abc.innerHTML)
-		}
-		
-		$scope.retest = function(){
-			var html = "<b><i><u><strike>dsdnsj桑德斯柯达开始倒计时</strike></u></i></b>"
-			var abc = document.getElementById("editContent")
-			abc.innerHTML = html
-			console.log("======================= " + abc.innerHTML)
-		}
+        /**
+         * 根据笔记本组id或笔记本id获取笔记
+         * */
+        $scope.getNotes = function(group, notebook){
+            var url = 'backend/note/lite/list'
+            var params = {"group": group}
+            $http(getRequest(url, params)).success(function(data){
 
+            })
+        }
+        $scope.getNotes(100001)
+        /**
+         * 根据笔记id获取笔记详情
+         * */
+        $scope.getNoteDetail = function(note){
+            var url = 'backend/note/' + note
+            $http(getRequest(url)).success(function(data){
+                showContent(data.content)
+            })
+        }
+        $scope.getNoteDetail(123456)
+		
         /**
          * 将文档内容填充到页面中
          * @param content
          */
         function showContent(content){
-            document.getElementById("editContent").innerHTML = content
+            var dom = document.getElementById("editContent")
+            dom.innerHTML = content
         }
 
-        /**
-         * 获取文档内容
-         */
-        function getNote(note){
-            var url = "backend/note/" + note
-            $http.get(url).success(function(data){
-                showContent(data)
-            })
-        }
+        $scope.currentNote = 123456
 
         /**
          * 保存文档
@@ -142,7 +130,7 @@ define(['controller_define'], function (controllers) {
             var url = "backend/note/" + $scope.currentNote + "/save"
             var postModel = {}
             postModel.content = content
-            $http.post(url, postModel).success(function(data){
+            $http(postRequest(url, postModel)).success(function(data){
 
             })
         }
@@ -178,10 +166,24 @@ define(['controller_define'], function (controllers) {
             var url = 'backend/user/login';
             var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
             var headers = {'token': getCookie("token")}
-            $http(getRequest('POST',url,user,headers)).success(function(){
+            $http(getRequest('POST', url, headers, user)).success(function(){
 
             })
         }
         $scope.postUser()
+
+
+
+        $scope.test = function(){
+            var abc = document.getElementById("editContent")
+            console.log("======================= " + abc.innerHTML)
+        }
+
+        $scope.retest = function(){
+            var html = "<b><i><u><strike>dsdnsj桑德斯柯达开始倒计时</strike></u></i></b>"
+            var abc = document.getElementById("editContent")
+            abc.innerHTML = html
+            console.log("======================= " + abc.innerHTML)
+        }
     }])
 })

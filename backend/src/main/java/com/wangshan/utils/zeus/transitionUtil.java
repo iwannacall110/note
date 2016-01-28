@@ -3,6 +3,8 @@ package com.wangshan.utils.zeus;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
@@ -11,17 +13,28 @@ import java.sql.SQLException;
  */
 
 public class TransitionUtil {
-/*
-    public static String blobToStr(Blob blob){
-        String result = "";
+
+    public static String blobToStr(Object o){
+        if (o == null)
+            return null;
+        System.out.println(o);
+        Blob b = (Blob) o;
         try {
-            result = new String(blob.getBytes((long)1, (int)blob.length()));
-        } catch(SQLException e){
-            e.printStackTrace();
+            InputStream in = b.getBinaryStream();
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            byte[] data = new byte[4096];
+            int count = -1;
+            while((count = in.read(data,0,4096)) != -1)
+                out.write(data, 0, count);
+            data = null;
+            String result = new String(out.toByteArray(),"utf-8");
+            return result;
+        } catch (Exception e) {
+            return null;
         }
-        return result;
     }
 
+/*
     public static SerialBlob strToBlob(String str){
 		SerialBlob blob = null;
         try {

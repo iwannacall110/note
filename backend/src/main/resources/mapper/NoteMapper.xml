@@ -10,7 +10,7 @@
         <result property="title" column="title"/>
         <result property="digest" column="digest"/>
         <result property="media" column="media"/>
-        <result property="content" column="content" />
+        <result property="content" column="content" jdbcType="BLOB"/>
         <result property="remark" column="remark"/>
         <result property="state" column="state_id"/>
         <result property="createon" column="create_on"/>
@@ -45,4 +45,8 @@
         select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
         from note
     </select>
+
+    <update id="updateNoteContent">
+        update note set content = #{content} where id = #{id}
+    </update>
 </mapper>

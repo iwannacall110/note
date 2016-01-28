@@ -75,6 +75,30 @@ public class Note {
         this.content = content;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDigest() {
+        return digest;
+    }
+
+    public void setDigest(String digest) {
+        this.digest = digest;
+    }
+
+    public String getMedia() {
+        return media;
+    }
+
+    public void setMedia(String media) {
+        this.media = media;
+    }
+
     public String getRemark() {
         return remark;
     }
@@ -103,27 +127,19 @@ public class Note {
         this.updateon = updateon;
     }
 
-    public String getTitle() {
-        return title;
+    public String getSn() {
+        return sn;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSn(String sn) {
+        this.sn = sn;
     }
 
-    public String getDigest() {
-        return digest;
+    public Long getSize() {
+        return size;
     }
 
-    public void setDigest(String digest) {
-        this.digest = digest;
-    }
-
-    public String getMedia() {
-        return media;
-    }
-
-    public void setMedia(String media) {
-        this.media = media;
+    public void setSize(Long size) {
+        this.size = size;
     }
 }
