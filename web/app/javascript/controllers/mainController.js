@@ -171,19 +171,5 @@ define(['controller_define'], function (controllers) {
             })
         }
         $scope.postUser()
-
-
-
-        $scope.test = function(){
-            var abc = document.getElementById("editContent")
-            console.log("======================= " + abc.innerHTML)
-        }
-
-        $scope.retest = function(){
-            var html = "<b><i><u><strike>dsdnsj桑德斯柯达开始倒计时</strike></u></i></b>"
-            var abc = document.getElementById("editContent")
-            abc.innerHTML = html
-            console.log("======================= " + abc.innerHTML)
-        }
     }])
 })

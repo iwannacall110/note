@@ -84,7 +84,6 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @RequestMapping(value = "/{id}/save", method = RequestMethod.POST)
     @ResponseBody
     public Boolean saveNote(@PathVariable(value = "id") Long id, @RequestBody NoteForm body){
-        System.out.println("===============: " + body.getContent());
-        return true;
+        return noteService.updateNoteContent(id, body.getContent());
     }
 }

@@ -10,7 +10,7 @@
         <result property="title" column="title"/>
         <result property="digest" column="digest"/>
         <result property="media" column="media"/>
-        <result property="content" column="content" jdbcType="BLOB"/>
+        <result property="content" column="content"/>
         <result property="remark" column="remark"/>
         <result property="state" column="state_id"/>
         <result property="createon" column="create_on"/>
@@ -28,7 +28,7 @@
     </select>
 
     <select id="selectNote" resultMap="NoteResult">
-        select * from note where id = id
+        select * from note where id = #{0}
     </select>
 
     <select id="selectNoteLitesByGroup" resultMap="NoteResult">
@@ -47,6 +47,6 @@
     </select>
 
     <update id="updateNoteContent">
-        update note set content = #{content} where id = #{id}
+        update note set content = #{1} where id = #{0}
     </update>
 </mapper>
