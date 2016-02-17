@@ -221,9 +221,8 @@ a{
     padding:5px;
 }
 .edit-area {
-    min-height: 768px;
     outline:0;
-    padding: 20px;
+    padding: 10px;
     overflow-y: auto;
 }
 

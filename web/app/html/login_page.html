@@ -1,8 +1,42 @@
-<div class="popup">
-  <!-- 罩遮层 -->
-  <div class="cover"></div>
-  <div class="view">
-    <div class="title text-center"><span>新建笔记本</span></div>
-    <div class="text-center margin-top"><span>标题</span><input type="text" class="input margin-left-20"/></div>
+<div class="row" style="margin-top:80px;">
+  <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-3">
+    <div style="width: 350px;">
+      <div class="text-center">
+        <h2>
+          <span>Sign in to Beautiful New World</span>
+        </h2>
+      </div>
+      <div class="panel panel-default" style="margin-top:20px;">
+        <div class="panel-heading clearfix">
+          <div class="text-center">
+            <span>no account yet ?</span>
+            <a style="color: #40a0d8;font-size: 12px;" href="#/signup">
+              <span>Create an account</span>
+            </a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <form ng-submit="saveModel()" name="loginForm">
+            <div class="form-group">
+              <span class="control-label">Username or email address</span>
+              <div ng-class='{"has-error": loginForm.email.$invalid && loginForm.email.$dirty}'>
+                <input type="text" name="email"autofocus="true" class="form-control" ng-pattern="/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/" ng-model="model.email" required>
+              </div>
+            </div>
+            <div class="form-group" ng-class='{"has-error": loginForm.password.$invalid}'>
+              <span class="control-label">Password</span>
+              <input type="password" name="password" class="form-control" ng-model="model.password">
+            </div>
+            <div class="form-group">
+              <a ng-disabled="loginForm.$invalid" class="btn btn-success btn-lg btn-block" style="background-color: #65cea7;height:34px !important;">
+                <span class="text-center" style="font-size: 12px;">Sign in</span>
+              </a>
+            </div>
+            <a href="/findPassword" style="color: #40a0d8;">Forgot password?</a>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

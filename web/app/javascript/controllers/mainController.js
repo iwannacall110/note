@@ -1,4 +1,4 @@
-define(['controller_define'], function (controllers) {
+define(['angular', 'property', 'cookie', 'editbox'], function () {
     /**
      * 在header中添加token
      * */
@@ -22,7 +22,7 @@ define(['controller_define'], function (controllers) {
         return req
     }
 
-    controllers.controller('mainController',["$scope", "$http", "$location", "$timeout", "$document",function($scope, $http, $location, $timeout, $document){
+    return function($scope, $http, $location, $timeout, $document){
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
         $scope.groups = [
@@ -117,6 +117,7 @@ define(['controller_define'], function (controllers) {
          */
         function showContent(content){
             var dom = document.getElementById("editContent")
+            dom.style.height = (document.body.clientHeight -20) + "px"
             dom.innerHTML = content
         }
 
@@ -171,5 +172,5 @@ define(['controller_define'], function (controllers) {
             })
         }
         $scope.postUser()
-    }])
+    }
 })
