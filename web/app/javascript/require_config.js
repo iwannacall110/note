@@ -4,7 +4,6 @@ var config = {
     'domReady': 'app/javascript/domReady',
     'angular': 'bower_components/angular/angular',
 	'angular-route': 'bower_components/angular-route/angular-route',
-	'router': 'app/javascript/router',
     'angular_bootstrap': 'app/javascript/angular_bootstrap',
     'app': 'app/javascript/app',
 

@@ -18,9 +18,34 @@ define(['angular', 'require', 'angular-route'], function (angular, require) {
                     }
                 }).
                 otherwise({
-                    redirectTo: '/main'      //angular就喜欢斜杠开头
+                    redirectTo: '/main'      
                 });
-        }]);
-
+        }])
+	
+	app.directive('editbox',['$document',function($document){
+	  return {
+			templateUrl:'app/html/directive_html/editbox.html',
+			replace:true,
+			transclude:true,
+			scope:false,
+			link:function(scope,element,attrs){
+				var func = function(){
+					var doms = document.getElementsByClassName("editc")
+					for(var i in doms){
+						doms[i].onclick = function(){
+							switch(this.getAttribute("data-role")){
+								case "h1":
+								case "h2":
+								default:
+									document.execCommand(this.getAttribute("data-role"), true, true)
+									break
+							}
+						}
+					}
+				}
+				func()
+			}
+		}
+	}])
     return app;
 });

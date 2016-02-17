@@ -1,4 +1,4 @@
-define(['angular', 'property', 'cookie', 'editbox'], function () {
+define(['angular', 'property', 'cookie'], function () {
     /**
      * 在header中添加token
      * */
