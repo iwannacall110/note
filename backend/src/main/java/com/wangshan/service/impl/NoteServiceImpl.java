@@ -1,6 +1,7 @@
 package com.wangshan.service.impl;
 
 import com.wangshan.dao.NoteBookDao;
+import com.wangshan.dao.NoteBookGroupDao;
 import com.wangshan.dao.NoteDao;
 import com.wangshan.dao.UserHasNoteBookGroupDao;
 import com.wangshan.models.Note;
@@ -19,6 +20,8 @@ import java.util.List;
  */
 @Service
 public class NoteServiceImpl implements NoteService {
+    @Autowired
+    private NoteBookGroupDao noteBookGroupDao;
     @Autowired
     private NoteDao noteDao;
     @Autowired
@@ -66,5 +69,10 @@ public class NoteServiceImpl implements NoteService {
 
     public Boolean updateNoteContent(Long id, String content) {
         return noteDao.updateNoteContent(id, content);
+    }
+
+    @Override
+    public List<NoteBookGroup> getNoteBookGroup(Long user){
+        return noteBookGroupDao.selectGroupByUser(user);
     }
 }

@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService{
     public List<User> getUser(){
         return userDao.selectUser();
     }
+
+    @Override
+    public User getUserByEmail(String email){
+        return userDao.getUserByEmail(email);
+    }
 }

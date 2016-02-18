@@ -1,6 +1,7 @@
 package com.wangshan.dao;
 
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 
 import java.util.List;
 
@@ -9,5 +10,6 @@ import java.util.List;
  */
 
 public interface NoteBookGroupDao {
-    public List<NoteBook> selectNoteBooks();
+    List<NoteBook> selectNoteBooks();
+    List<NoteBookGroup> selectGroupByUser(Long user);
 }

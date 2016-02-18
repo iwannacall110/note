@@ -39,7 +39,7 @@ public class EncryptUtil {
 
     public static void main(String[] args) {
         EncryptUtil te = new EncryptUtil();
-        String strSrc = "qq1150207666";
+        String strSrc = "590e491d5403cd7681ce6fdcb5cb2d7d75b93b931";
         System.out.println("Source String:"+strSrc);
         System.out.println("Encrypted String:");
         System.out.println("Use Def:"+te.encrypt(strSrc,null));

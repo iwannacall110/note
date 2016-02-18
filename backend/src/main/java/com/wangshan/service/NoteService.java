@@ -2,6 +2,7 @@ package com.wangshan.service;
 
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
+import com.wangshan.models.NoteBookGroup;
 import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public interface NoteService {
     List<Note> getNoteLitesByBook(Long noteBook);
     List<Note> getNoteLites();
     Boolean updateNoteContent(Long id, String content);
+    List<NoteBookGroup> getNoteBookGroup(Long user);
 }

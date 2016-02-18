@@ -34,6 +34,17 @@ function getCookie(name){
 }
 
 /**
+ * 清除cookie
+ * @param name
+ * @returns {string}
+ */
+function removeCookie(name){
+  var extime = new Date("1970-01-01")
+  extime = new Date(extime.setMinutes(extime.getMinutes()))
+  document.cookie = name + "=" + escape("")+ ";expires=" + extime.toGMTString()
+}
+
+/**
  * 检查cookie是否存在
  */
 function checkCookie(name) {

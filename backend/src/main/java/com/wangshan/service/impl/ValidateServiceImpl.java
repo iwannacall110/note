@@ -18,8 +18,7 @@ public class ValidateServiceImpl implements ValidateService{
     @Override
     public Boolean validatePassword(String email, String password){
         User user = userDao.getUserByEmail(email);
-        System.out.println("=====================password: " + user.getPassword());
-        if(new EncryptUtil().encrypt(password + user.getSalt(), "SHA-1").equals(user.getPassword())){
+        if(user != null && new EncryptUtil().encrypt(password + user.getSalt(), "SHA-1").equals(user.getPassword())){
             return true;
         } else {
             return false;

@@ -30,20 +30,12 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     public List<Note> getUser(HttpServletRequest request, HttpSession session){
-        System.out.println("=====================: " + noteService.getNotes().getClass());
-        for (Note note : noteService.getNotes()){
-            System.out.println("================: " + note.getCreateon());
-        }
         return noteService.getNotes();
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
     @ResponseBody
     public List<NoteBook> getNoteBook(){
-        System.out.println("=====================: " + noteService.getNotes().getClass());
-        for (Note note : noteService.getNotes()){
-            System.out.println("================: " + note.getCreateon());
-        }
         return noteService.getNoteBooks();
     }
 
@@ -51,6 +43,13 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @ResponseBody
     public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(@PathVariable(value = "user") Long user){
         return noteService.getNoteBookGroupByUser();
+    }
+
+    @RequestMapping(value = "/groups", method = RequestMethod.GET)
+    @ResponseBody
+    public List<NoteBookGroup> getNoteBookGropByUser2(HttpServletRequest request){
+        Long user = Long.parseLong(request.getParameter("user"));
+        return noteService.getNoteBookGroup(user);
     }
 
     @RequestMapping(value = "/group/add", method = RequestMethod.POST)

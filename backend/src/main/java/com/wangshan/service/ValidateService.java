@@ -3,18 +3,18 @@ package com.wangshan.service;
 import com.wangshan.models.User;
 
 /**
- * 验证服务, 所有敏感信息都不提供直接查询接口，只提供验证接口
+ * 锟斤拷证锟斤拷锟斤拷, 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷息锟斤拷锟斤拷锟结供直锟接诧拷询锟接口ｏ拷只锟结供锟斤拷证锟接匡拷
  * Created by shan on 2015/12/3.
  */
 public interface ValidateService {
     /**
-     * 验证用户
+     * 锟斤拷证锟矫伙拷
      * @param password
      * @return
      */
-    public Boolean validatePassword(String email, String password);
+    Boolean validatePassword(String email, String password);
 
-    public Boolean validateMobileRepeat(String mobile);
+    Boolean validateMobileRepeat(String mobile);
 
-    public Boolean validateEmailRepeat(String email);
+    Boolean validateEmailRepeat(String email);
 }

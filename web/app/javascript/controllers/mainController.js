@@ -23,6 +23,7 @@ define(['angular', 'property', 'cookie'], function () {
     }
 
     return function($scope, $http, $location, $timeout, $document){
+        var userId = $location.search().id
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
         $scope.groups = [
@@ -66,6 +67,16 @@ define(['angular', 'property', 'cookie'], function () {
             }
         ]
         $scope.currentGroup = undefined
+
+        function getNoteBookGroupsByUser(){
+            var url = 'backend/note/groups'
+            var params = {"user": userId}
+            $http(getRequest(url, params)).success(function(data){
+
+            })
+        }
+        getNoteBookGroupsByUser()
+
         /**
          * 收起或展开笔记本组
          * */
@@ -143,7 +154,6 @@ define(['angular', 'property', 'cookie'], function () {
 		$scope.keyDown = function(event){
 			if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
 				var content = document.getElementById("editContent")
-				console.log("======================= " + content.innerHTML)
                 saveNote(content.innerHTML)
 			}
 		}
@@ -160,17 +170,6 @@ define(['angular', 'property', 'cookie'], function () {
             }
         }
 
-        setCookie("token", "1212121", 120)
-
         $scope.totalNoteCount = 230
-        $scope.postUser = function(){
-            var url = 'backend/user/login';
-            var user = {"id": 111111, "name": "wangshan", "email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
-            var headers = {'token': getCookie("token")}
-            $http(getRequest('POST', url, headers, user)).success(function(){
-
-            })
-        }
-        $scope.postUser()
     }
 })
