@@ -23,8 +23,8 @@ public class UserToken {
         this.user = user;
         this.token = token;
         this.state = state;
-        this.createon = createon.getMillis;
-        this.updateon = updateon;
+        this.createon = new Timestamp(createon.getMillis());
+        this.updateon = new Timestamp(updateon.getMillis());
     }
 
     public Long getUser() {
