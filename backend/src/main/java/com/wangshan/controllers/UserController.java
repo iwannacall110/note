@@ -38,14 +38,14 @@ public class UserController {
     @ResponseBody
     public Object login(@RequestBody User user, HttpSession session, HttpServletResponse response){
         if(validateService.validatePassword(user.getEmail(), user.getPassword())){
+			User u = userService.getUserByEmail(user.getEmail());
             EncryptUtil encryptUtil = new EncryptUtil();
-            String token = encryptUtil.encrypt(user.getEmail() + user.getPassword() + DateTime.now(),"SHA-1");
-            System.out.println("==================token: " + token);
-            Cookie cookie = new Cookie("token", token);
+            String token = encryptUtil.encrypt(u.getId().toString() + DateTime.now(),"SHA-1");
+            //将用户id和token值写入数据库(后续改为缓存)
+            /* cookie = new Cookie("token", token);
             cookie.setMaxAge(600000);
             cookie.setHttpOnly(false);
-            response.addCookie(cookie);
-            User u = userService.getUserByEmail(user.getEmail());
+            response.addCookie(cookie);*/
             return new Token(u, token);
         } else {
             return false;

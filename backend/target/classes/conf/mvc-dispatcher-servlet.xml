@@ -15,13 +15,25 @@
 	<!-- 启用Spring基于annotation的DI。 激活 @Required
 		@Autowired,JSR 250's @PostConstruct, @PreDestroy and @Resource 等标注 -->
 	<context:annotation-config />
-
+	
 	<!-- DispatcherServlet上下文， 只管理@Controller类型的bean， 忽略其他型的bean, 如@Service -->
 	<context:component-scan base-package="com.wangshan.controllers">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-
+	
+	<!--配置拦截器, 多个拦截器,顺序执行 -->  
+	<mvc:interceptors>    
+		<mvc:interceptor>    
+			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
+			<mvc:mapping path="/" />  
+			<mvc:mapping path="/backend/**" />  
+			<mvc:mapping path="/test/**" />  
+			<bean class="com.wangshan.interceptors.CommonInterceptor"></bean>    
+		</mvc:interceptor>  
+		<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->  
+	</mvc:interceptors>  
+	
 	<!-- HandlerMapping, 无需配置， Spring MVC可以默认启动。 DefaultAnnotationHandlerMapping 
 		annotation-driven HandlerMapping -->
 

@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="panel-body">
-          <form ng-submit="saveModel()" name="loginForm">
+          <form name="loginForm">
             <div class="form-group">
               <span class="control-label">Username or email address</span>
               <div ng-class='{"has-error": loginForm.email.$invalid && loginForm.email.$dirty}'>
@@ -28,7 +28,7 @@
               <input type="password" name="password" class="form-control" ng-model="model.password">
             </div>
             <div class="form-group">
-              <a ng-disabled="loginForm.$invalid" class="btn btn-success btn-lg btn-block" style="background-color: #65cea7;height:34px !important;">
+              <a ng-click="login()" ng-disabled="loginForm.$invalid" class="btn btn-success btn-lg btn-block" style="background-color: #65cea7;height:34px !important;">
                 <span class="text-center" style="font-size: 12px;">Sign in</span>
               </a>
             </div>

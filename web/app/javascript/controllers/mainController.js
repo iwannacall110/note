@@ -22,7 +22,8 @@ define(['angular', 'property', 'cookie'], function () {
         return req
     }
 
-    return function($scope, $http, $location, $timeout, $document){
+    return function($rootScope, $scope, $http, $location, $timeout, $document){
+        console.log($rootScope.user)
         var userId = $location.search().id
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
@@ -72,7 +73,9 @@ define(['angular', 'property', 'cookie'], function () {
             var url = 'backend/note/groups'
             var params = {"user": userId}
             $http(getRequest(url, params)).success(function(data){
-
+                $scope.groups = data
+                $scope.currentGroup = data[0]
+                $scope.getNotes($scope.currentGroup.id)
             })
         }
         getNoteBookGroupsByUser()
@@ -107,10 +110,11 @@ define(['angular', 'property', 'cookie'], function () {
             var url = 'backend/note/lite/list'
             var params = {"group": group}
             $http(getRequest(url, params)).success(function(data){
-
+                $scope.currentNote = data[0].id
+                $scope.getNoteDetail($scope.currentNote)
             })
         }
-        $scope.getNotes(100001)
+
         /**
          * 根据笔记id获取笔记详情
          * */
@@ -120,7 +124,6 @@ define(['angular', 'property', 'cookie'], function () {
                 showContent(data.content)
             })
         }
-        $scope.getNoteDetail(123456)
 		
         /**
          * 将文档内容填充到页面中
@@ -131,8 +134,6 @@ define(['angular', 'property', 'cookie'], function () {
             dom.style.height = (document.body.clientHeight -20) + "px"
             dom.innerHTML = content
         }
-
-        $scope.currentNote = 123456
 
         /**
          * 保存文档

@@ -1,18 +1,19 @@
-define(['angular', 'property', 'cookie'], function () {
-    return function($scope, $http, $location, $timeout, $document){
+define(['angular', 'property', 'cookie', 'sha1'], function () {
+    return function($rootScope,$scope, $http, $location, $timeout, $document){
         $scope.login = function(){
             var url = 'backend/user/login';
-            var user = {"email": "1150207666@qq.com", "password": "590e491d5403cd7681ce6fdcb5cb2d7d75b93b93"}
+            var user = {"email": $scope.model.email, "password": $scope.model.password}
+            user.password = hex_sha1(user.password)
             $http.post(url, user).success(function(data){
                 if(data == false){
                     alert("邮箱或密码错误!")
                     return
                 } else {
-                    setCookie('token', data.token, 120)
+                    $rootScope.user = data.user
+                    setCookie('token', data.token, 1200)
                     window.location.href = "#/main?id=" + data.user.id
                 }
             })
         }
-        $scope.login()
     }
 })
