@@ -1,9 +1,8 @@
 package com.wangshan.controllers;
 
-import com.wangshan.base.Trys;
-import com.wangshan.models.NoteBookGroup;
 import com.wangshan.models.Token;
 import com.wangshan.models.User;
+import com.wangshan.models.UserToken;
 import com.wangshan.service.UserService;
 import com.wangshan.service.ValidateService;
 import com.wangshan.utils.gabriel.EncryptUtil;
@@ -16,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import scala.util.parsing.json.JSONObject;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +39,7 @@ public class UserController {
             EncryptUtil encryptUtil = new EncryptUtil();
             String token = encryptUtil.encrypt(u.getId().toString() + DateTime.now(),"SHA-1");
             //将用户id和token值写入数据库(后续改为缓存)
+            userService.insertUserToken(new UserToken(u.getId(), token, 1, DateTime.now(), DateTime.now()));
             /* cookie = new Cookie("token", token);
             cookie.setMaxAge(600000);
             cookie.setHttpOnly(false);
