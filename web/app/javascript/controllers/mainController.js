@@ -23,8 +23,13 @@ define(['angular', 'property', 'cookie'], function () {
     }
 
     return function($rootScope, $scope, $http, $location, $timeout, $document){
+        $scope.unfoldGroups = false
+        $scope.foldAll = function(){
+            $scope.unfoldGroups = !$scope.unfoldGroups
+        }
+
         console.log($rootScope.user)
-        var userId = $location.search().id
+        //var userId = $location.search().id
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
         $scope.groups = [
@@ -71,8 +76,8 @@ define(['angular', 'property', 'cookie'], function () {
 
         function getNoteBookGroupsByUser(){
             var url = 'backend/note/groups'
-            var params = {"user": userId}
-            $http(getRequest(url, params)).success(function(data){
+            //var params = {"user": userId}
+            $http(getRequest(url)).success(function(data){
                 $scope.groups = data
                 $scope.currentGroup = data[0]
                 $scope.getNotes($scope.currentGroup.id)

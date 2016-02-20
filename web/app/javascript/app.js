@@ -57,6 +57,15 @@ define(['angular', 'require', 'angular-route'], function (angular, require) {
                 })*/
 		}
 	])
+	
+	// TODO 路由发生改变时的处理流程(主要进行鉴权) 
+	app.run(function($rootScope, $location, $window){
+		$rootScope.$on("$routeChangeStart", function(){
+			var path = $location.path()
+			console.log("============ " + path)
+			$rootScope.isLoading = false
+		})
+	})
 
 	// TODO 自定义指令部分暂时都放在这儿
 	app.directive('editbox',['$document',function($document){

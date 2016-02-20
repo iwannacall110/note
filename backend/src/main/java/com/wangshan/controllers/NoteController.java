@@ -4,8 +4,10 @@ import com.wangshan.models.Forms.NoteForm;
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
 import com.wangshan.models.NoteBookGroup;
+import com.wangshan.models.UserToken;
 import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
+import com.wangshan.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ import java.util.List;
 @SessionAttributes("token")
 public class NoteController extends javax.servlet.http.HttpServlet{
     private static Logger log = LoggerFactory.getLogger(NoteController.class);
+    @Autowired
+    private UserService userService;
     @Autowired
     private NoteService noteService;
 
@@ -48,8 +52,9 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @RequestMapping(value = "/groups", method = RequestMethod.GET)
     @ResponseBody
     public List<NoteBookGroup> getNoteBookGropByUser2(HttpServletRequest request){
-        Long user = Long.parseLong(request.getParameter("user"));
-        return noteService.getNoteBookGroup(user);
+        //Long user = Long.parseLong(request.getParameter("user"));
+        UserToken userToken = userService.getUserTokenByToken(request.getHeader("token"));
+        return noteService.getNoteBookGroup(userToken.getUser());
     }
 
     @RequestMapping(value = "/group/add", method = RequestMethod.POST)

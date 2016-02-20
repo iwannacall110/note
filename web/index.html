@@ -10,17 +10,8 @@
     <link href="app/css/icons.css" rel="stylesheet">
   </head>
   <body>
-    <div ng-view></div>
-    <!--<div class="main-page" ng-controller="mainController">
-      <!--<span ng-include="'app/html/login_page.html'"></span>
-      <!--<span ng-include="'app/html/header_message_area.html'"></span>
-      <!--<span ng-include="'app/html/header_status_area.html'"></span>
-      <!--<span ng-include="'app/html/main_first_area.html'"></span>
-      <!--<span ng-include="'app/html/main_second_area.html'"></span>
-      <!--<span ng-include="'app/html/main_third_area.html'"></span>
-      <!-- <span ng-include="'app/html/other_area.html'"></span>
-    <!--</div>
-
+    <div ng-if="isLoading != true" ng-view style="height: 100%;"></div>
+	<div ng-if="isLoading == true" class="isLoading"><img src="app/image/loading.gif"></div>
     <!-- build:js(app) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/requirejs/require.js"></script>

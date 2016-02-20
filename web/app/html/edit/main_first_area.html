@@ -4,8 +4,10 @@
       <span class="text-center big-font bold">css测试</span>
     </div>
     <div>
-      <div tabindex="0" class="item"><i class="icon triangle-down-black-icon"></i><span class="bold">全部测试</span><i class="icon add-icon float-right"></i></div>
-      <div ng-repeat="group in groups">
+      <div tabindex="0" class="item" ng-click="foldAll()">
+        <i class="icon" ng-class="{'triangle-right-black-icon': !unfoldGroups, 'triangle-down-black-icon': unfoldGroups}"></i>
+        <span class="bold">全部测试</span><i class="icon add-icon float-right"></i></div>
+      <div ng-repeat="group in groups" ng-show="unfoldGroups">
         <div tabindex="0" class="item">
           <i class="icon" ng-class="{'triangle-right-gray-icon': group.isFold, 'triangle-down-gray-icon': !group.isFold}" ng-click="foldGroup(group.id)"></i>
           <i class="icon book-group-icon"></i>

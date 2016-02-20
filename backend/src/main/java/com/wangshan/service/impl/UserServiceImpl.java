@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService{
     public int insertUserToken(UserToken userToken){
         return userTokenDao.insertUserToken(userToken);
     }
+
+    @Override
+    public UserToken getUserTokenByToken(String token){
+        return userTokenDao.selectUserTokenByToken(token);
+    }
 }

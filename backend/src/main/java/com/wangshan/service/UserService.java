@@ -13,4 +13,5 @@ public interface UserService {
     List<User> getUser();
     User getUserByEmail(String email);
 	int insertUserToken(UserToken userToken);
+    UserToken getUserTokenByToken(String token);
 }

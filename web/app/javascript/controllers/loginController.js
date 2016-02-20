@@ -11,7 +11,7 @@ define(['angular', 'property', 'cookie', 'sha1'], function () {
                 } else {
                     $rootScope.user = data.user
                     setCookie('token', data.token, 1200)
-                    window.location.href = "#/main?id=" + data.user.id
+                    window.location.href = "#/main"
                 }
             })
         }

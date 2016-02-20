@@ -3,12 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteBookGroupDao">
     <resultMap id="NoteBookGroupResult" type="NoteBookGroup">
-        <id property="id" column="nbg_id"/>
-        <result property="name" column="nbg_name" />
-        <result property="remark" column="nbg_remark"/>
-        <result property="state" column="nbg_state_id"/>
-        <result property="createon" column="nbg_create_on"/>
-        <result property="updateon" column="nbg_update_on"/>
+        <id property="id" column="id"/>
+        <result property="name" column="name" />
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
     </resultMap>
 
     <resultMap id="NoteBookGroupFormResult" type="NoteBookGroupForm">
@@ -26,8 +26,7 @@
     </select>
 
     <select id="selectGroupByUser" resultMap="NoteBookGroupResult">
-        select nbg.* from user left join user_has_note_book_group uhn on uhn.user_id = user.id left join note_book_group nbg on
-          nbg.id = uhn.note_book_group_id
+        select nbg.* from user left join user_has_note_book_group uhn on uhn.user_id = user.id left join note_book_group nbg on nbg.id = uhn.note_book_group_id where user.id = #{user}
     </select>
 
 </mapper>

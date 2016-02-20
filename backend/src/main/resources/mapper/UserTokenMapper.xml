@@ -15,4 +15,7 @@
         insert into user_token(user_id, token, state_id, create_on, update_on) values (#{user},#{token},#{state},#{createon},#{updateon})
     </insert>
 
+    <select id="selectUserTokenByToken" parameterType="String" resultMap="UserTokenResult">
+        select * from user_token where token = #{token}
+    </select>
 </mapper>
