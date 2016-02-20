@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/11/15.
@@ -16,6 +17,7 @@ public class NoteBookGroup {
     private Integer state;
     private Timestamp createon;
     private Timestamp updateon;
+	private List<NoteBook> noteBooks;
 
     public NoteBookGroup(){}
 

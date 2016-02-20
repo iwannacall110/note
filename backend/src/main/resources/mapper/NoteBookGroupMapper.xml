@@ -15,6 +15,20 @@
         <association property="noteBookGroup" javaType="NoteBookGroup" resultMap="NoteBookGroupResult"/>
         <collection property="noteBookFormList" ofType="NoteBookForm" resultMap="com.wangshan.dao.NoteBookDao.NoteBookFormResult"></collection>
     </resultMap>
+	
+	<resultMap id="GroupWithBookResult" type="NoteBookGroup">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="noteBooks" javaType="java.util.List" ofType="NoteBook">
+            <id property="id" column="id"/>
+			<result property="name" column="name"/>
+			<result property="noteBookGroup" column="note_book_group_id"/>
+			<result property="remark" column="remark"/>
+			<result property="state" column="state_id"/>
+			<result property="createon" column="create_on"/>
+			<result property="updateon" column="update_on"/>
+        </collection>
+    </resultMap>
 
     <insert id="insertNoteBookGroup" parameterType="NoteBookGroup" keyProperty="id">
         insert into note_book_group( name, remark, state, createon, updateon)
@@ -25,8 +39,11 @@
         select * from note_book_group
     </select>
 
-    <select id="selectGroupByUser" resultMap="NoteBookGroupResult">
-        select nbg.* from user left join user_has_note_book_group uhn on uhn.user_id = user.id left join note_book_group nbg on nbg.id = uhn.note_book_group_id where user.id = #{user}
+    <select id="selectGroupByUser" resultMap="GroupWithBookResult">
+        select nbg.*, nb.* from user left join user_has_note_book_group uhn on uhn.user_id = user.id 
+			left join note_book_group nbg on nbg.id = uhn.note_book_group_id 
+			left join note_book nb on nb.note_book_group_id = nbg.id  
+			where user.id = #{user}
     </select>
 
 </mapper>
