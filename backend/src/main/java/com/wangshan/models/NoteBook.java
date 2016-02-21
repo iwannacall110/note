@@ -13,6 +13,7 @@ public class NoteBook {
     private Long id;
     private String name;
     private Long noteBookGroup;
+    private Integer noteCount;
     private String remark;
     private Integer state;
     private Timestamp createon;
@@ -80,4 +81,11 @@ public class NoteBook {
         this.updateon = updateon;
     }
 
+    public Integer getNoteCount() {
+        return noteCount;
+    }
+
+    public void setNoteCount(Integer noteCount) {
+        this.noteCount = noteCount;
+    }
 }

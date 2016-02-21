@@ -18,6 +18,7 @@ var config = {
     'main': 'app/javascript/main',
     'sha1': 'app/javascript/units/sha1',
     'cookie': 'app/javascript/units/cookie',
+    'customModel': 'app/javascript/units/customModel',
 	
 	'property': 'app/javascript/property'
   },

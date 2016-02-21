@@ -19,14 +19,20 @@
 	<resultMap id="GroupWithBookResult" type="NoteBookGroup">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
+        <result property="noteCount" column="note_count"/>
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
         <collection property="noteBooks" javaType="java.util.List" ofType="NoteBook">
-            <id property="id" column="id"/>
-			<result property="name" column="name"/>
-			<result property="noteBookGroup" column="note_book_group_id"/>
-			<result property="remark" column="remark"/>
-			<result property="state" column="state_id"/>
-			<result property="createon" column="create_on"/>
-			<result property="updateon" column="update_on"/>
+            <id property="id" column="nb_id"/>
+			<result property="name" column="nb_name"/>
+            <result property="noteBookGroup" column="nb_note_book_group_id"/>
+            <result property="noteCount" column="nb_note_count"/>
+            <result property="remark" column="nb_remark"/>
+            <result property="state" column="nb_state_id"/>
+            <result property="createon" column="nb_create_on"/>
+            <result property="updateon" column="nb_update_on"/>
         </collection>
     </resultMap>
 
@@ -40,7 +46,8 @@
     </select>
 
     <select id="selectGroupByUser" resultMap="GroupWithBookResult">
-        select nbg.*, nb.* from user left join user_has_note_book_group uhn on uhn.user_id = user.id 
+        select nbg.*, nb.id nb_id, nb.name nb_name, nb.note_book_group_id nb_note_book_group_id, nb.note_count nb_note_count, nb.remark nb_remark, nb.state_id nb_state_id, nb.create_on nb_create_on, nb.update_on nb_update_on
+          from user left join user_has_note_book_group uhn on uhn.user_id = user.id
 			left join note_book_group nbg on nbg.id = uhn.note_book_group_id 
 			left join note_book nb on nb.note_book_group_id = nbg.id  
 			where user.id = #{user}

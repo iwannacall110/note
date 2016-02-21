@@ -67,7 +67,6 @@ a{
 }
 .item-area{
 	padding: 20px;
-    height: 100px;
 	line-height: 1.8;
     outline: none;
     cursor: pointer;
@@ -147,8 +146,8 @@ a{
     left: 180px;
     background-color: white;
     border: 1px lightgray solid;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 10000;
     box-shadow: 2px 2px 5px #9fa8b0;
     visibility: hidden;
 }
@@ -248,6 +247,14 @@ a{
     width: 200px;
     height: 200px;
     margin: -100px 0 0 -140px;
+    z-index: 12;
+}
+.login-area {
+    position: fixed;
+    top:100px;
+    left: 50%;
+    width: 340px;
+    margin: 0px 0 0 -170px;
     z-index: 12;
 }
 

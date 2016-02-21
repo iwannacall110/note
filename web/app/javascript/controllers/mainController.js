@@ -1,4 +1,4 @@
-define(['angular', 'property', 'cookie'], function () {
+define(['angular', 'property', 'cookie', 'customModel'], function () {
     /**
      * 在header中添加token
      * */
@@ -111,12 +111,18 @@ define(['angular', 'property', 'cookie'], function () {
         /**
          * 根据笔记本组id或笔记本id获取笔记
          * */
-        $scope.getNotes = function(group, notebook){
+        $scope.getNotes = function(group, noteBook){
             var url = 'backend/note/lite/list'
-            var params = {"group": group}
+            var params = {"group": group, "noteBook": noteBook}
             $http(getRequest(url, params)).success(function(data){
-                $scope.currentNote = data[0].id
-                $scope.getNoteDetail($scope.currentNote)
+                if(data.length > 0){
+                    $scope.noteLites = data
+                    $scope.noteLites.forEach(function(note){
+                        note.size = note.size.byteFormat()
+                    })
+                    $scope.currentNote = data[0].id
+                    $scope.getNoteDetail($scope.currentNote)
+                }
             })
         }
 
@@ -126,6 +132,7 @@ define(['angular', 'property', 'cookie'], function () {
         $scope.getNoteDetail = function(note){
             var url = 'backend/note/' + note
             $http(getRequest(url)).success(function(data){
+                $scope.currentNote = note
                 showContent(data.content)
             })
         }
@@ -144,10 +151,12 @@ define(['angular', 'property', 'cookie'], function () {
          * 保存文档
          * @param event
          */
-        function saveNote(content){
+        function saveNote(content, size, digest){
             var url = "backend/note/" + $scope.currentNote + "/save"
             var postModel = {}
             postModel.content = content
+            postModel.size = size
+            postModel.digest = digest
             $http(postRequest(url, postModel)).success(function(data){
 
             })
@@ -160,7 +169,9 @@ define(['angular', 'property', 'cookie'], function () {
 		$scope.keyDown = function(event){
 			if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
 				var content = document.getElementById("editContent")
-                saveNote(content.innerHTML)
+                var size = content.textContent.byteLength()
+                var digest = content.textContent.substr(0, 30)
+                saveNote(content.innerHTML, size, digest)
 			}
 		}
 

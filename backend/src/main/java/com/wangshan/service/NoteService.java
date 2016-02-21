@@ -19,6 +19,6 @@ public interface NoteService {
     List<Note> getNoteLitesByGroup(Long group);
     List<Note> getNoteLitesByBook(Long noteBook);
     List<Note> getNoteLites();
-    Boolean updateNoteContent(Long id, String content);
+    Boolean updateNoteContent(Long id, String content, Integer size, String digest);
     List<NoteBookGroup> getNoteBookGroup(Long user);
 }

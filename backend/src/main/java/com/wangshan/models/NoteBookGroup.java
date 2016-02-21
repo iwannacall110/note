@@ -18,6 +18,7 @@ public class NoteBookGroup {
     private Timestamp createon;
     private Timestamp updateon;
 	private List<NoteBook> noteBooks;
+    private Integer noteCount;
 
     public NoteBookGroup(){}
 
@@ -71,5 +72,21 @@ public class NoteBookGroup {
 
     public void setUpdateon(Timestamp updateon) {
         this.updateon = updateon;
+    }
+
+    public List<NoteBook> getNoteBooks() {
+        return noteBooks;
+    }
+
+    public void setNoteBooks(List<NoteBook> noteBooks) {
+        this.noteBooks = noteBooks;
+    }
+
+    public Integer getNoteCount() {
+        return noteCount;
+    }
+
+    public void setNoteCount(Integer noteCount) {
+        this.noteCount = noteCount;
     }
 }

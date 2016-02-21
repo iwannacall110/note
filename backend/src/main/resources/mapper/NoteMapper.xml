@@ -32,21 +32,21 @@
     </select>
 
     <select id="selectNoteLitesByGroup" resultMap="NoteResult">
-        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+        select id, name, note_book_group_id, note_book_id, title, digest, media, size, remark, state_id, create_on, update_on
           from note where note_book_group_id = #{group}
     </select>
 
     <select id="selectNoteLitesByBook" resultMap="NoteResult">
-        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+        select id, name, note_book_group_id, note_book_id, title, digest, media, size, remark, state_id, create_on, update_on
           from note where note_book_id = #{noteBook}
     </select>
 
     <select id="selectNoteLites" resultMap="NoteResult">
-        select id, name, note_book_group_id, note_book_id, title, digest, media, remark, state_id, create_on, update_on
+        select id, name, note_book_group_id, note_book_id, title, digest, media, size,remark, state_id, create_on, update_on
         from note
     </select>
 
     <update id="updateNoteContent">
-        update note set content = #{1} where id = #{0}
+        update note set content = #{1}, size = #{2}, digest = #{3} where id = #{0}
     </update>
 </mapper>

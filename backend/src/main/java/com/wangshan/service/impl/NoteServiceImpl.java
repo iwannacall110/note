@@ -67,8 +67,9 @@ public class NoteServiceImpl implements NoteService {
         return noteDao.selectNoteLites();
     }
 
-    public Boolean updateNoteContent(Long id, String content) {
-        return noteDao.updateNoteContent(id, content);
+    @Override
+    public Boolean updateNoteContent(Long id, String content, Integer size, String digest) {
+        return noteDao.updateNoteContent(id, content, size, digest);
     }
 
     @Override
