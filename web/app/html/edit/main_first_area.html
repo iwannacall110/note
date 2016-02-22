@@ -18,6 +18,10 @@
             <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager(group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
+        <div class="item margin-left-25">
+          <i class="icon book-icon"></i>
+          <input type="text" placeholder="新建笔记本" ng-model="newNoteBook" ng-keydown="keyDown($event)"/>
+        </div>
         <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
           <span ng-click="getNotes(group.id,noteBook.id)">
             <i class="icon book-icon"></i>
@@ -26,7 +30,7 @@
           </span>
           <div tabindex="0" class="icon triangle-down-black-hide-icon float-right"></div>
           <div class="menu-bar">
-            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems"><span ng-bind="popItem.value"></span></div>
+            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
       </div>

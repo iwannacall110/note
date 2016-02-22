@@ -109,6 +109,22 @@ define(['angular', 'property', 'cookie', 'customModel'], function () {
         }
 
         /**
+         * 笔记本组管理
+         */
+        $scope.groupManager = function(group, item){
+
+        }
+
+        /**
+         * 笔记本管理
+         * @param noteBook
+         * @param item
+         */
+        $scope.noteBookManager = function(noteBook, item){
+
+        }
+
+        /**
          * 根据笔记本组id或笔记本id获取笔记
          * */
         $scope.getNotes = function(group, noteBook){
@@ -174,6 +190,8 @@ define(['angular', 'property', 'cookie', 'customModel'], function () {
                 var size = content.textContent.byteLength()
                 var digest = content.textContent.substr(0, 30)
                 saveNote(content.innerHTML, size, digest)
+
+                var a = $scope.newNoteBook
 			}
 		}
 
