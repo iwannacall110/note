@@ -8,7 +8,7 @@
         <i class="icon" ng-class="{'triangle-right-black-icon': !unfoldGroups, 'triangle-down-black-icon': unfoldGroups}"></i>
         <span class="bold">全部笔记本组</span><i class="icon add-icon float-right"></i></div>
       <div ng-repeat="group in groups" ng-show="unfoldGroups">
-        <div tabindex="0" class="item ">
+        <div tabindex="0" class="item padding-left-5" ng-class="{'item-focus': group.id==currentGroup}">
           <i class="icon" ng-class="{'triangle-right-gray-icon': group.isFold, 'triangle-down-gray-icon': !group.isFold}" ng-click="foldGroup(group.id)"></i>
           <i class="icon book-group-icon"></i>
           <span class="padding-left-3" ng-bind="group.name" ng-click="getNotes(group.id)"></span>
@@ -18,8 +18,8 @@
             <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager(group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
-        <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold}" ng-repeat="noteBook in group.noteBooks">
-          <span ng-click="getNotes(undefined,noteBook.id)">
+        <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
+          <span ng-click="getNotes(group.id,noteBook.id)">
             <i class="icon book-icon"></i>
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>

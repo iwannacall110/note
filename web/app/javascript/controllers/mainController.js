@@ -112,6 +112,8 @@ define(['angular', 'property', 'cookie', 'customModel'], function () {
          * 根据笔记本组id或笔记本id获取笔记
          * */
         $scope.getNotes = function(group, noteBook){
+            if(group != undefined){ $scope.currentGroup = group}
+            if(noteBook != undefined){ $scope.currentNoteBook = noteBook}
             var url = 'backend/note/lite/list'
             var params = {"group": group, "noteBook": noteBook}
             $http(getRequest(url, params)).success(function(data){

@@ -86,11 +86,17 @@ a{
     background-color: #f8f8f8;
     cursor: pointer;
 }
+.item:hover{
+    background-color: #e5edf8;
+}
 .item:hover .triangle-down-black-hide-icon{
     visibility: visible;
 }
 .item:focus{
     background-color: #dae7f2;
+}
+.item-focus{
+	background-color: #dae7f2;
 }
 .item:focus .triangle-down-black-hide-icon{
     visibility: visible;
@@ -127,6 +133,9 @@ a{
 }
 .padding-left-3 {
     padding-left: 3px;
+}
+.padding-left-5 {
+    padding-left: 5px;
 }
 .small {
     font-size: 11px !important;
