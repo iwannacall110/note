@@ -20,11 +20,11 @@
             <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager(group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
-        <div class="item margin-left-25" ng-show="groupAdd == group.id">
-          <i class="icon book-icon"></i>
-          <input type="text" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
+        <div class="item margin-left-34" ng-show="groupAdd == group.id">
+          <i class="icon book-icon" style="float: left;margin-top: 8px;"></i>
+          <input type="text" style="padding-left: 8px;width:152px;" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
         </div>
-        <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
+        <div tabindex="0" class="item margin-left-34" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
           <span ng-click="getNotes(group.id,noteBook.id)">
             <i class="icon book-icon"></i>
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
