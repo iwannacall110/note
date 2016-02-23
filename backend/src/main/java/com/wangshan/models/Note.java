@@ -1,6 +1,7 @@
 package com.wangshan.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
@@ -26,6 +27,15 @@ public class Note {
     private Timestamp updateon;
 
     public Note(){}
+
+    public Note(String name, Long noteBookGroup, Long noteBook, Integer state, DateTime createon, DateTime updateon){
+        this.name = name;
+        this.noteBookGroup = noteBookGroup;
+        this.noteBook = noteBook;
+        this.state = state;
+        this.createon = new Timestamp(createon.getMillis());
+        this.updateon = new Timestamp(updateon.getMillis());
+    }
 
     public Long getId() {
         return id;

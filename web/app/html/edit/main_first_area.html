@@ -10,17 +10,19 @@
       <div ng-repeat="group in groups" ng-show="unfoldGroups">
         <div tabindex="0" class="item padding-left-5" ng-class="{'item-focus': group.id==currentGroup}">
           <i class="icon" ng-class="{'triangle-right-gray-icon': group.isFold, 'triangle-down-gray-icon': !group.isFold}" ng-click="foldGroup(group.id)"></i>
-          <i class="icon book-group-icon"></i>
-          <span class="padding-left-3" ng-bind="group.name" ng-click="getNotes(group.id)"></span>
-          <span class="padding-left-3 gray-small">(<span ng-bind="group.noteCount"></span>)</span>
-          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right"></div>
-          <div class="menu-bar">
+          <span ng-click="getNotes(group.id)">
+            <i class="icon book-group-icon"></i>
+            <span class="padding-left-3" ng-bind="group.name"></span>
+            <span class="padding-left-3 gray-small">(<span ng-bind="group.noteCount"></span>)</span>
+          </span>
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendGroup(group.id)"></div>
+          <div class="menu-bar" ng-show="manageGroup == group.id">
             <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager(group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
-        <div class="item margin-left-25">
+        <div class="item margin-left-25" ng-show="groupAdd == group.id">
           <i class="icon book-icon"></i>
-          <input type="text" placeholder="新建笔记本" ng-model="newNoteBook" ng-keydown="keyDown($event)"/>
+          <input type="text" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
         </div>
         <div tabindex="0" class="item margin-left-25" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
           <span ng-click="getNotes(group.id,noteBook.id)">
@@ -28,8 +30,8 @@
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>
           </span>
-          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right"></div>
-          <div class="menu-bar">
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="manageNoteBook = noteBook.id"></div>
+          <div class="menu-bar" ng-show="manageNoteBook == noteBook.id">
             <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>

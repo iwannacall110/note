@@ -30,11 +30,6 @@ public class NoteServiceImpl implements NoteService {
     private UserHasNoteBookGroupDao userHasNoteBookGroupDao;
 
     @Override
-    public int insertNote(Note note){
-        return noteDao.insertNote(note);
-    }
-
-    @Override
     public List<Note> getNotes(){
         return noteDao.selectNotes();
     }
@@ -75,5 +70,17 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public List<NoteBookGroup> getNoteBookGroup(Long user){
         return noteBookGroupDao.selectGroupByUser(user);
+    }
+
+    @Override
+    public Long addNoteBook(NoteBook noteBook){
+        noteBookDao.addNoteBook(noteBook);
+        return noteBook.getId();
+    }
+
+    @Override
+    public Long addNote(Note note){
+        noteDao.addNote(note);
+        return note.getId();
     }
 }

@@ -158,7 +158,7 @@ a{
     position: fixed;
     z-index: 10000;
     box-shadow: 2px 2px 5px #9fa8b0;
-    visibility: hidden;
+    //visibility: hidden;
 }
 .menu-bar-item {
     line-height: 30px;

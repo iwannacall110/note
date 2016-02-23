@@ -8,6 +8,7 @@ import com.wangshan.models.UserToken;
 import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
 import com.wangshan.service.UserService;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +90,19 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @ResponseBody
     public Boolean saveNote(@PathVariable(value = "id") Long id, @RequestBody NoteForm body){
         return noteService.updateNoteContent(id, body.getContent(), body.getSize(), body.getDigest());
+    }
+
+    @RequestMapping(value = "/book/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Long addNoteBook(@RequestBody NoteBook noteBook){
+		NoteBook nb = new NoteBook(noteBook.getName(), noteBook.getNoteBookGroup(), 0, 1, DateTime.now(), DateTime.now());
+        return noteService.addNoteBook(nb);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Long addNote(@RequestBody Note note){
+        Note n = new Note(note.getName(), note.getNoteBookGroup(), note.getNoteBook(), 1, DateTime.now(), DateTime.now());
+        return noteService.addNote(n);
     }
 }

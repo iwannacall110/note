@@ -17,12 +17,6 @@
         <result property="updateon" column="update_on"/>
     </resultMap>
 
-    <insert id="insertNote" parameterType="Note" keyProperty="id">
-        insert into note( name, note_book_group, note_book, content, remark, state, createon, updateon)
-        values
-        (#{name},#{noteBookGroup},#{noteBook},#{content},#{remark},#{state},#{createon},#{updateon})
-    </insert>
-
     <select id="selectNotes" resultMap="NoteResult">
         select * from note
     </select>
@@ -49,4 +43,9 @@
     <update id="updateNoteContent">
         update note set content = #{1}, size = #{2}, digest = #{3} where id = #{0}
     </update>
+
+    <insert id="addNote" parameterType="Note" useGeneratedKeys="true" keyProperty="id">
+        insert into note(name, note_book_group_id, note_book_id, note_count, remark, state_id, create_on, update_on)
+        values (#{name},#{noteBookGroup}, #{noteBook},#{noteCount},#{remark},#{state},#{createon},#{updateon})
+    </insert>
 </mapper>

@@ -1,27 +1,4 @@
-define(['angular', 'property', 'cookie', 'customModel'], function () {
-    /**
-     * 在header中添加token
-     * */
-    function postRequest(url, data){
-        var req = {
-            method: 'POST',
-            url: url,
-            headers: {'token': getCookie("token")},
-            data: data
-        }
-        return req
-    }
-
-    function getRequest(url, params){
-        var req = {
-            method: 'GET',
-            url: url,
-            headers: {'token': getCookie("token")},
-            params: params     //路径参数
-        }
-        return req
-    }
-
+define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
     return function($rootScope, $scope, $http, $location, $timeout, $document){
         $scope.unfoldGroups = false
         $scope.foldAll = function(){
@@ -109,10 +86,43 @@ define(['angular', 'property', 'cookie', 'customModel'], function () {
         }
 
         /**
+         * 展开笔记本组的操作列表
+         * @param group
+         */
+		$scope.expendGroup = function(group){
+			$scope.manageGroup = group
+		}
+		
+        /**
          * 笔记本组管理
          */
         $scope.groupManager = function(group, item){
+            $scope.manageGroup = -1
+            switch(item) {
+                case 'create':
+                    console.log("==================group: " + group)
+                    $scope.groupAdd = group
+                case 'rename':
+                case 'delete':
+                default:
+            }
+        }
 
+        /**
+         * 保存新增笔记本
+         * @param event
+         * @param group
+         */
+        $scope.saveNewNoteBook = function(event, group){
+            if(event.ctrlKey && event.keyCode == 83){ // ctrl + s
+                var url = 'backend/note/book/add'
+                var noteBook = {"noteBookGroup": group.id, "name": group.newNoteBook}
+                $http(postRequest(url, noteBook)).success(function(data){
+                    if(data.length > 0){
+                        $scope.currentGroup = group.id
+                    }
+                })
+            }
         }
 
         /**
@@ -190,8 +200,6 @@ define(['angular', 'property', 'cookie', 'customModel'], function () {
                 var size = content.textContent.byteLength()
                 var digest = content.textContent.substr(0, 30)
                 saveNote(content.innerHTML, size, digest)
-
-                var a = $scope.newNoteBook
 			}
 		}
 

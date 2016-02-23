@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public interface NoteDao {
-    int insertNote(Note note);
+    Integer addNote(Note note);
     List<Note> selectNotes();
     Note selectNote(Long id);
     List<Note> selectNoteLitesByGroup(Long group);

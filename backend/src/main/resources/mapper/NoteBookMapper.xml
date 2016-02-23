@@ -3,13 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangshan.dao.NoteBookDao">
     <resultMap id="NoteBookResult" type="NoteBook">
-        <id property="id" column="nb_id"/>
-        <result property="name" column="nb_name"/>
-        <result property="noteBookGroup" column="nb_note_book_group_id"/>
-        <result property="remark" column="nb_remark"/>
-        <result property="state" column="nb_state_id"/>
-        <result property="createon" column="nb_create_on"/>
-        <result property="updateon" column="nb_update_on"/>
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="noteBookGroup" column="note_book_group_id"/>
+		<result property="noteCount" column="note_count"/>
+        <result property="remark" column="remark"/>
+        <result property="state" column="state_id"/>
+        <result property="createon" column="create_on"/>
+        <result property="updateon" column="update_on"/>
     </resultMap>
 
     <resultMap id="NoteBookFormResult" type="NoteBookForm">
@@ -21,4 +22,8 @@
          select * from note_book left join note on note_book.id = note.note_book_id
     </select>
 
+    <insert id="addNoteBook" parameterType="NoteBook" useGeneratedKeys="true" keyProperty="id">
+        insert into note_book( name, note_book_group_id, note_count, remark, state_id, create_on, update_on)
+			values (#{name},#{noteBookGroup},#{noteCount},#{remark},#{state},#{createon},#{updateon})
+	</insert>
 </mapper>

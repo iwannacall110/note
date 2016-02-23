@@ -19,6 +19,7 @@ var config = {
     'sha1': 'app/javascript/units/sha1',
     'cookie': 'app/javascript/units/cookie',
     'customModel': 'app/javascript/units/customModel',
+    'http': 'app/javascript/units/http',
 	
 	'property': 'app/javascript/property'
   },

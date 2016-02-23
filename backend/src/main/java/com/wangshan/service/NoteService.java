@@ -11,7 +11,6 @@ import java.util.List;
  * Created by Administrator on 2015/11/15.
  */
 public interface NoteService {
-    int insertNote(Note note);
     List<Note> getNotes();
     List<NoteBook> getNoteBooks();
     List<UserHasNoteBookGroupForm> getNoteBookGroupByUser();
@@ -21,4 +20,6 @@ public interface NoteService {
     List<Note> getNoteLites();
     Boolean updateNoteContent(Long id, String content, Integer size, String digest);
     List<NoteBookGroup> getNoteBookGroup(Long user);
+    Long addNoteBook(NoteBook noteBook);
+    Long addNote(Note note);
 }
