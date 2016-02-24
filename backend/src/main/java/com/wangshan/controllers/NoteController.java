@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
  * Created by wangshan on 2015/11/18.
  */
+
+// TODO 所有的笔记相关方法都的action都放在此处(后续将所有的逻辑移至akka的actor中)
+
 @Controller
 @RequestMapping("/backend/note")
 @SessionAttributes("token")
@@ -94,15 +98,33 @@ public class NoteController extends javax.servlet.http.HttpServlet{
 
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)
     @ResponseBody
-    public Long addNoteBook(@RequestBody NoteBook noteBook){
+    public Object addNoteBook(@RequestBody NoteBook noteBook){
 		NoteBook nb = new NoteBook(noteBook.getName(), noteBook.getNoteBookGroup(), 0, 1, DateTime.now(), DateTime.now());
-        return noteService.addNoteBook(nb);
+        nb.setId(noteService.addNoteBook(nb));
+        return nb;
+    }
+
+    @RequestMapping(value = "/book/{id}/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer updateNoteBook(@PathVariable(value = "id") Long id, @RequestBody NoteBook noteBook){
+        noteBook.setId(id);
+        noteBook.setUpdateon(new Timestamp(DateTime.now().getMillis()));
+        return noteService.updateNoteBook(noteBook);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Long addNote(@RequestBody Note note){
+    public Object addNote(@RequestBody Note note){
         Note n = new Note(note.getName(), note.getNoteBookGroup(), note.getNoteBook(), 1, DateTime.now(), DateTime.now());
-        return noteService.addNote(n);
+        n.setId(noteService.addNote(n));
+        return n;
+    }
+
+    @RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer updateNote(@PathVariable(value = "id") Long id, @RequestBody Note note){
+        note.setId(id);
+        note.setUpdateon(new Timestamp(DateTime.now().getMillis()));
+        return noteService.updateNote(note);
     }
 }

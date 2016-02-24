@@ -30,7 +30,7 @@
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>
           </span>
-          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="manageNoteBook = noteBook.id"></div>
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendNoteBook(noteBook.id)"></div>
           <div class="menu-bar" ng-show="manageNoteBook == noteBook.id">
             <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>

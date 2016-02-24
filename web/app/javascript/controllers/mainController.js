@@ -35,24 +35,16 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         }
 
         /**
-         * 收起或展开笔记本组的扩展
-         * */
-        $scope.groupExpand = function(id){
-            $scope.groups.forEach(function(group){
-                if(group.id == id){
-                    group.isExpand = !group.isExpand
-                }
-            })
-        }
-
-        /**
          * 展开笔记本组的操作列表
          * @param group
          */
 		$scope.expendGroup = function(group){
-			$scope.manageGroup = group
+            if($scope.manageGroup != group){
+                $scope.manageGroup = group
+            } else { $scope.manageGroup = -1}
 		}
-		
+
+
         /**
          * 笔记本组管理
          */
@@ -78,8 +70,10 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
                 var url = 'backend/note/book/add'
                 var noteBook = {"noteBookGroup": group.id, "name": group.newNoteBook}
                 $http(postRequest(url, noteBook)).success(function(data){
-                    if(data.length > 0){
+                    if(data != undefined){
                         $scope.currentGroup = group.id
+                        group.noteBooks.unshift(data)
+                        group.newNoteBook = undefined
                     }
                 })
             }
@@ -91,7 +85,25 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * @param item
          */
         $scope.noteBookManager = function(noteBook, item){
+            $scope.manageNoteBook = -1
+            switch(item) {
+                case 'create':
+                    console.log("==================noteBook: " + noteBook)
+                    $scope.noteBookAdd = noteBook
+                case 'rename':
+                case 'delete':
+                default:
+            }
+        }
 
+        /**
+         * 展开笔记本组的操作列表
+         * @param group
+         */
+        $scope.expendNoteBook = function(noteBook){
+            if($scope.manageNoteBook != noteBook){
+                $scope.manageNoteBook = noteBook
+            } else { $scope.manageNoteBook = -1}
         }
 
         /**

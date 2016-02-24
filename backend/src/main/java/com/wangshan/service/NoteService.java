@@ -22,4 +22,6 @@ public interface NoteService {
     List<NoteBookGroup> getNoteBookGroup(Long user);
     Long addNoteBook(NoteBook noteBook);
     Long addNote(Note note);
+    Integer updateNoteBook(NoteBook noteBook);
+    Integer updateNote(Note note);
 }

@@ -83,4 +83,14 @@ public class NoteServiceImpl implements NoteService {
         noteDao.addNote(note);
         return note.getId();
     }
+
+    @Override
+    public Integer updateNoteBook(NoteBook noteBook){
+        return noteBookDao.updateNoteBook(noteBook);
+    }
+
+    @Override
+    public Integer updateNote(Note note){
+        return noteDao.updateNote(note);
+    }
 }

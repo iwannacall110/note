@@ -16,4 +16,5 @@ public interface NoteDao {
     List<Note> selectNoteLitesByBook(Long noteBook);
     List<Note> selectNoteLites();
     Boolean updateNoteContent(Long id, String content, Integer size, String digest);
+    Integer updateNote(Note note);
 }

@@ -48,4 +48,9 @@
         insert into note(name, note_book_group_id, note_book_id, note_count, remark, state_id, create_on, update_on)
         values (#{name},#{noteBookGroup}, #{noteBook},#{noteCount},#{remark},#{state},#{createon},#{updateon})
     </insert>
+
+    <update id="updateNote" parameterType="Note">
+        update note set name = #{name}, note_book_group_id = #{noteBookGroup}, note_book_id = #{noteBook}, title = #{title}, remark = #{remark},
+        state_id = #{state}, update_on = #{updateon} where id = #{id}
+    </update>
 </mapper>

@@ -11,4 +11,5 @@ import java.util.List;
 public interface NoteBookDao {
     List<NoteBook> selectNoteBooks();
     Integer addNoteBook(NoteBook noteBook);
+    Integer updateNoteBook(NoteBook noteBook);
 }
