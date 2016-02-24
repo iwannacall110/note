@@ -9,46 +9,6 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         //var userId = $location.search().id
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
-        $scope.groups = [
-            {
-                "id": 123,
-                "name": "测试组1",
-                "isDefault": true,
-                "order": 12,
-                "remark": "备注",
-                "noteCount": 150,
-                "isFold": false,
-                "isExpand": false,
-                "noteBooks": [
-                    {
-                        "id": 1121,
-                        "group": 123,
-                        "title": "测试笔记",
-                        "content": "山东省肯德基的的时代精神抖擞抖擞抖擞抖擞...",
-                        "isDefault": true,
-                        "order": 1,
-                        "noteCount": 18,
-                        "remark": "备注"
-                    }
-                ]
-            }
-        ]
-
-        $scope.noteLites = [
-            {
-                "id": 001,
-                "name": "测试笔记1",
-                "isDefault": true,
-                "order": 12,
-                "remark": "备注",
-                "digest": "html5拖拽图片批量ajax无刷新进度上传,博客分类：Div / Css / XML /...",
-                "size": 2121212121,
-                "createon": "2015-10-11",
-                "updateon": "2015-10-11",
-                "isFold": false,
-                "isExpand": false
-            }
-        ]
         $scope.currentGroup = undefined
 
         function getNoteBookGroupsByUser(){
@@ -189,6 +149,7 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
 
             })
         }
+
 
         /**
          * 键盘事件

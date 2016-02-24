@@ -22,7 +22,7 @@
         </div>
         <div class="item margin-left-34" ng-show="groupAdd == group.id">
           <i class="icon book-icon" style="float: left;margin-top: 8px;"></i>
-          <input type="text" style="padding-left: 8px;width:152px;" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
+          <input type="text" style="padding-left: 8px;width:144px;" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
         </div>
         <div tabindex="0" class="item margin-left-34" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
           <span ng-click="getNotes(group.id,noteBook.id)">
