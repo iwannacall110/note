@@ -115,6 +115,7 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
                     break
                 default:
             }
+            return false;
         }
 
         /**
@@ -125,17 +126,28 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
             if($scope.manageNoteBook != noteBook){
                 $scope.manageNoteBook = noteBook
             } else { $scope.manageNoteBook = -1}
+            return false
         }
 
         /**
          * 新增笔记
          * @param noteBook
+         * @param noteBookGroup
          */
         $scope.createNote = function(noteBook, noteBookGroup){
             var url = 'backend/note/create'
             var note = {"noteBook": noteBook ,"noteBookGroup": noteBookGroup}
             $http(postRequest(url, note)).success(function(data){
-                $scope.noteLites.unshift(data)
+                $scope.getNotes(noteBookGroup, noteBook)
+                //$scope.noteLites.unshift(data)
+                $scope.groups.forEach(function(group){
+                    group.noteBooks.forEach(function(nb){
+                        if(nb.id == noteBook){
+                            group.noteCount = group.noteCount + 1
+                            nb.noteCount = nb.noteCount + 1
+                        }
+                    })
+                })
             })
         }
 
@@ -148,31 +160,43 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
             var url = 'backend/note/lite/list'
             var params = {"group": group, "noteBook": noteBook}
             $http(getRequest(url, params)).success(function(data){
-                $scope.noteLites = data
-                $scope.noteLites.forEach(function(note){
-                    if(note != null && note.size != null){
-                        note.size = note.size.byteFormat()
-                        $scope.currentNote = note.id
-                        $scope.getNoteDetail($scope.currentNote)
-                    }
-                })
+                $scope.noteLites = undefined
+                showContent("")
+                if(data != null && data.length > 0){
+                    $scope.noteLites = data
+                    $scope.currentNote = data[0].id
+                    $scope.getNoteDetail($scope.currentNote)
+                    $scope.noteLites.forEach(function(note){
+                        if(note != null && note.size != null){
+                            note.size = note.size.byteFormat()
+                        }
+                    })
+                }
             })
         }
 
         /**
          * 删除笔记
-         * @param note
+         * @param noteLite
          */
-        $scope.deleteNote = function(note){
-            var url = 'backend/note/' + note + '/delete'
+        $scope.deleteNote = function(noteLite){
+            var url = 'backend/note/' + noteLite.id + '/delete'
             $http(deleteRequest(url)).success(function(data){
                 for(var i=0;i<$scope.noteLites.length;i++){
-                    if($scope.noteLites[i].id == note){
+                    if($scope.noteLites[i].id == noteLite.id){
                         $scope.noteLites.splice(i, 1)
                         i--
                         break
                     }
                 }
+            })
+            $scope.groups.forEach(function(group){
+                group.noteBooks.forEach(function(nb){
+                    if(nb.id == noteLite.noteBook){
+                        group.noteCount = group.noteCount - 1
+                        nb.noteCount = nb.noteCount -1
+                    }
+                })
             })
             //阻止冒泡
             return false

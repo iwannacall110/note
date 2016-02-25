@@ -81,6 +81,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    @Transactional
     public Boolean deleteNoteBook(Long id){
         NoteBook nb = new NoteBook(id, 0, DateTime.now());
         noteBookDao.deleteNoteBook(nb);
@@ -90,8 +91,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    @Transactional
     public Long addNote(Note note){
         noteDao.addNote(note);
+        noteBookDao.addNoteCount(note.getNoteBook());
+        noteBookGroupDao.addNoteCount(note.getNoteBookGroup());
         return note.getId();
     }
 

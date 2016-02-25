@@ -15,4 +15,5 @@ public interface NoteBookDao {
     Integer updateNoteBook(NoteBook noteBook);
     Integer deleteNoteBook(NoteBook noteBook);
     Integer reduceNoteCount(Long id);
+    Integer addNoteCount(Long id);
 }

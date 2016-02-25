@@ -13,4 +13,5 @@ public interface NoteBookGroupDao {
     List<NoteBook> selectNoteBooks();
     List<NoteBookGroup> selectGroupByUser(Long user);
     Integer reduceNoteCount(Long id);
+    Integer addNoteCount(Long id);
 }

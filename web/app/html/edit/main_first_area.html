@@ -24,8 +24,8 @@
           <i class="icon book-icon" style="float: left;margin-top: 8px;"></i>
           <input type="text" style="padding-left: 8px;width:144px;" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
         </div>
-        <div tabindex="0" class="item margin-left-34" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks">
-          <span ng-click="getNotes(group.id,noteBook.id)">
+        <div tabindex="0" class="item margin-left-34" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks" ng-click="getNotes(group.id,noteBook.id)">
+          <span>
             <i class="icon book-icon"></i>
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>
