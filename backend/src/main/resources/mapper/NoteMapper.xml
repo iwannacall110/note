@@ -45,8 +45,8 @@
     </update>
 
     <insert id="addNote" parameterType="Note" useGeneratedKeys="true" keyProperty="id">
-        insert into note(name, note_book_group_id, note_book_id, note_count, remark, state_id, create_on, update_on)
-        values (#{name},#{noteBookGroup}, #{noteBook},#{noteCount},#{remark},#{state},#{createon},#{updateon})
+        insert into note(name, note_book_group_id, note_book_id, title, remark, state_id, create_on, update_on)
+        values (#{name},#{noteBookGroup}, #{noteBook}, #{title}, #{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <update id="updateNote" parameterType="Note">
