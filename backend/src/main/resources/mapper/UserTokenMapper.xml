@@ -16,6 +16,6 @@
     </insert>
 
     <select id="selectUserTokenByToken" parameterType="String" resultMap="UserTokenResult">
-        select * from user_token where token = #{token}
+        select * from user_token where token = #{token} and state_id = 1
     </select>
 </mapper>

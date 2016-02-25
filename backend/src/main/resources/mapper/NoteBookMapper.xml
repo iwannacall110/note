@@ -19,9 +19,13 @@
     </resultMap>
 
     <select id="selectNoteBooks" resultMap="NoteBookFormResult">
-         select * from note_book left join note on note_book.id = note.note_book_id
+         select * from note_book left join note on note_book.id = note.note_book_id where state_id = 1
     </select>
-
+	
+	<select id="selectNoteBook" resultMap="NoteBookResult">
+         select * from note_book where id = #{1} and state_id = 1
+    </select>
+	
     <insert id="addNoteBook" parameterType="NoteBook" useGeneratedKeys="true" keyProperty="id">
         insert into note_book( name, note_book_group_id, note_count, remark, state_id, create_on, update_on)
 			values (#{name},#{noteBookGroup},#{noteCount},#{remark},#{state},#{createon},#{updateon})
@@ -30,5 +34,13 @@
     <update id="updateNoteBook" parameterType="NoteBook">
         update note_book set name = #{name}, note_book_group_id = #{noteBookGroup}, note_count = #{noteCount}, remark = #{remark},
           state_id = #{state}, update_on = #{updateon} where id = #{id}
+    </update>
+	
+	<update id="deleteNoteBook" parameterType="NoteBook">
+        update note_book set state_id = #{state}, update_on = #{updateon} where id = #{id}
+    </update>
+	
+	<update id="reduceNoteCount">
+        update note_book set note_count = #{noteCount} where id = #{1}
     </update>
 </mapper>

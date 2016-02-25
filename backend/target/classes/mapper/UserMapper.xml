@@ -21,11 +21,11 @@
     </insert>
 
     <select id="selectUser" resultMap="UserResult">
-        select * from user
+        select * from user where state_id = 1
     </select>
 
     <select id="getUserByEmail" parameterType="String" resultMap="UserResult">
-        select * from user where email = #{email}
+        select * from user where email = #{email} and state_id = 1
     </select>
 
 </mapper>

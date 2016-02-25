@@ -10,8 +10,10 @@ import com.wangshan.models.NoteBookGroup;
 import com.wangshan.models.UserHasNoteBookGroup;
 import com.wangshan.models.forms.UserHasNoteBookGroupForm;
 import com.wangshan.service.NoteService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -79,6 +81,15 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public Boolean deleteNoteBook(Long id){
+        NoteBook nb = new NoteBook(id, 0, DateTime.now());
+        noteBookDao.deleteNoteBook(nb);
+        NoteBook noteBook = noteBookDao.selectNoteBook(id);
+        noteBookGroupDao.reduceNoteCount(noteBook.getNoteBookGroup());
+        return true;
+    }
+
+    @Override
     public Long addNote(Note note){
         noteDao.addNote(note);
         return note.getId();
@@ -92,5 +103,16 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public Integer updateNote(Note note){
         return noteDao.updateNote(note);
+    }
+
+    @Override
+    @Transactional
+    public Boolean deleteNote(Long id){
+        Note n = new Note(id, 0, DateTime.now());
+        noteDao.deleteNote(n);
+        Note note = noteDao.selectNote(id);
+        noteBookDao.reduceNoteCount(note.getNoteBook());
+        noteBookGroupDao.reduceNoteCount(note.getNoteBookGroup());
+        return true;
     }
 }

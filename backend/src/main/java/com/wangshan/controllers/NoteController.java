@@ -104,6 +104,12 @@ public class NoteController extends javax.servlet.http.HttpServlet{
         return nb;
     }
 
+    @RequestMapping(value = "/book/{id}/delete", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Object deleteNoteBook(@PathVariable(value = "id") Long id){
+        return noteService.deleteNoteBook(id);
+    }
+
     @RequestMapping(value = "/book/{id}/update", method = RequestMethod.POST)
     @ResponseBody
     public Integer updateNoteBook(@PathVariable(value = "id") Long id, @RequestBody NoteBook noteBook){
@@ -112,10 +118,10 @@ public class NoteController extends javax.servlet.http.HttpServlet{
         return noteService.updateNoteBook(noteBook);
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object addNote(@RequestBody Note note){
-        Note n = new Note(note.getName(), note.getNoteBookGroup(), note.getNoteBook(), 1, DateTime.now(), DateTime.now());
+    public Object createNote(@RequestBody Note note){
+        Note n = new Note("no title note", note.getNoteBookGroup(), note.getNoteBook(), 1, DateTime.now(), DateTime.now());
         n.setId(noteService.addNote(n));
         return n;
     }
@@ -126,5 +132,11 @@ public class NoteController extends javax.servlet.http.HttpServlet{
         note.setId(id);
         note.setUpdateon(new Timestamp(DateTime.now().getMillis()));
         return noteService.updateNote(note);
+    }
+
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Object deleteNote(@PathVariable(value = "id") Long id){
+        return noteService.deleteNote(id);
     }
 }

@@ -4,7 +4,7 @@
       <span class="text-center big-font bold">css测试</span>
     </div>
     <div>
-      <div tabindex="0" class="item" ng-click="foldAll()">
+      <div tabindex="0" class="item-title" ng-click="foldAll()">
         <i class="icon" ng-class="{'triangle-right-black-icon': !unfoldGroups, 'triangle-down-black-icon': unfoldGroups}"></i>
         <span class="bold">全部笔记本组</span><i class="icon add-icon float-right"></i></div>
       <div ng-repeat="group in groups" ng-show="unfoldGroups">
@@ -32,7 +32,7 @@
           </span>
           <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendNoteBook(noteBook.id)"></div>
           <div class="menu-bar" ng-show="manageNoteBook == noteBook.id">
-            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
+            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
       </div>

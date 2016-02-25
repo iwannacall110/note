@@ -44,6 +44,7 @@ public class UserController {
             cookie.setMaxAge(600000);
             cookie.setHttpOnly(false);
             response.addCookie(cookie);*/
+            u.setPassword("***");
             return new Token(u, token);
         } else {
             return false;

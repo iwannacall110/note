@@ -21,7 +21,9 @@ public interface NoteService {
     Boolean updateNoteContent(Long id, String content, Integer size, String digest);
     List<NoteBookGroup> getNoteBookGroup(Long user);
     Long addNoteBook(NoteBook noteBook);
+    Boolean deleteNoteBook(Long noteBook);
     Long addNote(Note note);
     Integer updateNoteBook(NoteBook noteBook);
     Integer updateNote(Note note);
+    Boolean deleteNote(Long note);
 }

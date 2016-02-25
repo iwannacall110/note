@@ -37,6 +37,12 @@ public class Note {
         this.updateon = new Timestamp(updateon.getMillis());
     }
 
+    public Note(Long id, Integer state, DateTime updateon){
+        this.id = id;
+        this.state = state;
+        this.updateon = new Timestamp(updateon.getMillis());
+    }
+
     public Long getId() {
         return id;
     }

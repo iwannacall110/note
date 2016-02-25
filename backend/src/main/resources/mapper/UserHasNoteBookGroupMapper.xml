@@ -24,7 +24,7 @@
           note.update_on as n_update_on
           from user left join user_has_note_book_group uhn on uhn.user_id = user.id  left join note_book_group nbg
           on nbg.id = uhn.note_book_group_id left join note_book nb on nb.note_book_group_id = nbg.id left join note on
-          note.note_book_id = nb.id
+          note.note_book_id = nb.id where user.state_id = 1 and nbg.state_id = 1 and nb.state_id = 1 and note.state_id = 1
     </select>
 
 </mapper>

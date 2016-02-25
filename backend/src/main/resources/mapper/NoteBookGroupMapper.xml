@@ -42,7 +42,7 @@
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">
-        select * from note_book_group
+        select * from note_book_group where state_id = 1
     </select>
 
     <select id="selectGroupByUser" resultMap="GroupWithBookResult">
@@ -50,7 +50,10 @@
           from user left join user_has_note_book_group uhn on uhn.user_id = user.id
 			left join note_book_group nbg on nbg.id = uhn.note_book_group_id 
 			left join note_book nb on nb.note_book_group_id = nbg.id  
-			where user.id = #{user}
+			where user.id = #{user} and user.state_id = 1 and nbg.state_id = 1 and nb.state_id = 1
     </select>
-
+	
+	<update id="reduceNoteCount">
+        update note_book_group set note_count = #{noteCount} where id = #{1}
+    </update>
 </mapper>

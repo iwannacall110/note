@@ -76,10 +76,20 @@ a{
 .item-area:hover{
     background-color: #f6f7f9;
 }
+.item-area:hover .delete-icon{
+    visibility: visible;
+}
 .item-area:focus{
     background-color: #eaf0fb;
 }
 .item{
+    display: block;
+    line-height: 30px;
+    outline: none;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+.item-title{
     display: block;
     line-height: 30px;
     outline: none;

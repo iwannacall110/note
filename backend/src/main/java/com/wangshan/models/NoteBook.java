@@ -29,6 +29,12 @@ public class NoteBook {
         this.createon = new Timestamp(createon.getMillis());
         this.updateon = new Timestamp(updateon.getMillis());
     }
+
+    public NoteBook(Long id, Integer state, DateTime updateon){
+        this.id = id;
+        this.state = state;
+        this.updateon = new Timestamp(updateon.getMillis());
+    }
     public Long getId() {
         return id;
     }

@@ -18,26 +18,26 @@
     </resultMap>
 
     <select id="selectNotes" resultMap="NoteResult">
-        select * from note
+        select * from note where state_id = 1
     </select>
 
     <select id="selectNote" resultMap="NoteResult">
-        select * from note where id = #{0}
+        select * from note where id = #{0} and state_id = 1
     </select>
 
     <select id="selectNoteLitesByGroup" resultMap="NoteResult">
         select id, name, note_book_group_id, note_book_id, title, digest, media, size, remark, state_id, create_on, update_on
-          from note where note_book_group_id = #{group}
+          from note where note_book_group_id = #{group} and state_id = 1
     </select>
 
     <select id="selectNoteLitesByBook" resultMap="NoteResult">
         select id, name, note_book_group_id, note_book_id, title, digest, media, size, remark, state_id, create_on, update_on
-          from note where note_book_id = #{noteBook}
+          from note where note_book_id = #{noteBook} and state_id = 1
     </select>
 
     <select id="selectNoteLites" resultMap="NoteResult">
         select id, name, note_book_group_id, note_book_id, title, digest, media, size,remark, state_id, create_on, update_on
-        from note
+        from note where state_id = 1
     </select>
 
     <update id="updateNoteContent">
@@ -52,5 +52,9 @@
     <update id="updateNote" parameterType="Note">
         update note set name = #{name}, note_book_group_id = #{noteBookGroup}, note_book_id = #{noteBook}, title = #{title}, remark = #{remark},
         state_id = #{state}, update_on = #{updateon} where id = #{id}
+    </update>
+	
+	<update id="deleteNote" parameterType="Note">
+        update note set state_id = #{state}, update_on = #{updateon} where id = #{id}
     </update>
 </mapper>

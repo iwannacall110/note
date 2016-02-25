@@ -40,6 +40,10 @@
 .search-icon {
     background: url(../image/icons.png) no-repeat -460px -5px;
 }
+.delete-icon {
+    visibility: hidden;
+    background: url(../image/icons.png) no-repeat -4px -28px;
+}
 .gray-star-icon{
     background: url(../image/icons.png) no-repeat -75px -5px;
 }

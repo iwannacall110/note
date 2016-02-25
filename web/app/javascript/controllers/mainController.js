@@ -52,8 +52,8 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
             $scope.manageGroup = -1
             switch(item) {
                 case 'create':
-                    console.log("==================group: " + group)
                     $scope.groupAdd = group
+                    break
                 case 'rename':
                 case 'delete':
                 default:
@@ -80,6 +80,25 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         }
 
         /**
+         * 删除笔记本
+         * @param noteBook
+         */
+        $scope.deleteNoteBook = function(noteBook){
+            var url = 'backend/note/book/' + noteBook + '/delete'
+            $http(deleteRequest(url)).success(function(data){
+                $scope.groups.forEach(function(group){
+                    for(var i=0;i<group.noteBooks.length;i++){
+                        if(nb.id == group.noteBooks[i]){
+                            group.noteBooks.splice(i, 1)
+                            i--
+                            return
+                        }
+                    }
+                })
+            })
+        }
+
+        /**
          * 笔记本管理
          * @param noteBook
          * @param item
@@ -88,10 +107,12 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
             $scope.manageNoteBook = -1
             switch(item) {
                 case 'create':
-                    console.log("==================noteBook: " + noteBook)
-                    $scope.noteBookAdd = noteBook
+                    $scope.createNote(noteBook.id, noteBook.noteBookGroup);
+                    break
                 case 'rename':
                 case 'delete':
+                    $scope.deleteNoteBook(noteBook.id)
+                    break
                 default:
             }
         }
@@ -107,6 +128,18 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         }
 
         /**
+         * 新增笔记
+         * @param noteBook
+         */
+        $scope.createNote = function(noteBook, noteBookGroup){
+            var url = 'backend/note/create'
+            var note = {"noteBook": noteBook ,"noteBookGroup": noteBookGroup}
+            $http(postRequest(url, note)).success(function(data){
+                $scope.noteLites.unshift(data)
+            })
+        }
+
+        /**
          * 根据笔记本组id或笔记本id获取笔记
          * */
         $scope.getNotes = function(group, noteBook){
@@ -115,15 +148,34 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
             var url = 'backend/note/lite/list'
             var params = {"group": group, "noteBook": noteBook}
             $http(getRequest(url, params)).success(function(data){
-                if(data.length > 0){
-                    $scope.noteLites = data
-                    $scope.noteLites.forEach(function(note){
+                $scope.noteLites = data
+                $scope.noteLites.forEach(function(note){
+                    if(note != null && note.size != null){
                         note.size = note.size.byteFormat()
-                    })
-                    $scope.currentNote = data[0].id
-                    $scope.getNoteDetail($scope.currentNote)
+                        $scope.currentNote = note.id
+                        $scope.getNoteDetail($scope.currentNote)
+                    }
+                })
+            })
+        }
+
+        /**
+         * 删除笔记
+         * @param note
+         */
+        $scope.deleteNote = function(note){
+            var url = 'backend/note/' + note + '/delete'
+            $http(deleteRequest(url)).success(function(data){
+                for(var i=0;i<$scope.noteLites.length;i++){
+                    if($scope.noteLites[i].id == note){
+                        $scope.noteLites.splice(i, 1)
+                        i--
+                        break
+                    }
                 }
             })
+            //阻止冒泡
+            return false
         }
 
         /**
@@ -187,7 +239,5 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
                 event.returnValue = false
             }
         }
-
-        $scope.totalNoteCount = 230
     }
 })

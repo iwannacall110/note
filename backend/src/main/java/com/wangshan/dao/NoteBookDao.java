@@ -10,6 +10,9 @@ import java.util.List;
 
 public interface NoteBookDao {
     List<NoteBook> selectNoteBooks();
+    NoteBook selectNoteBook(Long id);
     Integer addNoteBook(NoteBook noteBook);
     Integer updateNoteBook(NoteBook noteBook);
+    Integer deleteNoteBook(NoteBook noteBook);
+    Integer reduceNoteCount(Long id);
 }
