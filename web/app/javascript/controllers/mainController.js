@@ -49,13 +49,14 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         /**
          * 收起或展开笔记本组
          * */
-        $scope.foldGroup = function(id){
+        $scope.foldGroup = function($event, id){
             $scope.groups.forEach(function(group){
                 if(group.id == id){
                     group.isFold = !group.isFold
                     return
                 }
             })
+            $event.stopPropagation()
         }
 
         /**

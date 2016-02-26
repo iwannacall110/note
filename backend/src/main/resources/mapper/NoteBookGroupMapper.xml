@@ -5,6 +5,7 @@
     <resultMap id="NoteBookGroupResult" type="NoteBookGroup">
         <id property="id" column="id"/>
         <result property="name" column="name" />
+        <result property="noteCount" column="note_count"/>
         <result property="remark" column="remark"/>
         <result property="state" column="state_id"/>
         <result property="createon" column="create_on"/>
@@ -39,6 +40,11 @@
     <insert id="insertNoteBookGroup" parameterType="NoteBookGroup" keyProperty="id">
         insert into note_book_group( name, remark, state, createon, updateon)
         values (#{name},#{remark},#{state},#{createon},#{updateon})
+    </insert>
+
+    <insert id="addNoteBookGroup" parameterType="NoteBookGroup" useGeneratedKeys="true" keyProperty="id">
+        insert into note_book_group( name, note_book_group_id, note_count, remark, state_id, create_on, update_on)
+        values (#{name},#{noteBookGroup},#{noteCount},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">
