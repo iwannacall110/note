@@ -23,6 +23,29 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         getNoteBookGroupsByUser()
 
         /**
+         * 添加笔记本组
+         */
+        $scope.addGroup = function(){
+            $scope.groupAdd = true
+            $scope.noteBookAdd = false
+        }
+
+        /**
+         * 保存新增笔记本组
+         * @param event
+         */
+        $scope.saveNewGroup = function($event){
+            if($event.ctrlKey && $event.keyCode == 83){ // ctrl + s
+                var url = 'backend/note/group/add'
+                var group = {"name": $scope.newGroup}
+                $http(postRequest(url, group)).success(function(data){
+                    if(data != undefined){
+                    }
+                })
+            }
+        }
+
+        /**
          * 收起或展开笔记本组
          * */
         $scope.foldGroup = function(id){
@@ -38,26 +61,28 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * 展开笔记本组的操作列表
          * @param group
          */
-		$scope.expendGroup = function(group){
+		$scope.expendGroup = function($event, group){
             if($scope.manageGroup != group){
                 $scope.manageGroup = group
             } else { $scope.manageGroup = -1}
+            $event.stopPropagation()
 		}
 
 
         /**
          * 笔记本组管理
          */
-        $scope.groupManager = function(group, item){
+        $scope.groupManager = function($event, group, item){
             $scope.manageGroup = -1
             switch(item) {
                 case 'create':
-                    $scope.groupAdd = group
+                    $scope.noteBookAdd = group
                     break
                 case 'rename':
                 case 'delete':
                 default:
             }
+            $event.stopPropagation()
         }
 
         /**
@@ -103,7 +128,7 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * @param noteBook
          * @param item
          */
-        $scope.noteBookManager = function(noteBook, item){
+        $scope.noteBookManager = function($event, noteBook, item){
             $scope.manageNoteBook = -1
             switch(item) {
                 case 'create':
@@ -115,18 +140,21 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
                     break
                 default:
             }
-            return false;
+            $event.stopPropagation()
         }
 
         /**
          * 展开笔记本组的操作列表
          * @param group
          */
-        $scope.expendNoteBook = function(noteBook){
+        $scope.expendNoteBook = function($event, noteBook){
             if($scope.manageNoteBook != noteBook){
                 $scope.manageNoteBook = noteBook
             } else { $scope.manageNoteBook = -1}
-            return false
+            if ($event.stopPropagation)
+                $event.stopPropagation()
+            else
+                $event.cancelBubble = true
         }
 
         /**

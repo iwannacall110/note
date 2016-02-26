@@ -11,9 +11,10 @@ import java.util.List;
  * Created by Administrator on 2015/11/15.
  */
 public interface NoteService {
+    Integer addNoteBookGroup(NoteBookGroup noteBookGroup);
     List<Note> getNotes();
     List<NoteBook> getNoteBooks();
-    List<UserHasNoteBookGroupForm> getNoteBookGroupByUser();
+    List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(Long id);
     Note getNote(Long id);
     List<Note> getNoteLitesByGroup(Long group);
     List<Note> getNoteLitesByBook(Long noteBook);

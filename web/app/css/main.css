@@ -217,14 +217,23 @@ a{
     line-height: 35px;
     background-color: #f5f6f7;
 }
-.input {
-    width: 300px;
+.input{
+    height: 25px;
     resize:vertical;
-    overflow:auto;
     border:1px solid silver;
     border-radius:5px;
     box-shadow: inset 0 0 10px silver;
-    padding:1px;
+    padding:1px 1px 1px 8px;
+    -webkit-box-shadow: none;
+    border-collapse: separate;
+    box-sizing: border-box;
+}
+
+.input-sm {
+    width:144px;
+}
+.input-nor {
+    width:152px;
 }
 .margin-top {
     margin-top: 15px;
@@ -235,20 +244,6 @@ a{
     padding: 10px;
     border-bottom: 1px solid #e0e1e5;
     box-sizing: border-box;
-}
-.input-group {
-    position: relative;
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-}
-.input-sm {
-    background: #fff;
-    color: #BECFE0;
-    border-color: #dfdfdf;
-    -webkit-box-shadow: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
 .search-area {
     height: 90px;

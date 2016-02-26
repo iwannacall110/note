@@ -51,7 +51,7 @@ public class NoteController extends javax.servlet.http.HttpServlet{
     @RequestMapping(value = "/user/{user}", method = RequestMethod.GET)
     @ResponseBody
     public List<UserHasNoteBookGroupForm> getNoteBookGropByUser(@PathVariable(value = "user") Long user){
-        return noteService.getNoteBookGroupByUser();
+        return noteService.getNoteBookGroupByUser(user);
     }
 
     @RequestMapping(value = "/groups", method = RequestMethod.GET)

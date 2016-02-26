@@ -6,23 +6,27 @@
     <div>
       <div tabindex="0" class="item-title" ng-click="foldAll()">
         <i class="icon" ng-class="{'triangle-right-black-icon': !unfoldGroups, 'triangle-down-black-icon': unfoldGroups}"></i>
-        <span class="bold">全部笔记本组</span><i class="icon add-icon float-right"></i></div>
+        <span class="bold">全部笔记本组</span><i class="icon add-icon float-right" ng-click="addGroup()"></i></div>
+      <div class="item margin-left-25" ng-show="groupAdd">
+        <i class="icon book-group-icon" style="float: left;margin-top: 3px;"></i>
+        <input type="text" class="input input-nor" placeholder="新建笔记组" ng-model="newGroup" ng-keydown="saveNewGroup($event)" autofocus/>
+      </div>
       <div ng-repeat="group in groups" ng-show="unfoldGroups">
-        <div tabindex="0" class="item padding-left-5" ng-class="{'item-focus': group.id==currentGroup}">
+        <div tabindex="0" class="item padding-left-5" ng-class="{'item-focus': group.id==currentGroup}" ng-click="getNotes(group.id)">
           <i class="icon" ng-class="{'triangle-right-gray-icon': group.isFold, 'triangle-down-gray-icon': !group.isFold}" ng-click="foldGroup(group.id)"></i>
-          <span ng-click="getNotes(group.id)">
+          <span>
             <i class="icon book-group-icon"></i>
             <span class="padding-left-3" ng-bind="group.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="group.noteCount"></span>)</span>
           </span>
-          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendGroup(group.id)"></div>
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendGroup($event, group.id)"></div>
           <div class="menu-bar" ng-show="manageGroup == group.id">
-            <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager(group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
+            <div class="menu-bar-item" ng-repeat="popItem in groupPopupItems" ng-click="groupManager($event, group.id, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
-        <div class="item margin-left-34" ng-show="groupAdd == group.id">
+        <div class="item margin-left-34" ng-show="noteBookAdd == group.id">
           <i class="icon book-icon" style="float: left;margin-top: 8px;"></i>
-          <input type="text" style="padding-left: 8px;width:144px;" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
+          <input type="text" class="input input-sm" placeholder="新建笔记本" ng-model="group.newNoteBook" ng-keydown="saveNewNoteBook($event, group)" autofocus/>
         </div>
         <div tabindex="0" class="item margin-left-34" ng-class="{'hidden': group.isFold, 'item-focus': noteBook.id==currentNoteBook}" ng-repeat="noteBook in group.noteBooks" ng-click="getNotes(group.id,noteBook.id)">
           <span>
@@ -30,9 +34,9 @@
             <span class="padding-left-3" ng-bind="noteBook.name"></span>
             <span class="padding-left-3 gray-small">(<span ng-bind="noteBook.noteCount"></span>)</span>
           </span>
-          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendNoteBook(noteBook.id)"></div>
+          <div tabindex="0" class="icon triangle-down-black-hide-icon float-right" ng-click="expendNoteBook($event,noteBook.id)"></div>
           <div class="menu-bar" ng-show="manageNoteBook == noteBook.id">
-            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager(noteBook, popItem.key)"><span ng-bind="popItem.value"></span></div>
+            <div class="menu-bar-item" ng-repeat="popItem in notebookPopupItems" ng-click="noteBookManager($event, noteBook, popItem.key)"><span ng-bind="popItem.value"></span></div>
           </div>
         </div>
       </div>

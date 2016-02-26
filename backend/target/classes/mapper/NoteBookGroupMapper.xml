@@ -54,10 +54,10 @@
     </select>
 	
 	<update id="reduceNoteCount">
-        update note_book_group set note_count = note_count-1 where id = #{1}
+        update note_book_group set note_count = note_count-1 where id = #{0}
     </update>
 
     <update id="addNoteCount">
-        update note_book_group set note_count = note_count+1 where id = #{1}
+        update note_book_group set note_count = note_count+1 where id = #{0}
     </update>
 </mapper>

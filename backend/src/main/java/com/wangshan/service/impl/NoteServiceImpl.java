@@ -32,6 +32,11 @@ public class NoteServiceImpl implements NoteService {
     private UserHasNoteBookGroupDao userHasNoteBookGroupDao;
 
     @Override
+    public Integer addNoteBookGroup(NoteBookGroup noteBookGroup){
+        return noteBookGroupDao.addNoteBookGroup(noteBookGroup);
+    }
+
+    @Override
     public List<Note> getNotes(){
         return noteDao.selectNotes();
     }
@@ -40,8 +45,8 @@ public class NoteServiceImpl implements NoteService {
     public List<NoteBook> getNoteBooks(){ return noteBookDao.selectNoteBooks();}
 
     @Override
-    public List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(){
-        return userHasNoteBookGroupDao.selectNoteBookGroupByUser();
+    public List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(Long id){
+        return userHasNoteBookGroupDao.selectNoteBookGroupByUser(id);
     }
 
     @Override
@@ -83,10 +88,10 @@ public class NoteServiceImpl implements NoteService {
     @Override
     @Transactional
     public Boolean deleteNoteBook(Long id){
-        NoteBook nb = new NoteBook(id, 0, DateTime.now());
-        noteBookDao.deleteNoteBook(nb);
         NoteBook noteBook = noteBookDao.selectNoteBook(id);
         noteBookGroupDao.reduceNoteCount(noteBook.getNoteBookGroup());
+        NoteBook nb = new NoteBook(id, 0, DateTime.now());
+        noteBookDao.deleteNoteBook(nb);
         return true;
     }
 
@@ -112,11 +117,11 @@ public class NoteServiceImpl implements NoteService {
     @Override
     @Transactional
     public Boolean deleteNote(Long id){
-        Note n = new Note(id, 0, DateTime.now());
-        noteDao.deleteNote(n);
         Note note = noteDao.selectNote(id);
         noteBookDao.reduceNoteCount(note.getNoteBook());
         noteBookGroupDao.reduceNoteCount(note.getNoteBookGroup());
+        Note n = new Note(id, 0, DateTime.now());
+        noteDao.deleteNote(n);
         return true;
     }
 }

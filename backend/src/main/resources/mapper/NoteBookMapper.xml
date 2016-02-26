@@ -23,7 +23,7 @@
     </select>
 	
 	<select id="selectNoteBook" resultMap="NoteBookResult">
-         select * from note_book where id = #{1} and state_id = 1
+         select * from note_book where id = #{0} and state_id = 1
     </select>
 	
     <insert id="addNoteBook" parameterType="NoteBook" useGeneratedKeys="true" keyProperty="id">
@@ -41,10 +41,10 @@
     </update>
 	
 	<update id="reduceNoteCount">
-        update note_book set note_count = note_count-1 where id = #{1}
+        update note_book set note_count = note_count-1 where id = #{0}
     </update>
 
     <update id="addNoteCount">
-        update note_book set note_count = note_count+1 where id = #{1}
+        update note_book set note_count = note_count+1 where id = #{0}
     </update>
 </mapper>
