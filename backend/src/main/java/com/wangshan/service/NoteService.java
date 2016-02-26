@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/15.
  */
 public interface NoteService {
-    Integer addNoteBookGroup(NoteBookGroup noteBookGroup);
+    NoteBookGroup addNoteBookGroup(NoteBookGroup noteBookGroup);
     List<Note> getNotes();
     List<NoteBook> getNoteBooks();
     List<UserHasNoteBookGroupForm> getNoteBookGroupByUser(Long id);

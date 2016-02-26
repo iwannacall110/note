@@ -32,8 +32,11 @@ public class NoteServiceImpl implements NoteService {
     private UserHasNoteBookGroupDao userHasNoteBookGroupDao;
 
     @Override
-    public Integer addNoteBookGroup(NoteBookGroup noteBookGroup){
-        return noteBookGroupDao.addNoteBookGroup(noteBookGroup);
+    public NoteBookGroup addNoteBookGroup(NoteBookGroup noteBookGroup){
+        Long id = noteBookGroupDao.addNoteBookGroup(noteBookGroup);
+        noteBookGroup.setId(id);
+        noteBookGroup.setNoteCount(0);
+        return noteBookGroup;
     }
 
     @Override

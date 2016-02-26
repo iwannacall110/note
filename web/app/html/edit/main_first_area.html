@@ -6,7 +6,7 @@
     <div>
       <div tabindex="0" class="item-title" ng-click="foldAll()">
         <i class="icon" ng-class="{'triangle-right-black-icon': !unfoldGroups, 'triangle-down-black-icon': unfoldGroups}"></i>
-        <span class="bold">全部笔记本组</span><i class="icon add-icon float-right" ng-click="addGroup()"></i></div>
+        <span class="bold">全部笔记本组</span><i class="icon add-icon float-right" ng-click="addGroup($event)"></i></div>
       <div class="item margin-left-25" ng-show="groupAdd">
         <i class="icon book-group-icon" style="float: left;margin-top: 3px;"></i>
         <input type="text" class="input input-nor" placeholder="新建笔记组" ng-model="newGroup" ng-keydown="saveNewGroup($event)" autofocus/>

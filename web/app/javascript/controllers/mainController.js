@@ -25,9 +25,10 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         /**
          * 添加笔记本组
          */
-        $scope.addGroup = function(){
+        $scope.addGroup = function($event){
             $scope.groupAdd = true
             $scope.noteBookAdd = false
+            $event.stopPropagation()
         }
 
         /**

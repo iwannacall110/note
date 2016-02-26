@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface NoteBookGroupDao {
     List<NoteBook> selectNoteBooks();
-    Integer addNoteBookGroup(NoteBookGroup noteBookGroup);
+    Long addNoteBookGroup(NoteBookGroup noteBookGroup);
     List<NoteBookGroup> selectGroupByUser(Long user);
     Integer reduceNoteCount(Long id);
     Integer addNoteCount(Long id);
