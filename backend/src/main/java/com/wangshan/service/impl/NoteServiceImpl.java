@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,12 +32,14 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private UserHasNoteBookGroupDao userHasNoteBookGroupDao;
 
+    @Transactional
     @Override
-    public NoteBookGroup addNoteBookGroup(NoteBookGroup noteBookGroup){
-        Long id = noteBookGroupDao.addNoteBookGroup(noteBookGroup);
-        noteBookGroup.setId(id);
-        noteBookGroup.setNoteCount(0);
-        return noteBookGroup;
+    public NoteBookGroup addNoteBookGroup(Long user, String name){
+        NoteBookGroup nbg = new NoteBookGroup(name, 0, 1, DateTime.now(), DateTime.now());
+        noteBookGroupDao.addNoteBookGroup(nbg);
+        UserHasNoteBookGroup uhnbg = new UserHasNoteBookGroup(user, nbg.getId(), 1, DateTime.now(), DateTime.now());
+        userHasNoteBookGroupDao.insertUserHasNoteBookGroup(uhnbg);
+        return nbg;
     }
 
     @Override

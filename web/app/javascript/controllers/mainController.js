@@ -3,21 +3,24 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         $scope.unfoldGroups = false
         $scope.foldAll = function(){
             $scope.unfoldGroups = !$scope.unfoldGroups
+            if($scope.currentGroup == undefined && $scope.groups.length > 0){
+                $scope.currentGroup = $scope.groups[0].id
+            }
         }
-
         console.log($rootScope.user)
         //var userId = $location.search().id
         $scope.groupPopupItems = groupPopupItems
         $scope.notebookPopupItems = notebookPopupItems
         $scope.currentGroup = undefined
+        $scope.unfoldGroup = undefined
 
         function getNoteBookGroupsByUser(){
             var url = 'backend/note/groups'
             //var params = {"user": userId}
             $http(getRequest(url)).success(function(data){
                 $scope.groups = data
-                $scope.currentGroup = data[0]
-                $scope.getNotes($scope.currentGroup.id)
+                $scope.currentGroup = data[0].id
+                $scope.getNotes($scope.currentGroup)
             })
         }
         getNoteBookGroupsByUser()
@@ -35,12 +38,13 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * 保存新增笔记本组
          * @param event
          */
-        $scope.saveNewGroup = function($event){
+        $scope.saveNewGroup = function($event, name){
             if($event.ctrlKey && $event.keyCode == 83){ // ctrl + s
                 var url = 'backend/note/group/add'
-                var group = {"name": $scope.newGroup}
+                var group = {"name": name}
                 $http(postRequest(url, group)).success(function(data){
                     if(data != undefined){
+                        $scope.groups.unshift(data)
                     }
                 })
             }
@@ -50,12 +54,9 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * 收起或展开笔记本组
          * */
         $scope.foldGroup = function($event, id){
-            $scope.groups.forEach(function(group){
-                if(group.id == id){
-                    group.isFold = !group.isFold
-                    return
-                }
-            })
+            if($scope.unfoldGroup != id){
+                $scope.unfoldGroup = id
+            } else {$scope.unfoldGroup = undefined}
             $event.stopPropagation()
         }
 

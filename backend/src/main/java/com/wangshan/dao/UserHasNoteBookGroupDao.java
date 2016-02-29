@@ -12,4 +12,5 @@ import java.util.List;
 
 public interface UserHasNoteBookGroupDao {
     List<UserHasNoteBookGroupForm> selectNoteBookGroupByUser(Long id);
+    Integer insertUserHasNoteBookGroup(UserHasNoteBookGroup userHasNoteBookGroup);
 }

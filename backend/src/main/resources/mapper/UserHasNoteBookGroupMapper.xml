@@ -26,5 +26,10 @@
           on nbg.id = uhn.note_book_group_id left join note_book nb on nb.note_book_group_id = nbg.id left join note on
           note.note_book_id = nb.id where user.id = #{0} user.state_id = 1 and nbg.state_id = 1 and nb.state_id = 1 and note.state_id = 1
     </select>
+	
+	<insert id="insertUserHasNoteBookGroup" parameterType="UserHasNoteBookGroup" useGeneratedKeys="true" keyProperty="id">
+        insert into user_has_note_book_group(user_id, note_book_group_id, state_id, create_on, update_on)
+        values (#{user},#{noteBookGroup},#{state},#{createon},#{updateon})
+    </insert>
 
 </mapper>

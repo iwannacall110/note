@@ -64,8 +64,9 @@ public class NoteController extends javax.servlet.http.HttpServlet{
 
     @RequestMapping(value = "/group/add", method = RequestMethod.POST)
     @ResponseBody
-    public Object AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup){
-        return noteService.addNoteBookGroup(noteBookGroup);
+    public Object AddNoteBookGroup(@RequestBody NoteBookGroup noteBookGroup, HttpServletRequest request){
+        UserToken userToken = userService.getUserTokenByToken(request.getHeader("token"));
+        return noteService.addNoteBookGroup(userToken.getUser(), noteBookGroup.getName());
     }
 
     @RequestMapping(value = "/lite/list", method = RequestMethod.GET)

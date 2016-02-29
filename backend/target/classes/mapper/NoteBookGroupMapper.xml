@@ -43,8 +43,8 @@
     </insert>
 
     <insert id="addNoteBookGroup" parameterType="NoteBookGroup" useGeneratedKeys="true" keyProperty="id">
-        insert into note_book_group( name, note_book_group_id, note_count, remark, state_id, create_on, update_on)
-        values (#{name},#{noteBookGroup},#{noteCount},#{remark},#{state},#{createon},#{updateon})
+        insert into note_book_group( name, note_count, remark, state_id, create_on, update_on)
+        values (#{name},#{noteCount},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">
@@ -54,9 +54,9 @@
     <select id="selectGroupByUser" resultMap="GroupWithBookResult">
         select nbg.*, nb.id nb_id, nb.name nb_name, nb.note_book_group_id nb_note_book_group_id, nb.note_count nb_note_count, nb.remark nb_remark, nb.state_id nb_state_id, nb.create_on nb_create_on, nb.update_on nb_update_on
           from user left join user_has_note_book_group uhn on uhn.user_id = user.id
-			left join note_book_group nbg on nbg.id = uhn.note_book_group_id 
-			left join note_book nb on nb.note_book_group_id = nbg.id  
-			where user.id = #{user} and user.state_id = 1 and nbg.state_id = 1 and nb.state_id = 1
+			left join note_book_group nbg on nbg.id = uhn.note_book_group_id and nbg.state_id = 1
+			left join note_book nb on nb.note_book_group_id = nbg.id and nb.state_id = 1
+			where user.id = #{user} and user.state_id = 1  
     </select>
 	
 	<update id="reduceNoteCount">
