@@ -1,6 +1,11 @@
 <div>
-  <div editbox></div>
-</div>
-<div class="edit-area" id="editContent" ng-keydown="keyDown($event)" contenteditable>
-	
+  <div class="note-title">
+    <input type="text" ng-model="currentNote.name" style="width:100%;"/>
+  </div>
+  <div>
+    <div editbox></div>
+  </div>
+  <div class="edit-area" id="editContent" ng-keydown="keyDown($event)" contenteditable>
+
+  </div>
 </div>

@@ -1,5 +1,6 @@
 package com.wangshan.dao;
 
+import com.wangshan.models.Forms.NoteForm;
 import com.wangshan.models.Note;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface NoteDao {
     List<Note> selectNoteLitesByGroup(Long group);
     List<Note> selectNoteLitesByBook(Long noteBook);
     List<Note> selectNoteLites();
-    Boolean updateNoteContent(Long id, String content, Integer size, String digest);
+    Boolean updateNoteContent(Note note);
     Integer updateNote(Note note);
     Integer deleteNote(Note note);
 }

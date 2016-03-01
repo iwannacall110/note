@@ -93,8 +93,10 @@ public class NoteController extends javax.servlet.http.HttpServlet{
 
     @RequestMapping(value = "/{id}/save", method = RequestMethod.POST)
     @ResponseBody
-    public Boolean saveNote(@PathVariable(value = "id") Long id, @RequestBody NoteForm body){
-        return noteService.updateNoteContent(id, body.getContent(), body.getSize(), body.getDigest());
+    public Boolean saveNote(@PathVariable(value = "id") Long id, @RequestBody Note body){
+        body.setId(id);
+        body.setUpdateon(new Timestamp(DateTime.now().getMillis()));
+        return noteService.updateNoteContent(body);
     }
 
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)

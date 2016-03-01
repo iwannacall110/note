@@ -4,6 +4,7 @@ import com.wangshan.dao.NoteBookDao;
 import com.wangshan.dao.NoteBookGroupDao;
 import com.wangshan.dao.NoteDao;
 import com.wangshan.dao.UserHasNoteBookGroupDao;
+import com.wangshan.models.Forms.NoteForm;
 import com.wangshan.models.Note;
 import com.wangshan.models.NoteBook;
 import com.wangshan.models.NoteBookGroup;
@@ -76,8 +77,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Boolean updateNoteContent(Long id, String content, Integer size, String digest) {
-        return noteDao.updateNoteContent(id, content, size, digest);
+    public Boolean updateNoteContent(Note note) {
+        return noteDao.updateNoteContent(note);
     }
 
     @Override

@@ -40,8 +40,9 @@
         from note where state_id = 1
     </select>
 
-    <update id="updateNoteContent">
-        update note set content = #{1}, size = #{2}, digest = #{3} where id = #{0}
+    <update id="updateNoteContent" parameterType="Note">
+        update note set name = #{name}, title = #{title}, content = #{content}, size = #{size}, digest = #{digest},
+			update_on = #{updateon} where id = #{id}
     </update>
 
     <insert id="addNote" parameterType="Note" useGeneratedKeys="true" keyProperty="id">

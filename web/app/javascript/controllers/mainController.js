@@ -1,8 +1,11 @@
 define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
     return function($rootScope, $scope, $http, $location, $timeout, $document){
-        $scope.unfoldGroups = false
+        $scope.unfoldGroups = true
         $scope.foldAll = function(){
             $scope.unfoldGroups = !$scope.unfoldGroups
+            if(!$scope.unfoldGroups){
+                $scope.groupAdd = false
+            }
             if($scope.currentGroup == undefined && $scope.groups.length > 0){
                 $scope.currentGroup = $scope.groups[0].id
             }
@@ -29,6 +32,7 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * 添加笔记本组
          */
         $scope.addGroup = function($event){
+            $scope.unfoldGroups = true
             $scope.groupAdd = true
             $scope.noteBookAdd = false
             $event.stopPropagation()
@@ -56,7 +60,9 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         $scope.foldGroup = function($event, id){
             if($scope.unfoldGroup != id){
                 $scope.unfoldGroup = id
-            } else {$scope.unfoldGroup = undefined}
+            } else {
+                $scope.noteBookAdd = false
+                $scope.unfoldGroup = undefined}
             $event.stopPropagation()
         }
 
@@ -186,7 +192,10 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * 根据笔记本组id或笔记本id获取笔记
          * */
         $scope.getNotes = function(group, noteBook){
-            if(group != undefined){ $scope.currentGroup = group}
+            if(group != undefined){
+                $scope.currentGroup = group
+                $scope.currentNoteBook = undefined
+            }
             if(noteBook != undefined){ $scope.currentNoteBook = noteBook}
             var url = 'backend/note/lite/list'
             var params = {"group": group, "noteBook": noteBook}
@@ -195,7 +204,7 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
                 showContent("")
                 if(data != null && data.length > 0){
                     $scope.noteLites = data
-                    $scope.currentNote = data[0].id
+                    $scope.currentNote = data[0]
                     $scope.getNoteDetail($scope.currentNote)
                     $scope.noteLites.forEach(function(note){
                         if(note != null && note.size != null){
@@ -236,10 +245,10 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
         /**
          * 根据笔记id获取笔记详情
          * */
-        $scope.getNoteDetail = function(note){
-            var url = 'backend/note/' + note
+        $scope.getNoteDetail = function(noteLite){
+            var url = 'backend/note/' + noteLite.id
             $http(getRequest(url)).success(function(data){
-                $scope.currentNote = note
+                $scope.currentNote = noteLite
                 showContent(data.content)
             })
         }
@@ -259,11 +268,13 @@ define(['angular', 'property', 'cookie', 'customModel', 'http'], function () {
          * @param event
          */
         function saveNote(content, size, digest){
-            var url = "backend/note/" + $scope.currentNote + "/save"
+            var url = "backend/note/" + $scope.currentNote.id + "/save"
             var postModel = {}
             postModel.content = content
             postModel.size = size
             postModel.digest = digest
+            postModel.name = $scope.currentNote.name
+            postModel.title = $scope.currentNote.name
             $http(postRequest(url, postModel)).success(function(data){
 
             })

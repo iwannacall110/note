@@ -61,7 +61,7 @@ a{
     float: left;
     width: 300px;
     height: 100%;
-	overflow-y: auto;
+	//overflow-y: auto;
     background: #ffffff;
     border-right: 1px solid #e0e1e5;
 }
@@ -82,6 +82,9 @@ a{
 .item-area:focus{
     background-color: #eaf0fb;
 }
+.item-area-focus{
+    background-color: #eaf0fb;
+}
 .item{
     display: block;
     line-height: 30px;
@@ -97,16 +100,16 @@ a{
     cursor: pointer;
 }
 .item:hover{
-    background-color: #e5edf8;
+    background-color: #eaf4fd;
 }
 .item:hover .triangle-down-black-hide-icon{
     visibility: visible;
 }
-.item:focus{
+/*.item:focus{
     background-color: #dae7f2;
-}
+}*/
 .item-focus{
-	background-color: #dae7f2;
+	background-color: #c8ddef !important;
 }
 .item:focus .triangle-down-black-hide-icon{
     visibility: visible;
@@ -120,8 +123,8 @@ a{
 .title-area{
     text-align: center;
     display: block;
-    height: 45px;
-    line-height: 45px;
+    height: 60px;
+    line-height: 60px;
     border-bottom: 1px solid #e0e1e5;
 }
 .text-center {
@@ -235,20 +238,44 @@ a{
 .input-nor {
     width:152px;
 }
+.input-search {
+    height: 25px;
+	line-height: 25px;
+    width: 150px;
+    margin-left: 10px;
+}
 .margin-top {
     margin-top: 15px;
 }
 .search-block {
-    //border-bottom-color: #415160;
-    -webkit-box-shadow: 0 1px 0 #506274;
-    padding: 10px;
-    border-bottom: 1px solid #e0e1e5;
+    height: 35px;
+    width: 200px;
+    margin-top: 10px;
+    margin-left:50px;
+    border:1px solid silver;
+    resize:vertical;
+    border-radius:18px;
+    box-shadow: inset 0 0 10px silver;
+    padding:1px 1px 1px 1px;
+    -webkit-box-shadow: none;
+    border-collapse: separate;
     box-sizing: border-box;
 }
 .search-area {
-    height: 90px;
-    line-height: 90px;
+    width: 300px;
+    height: 50px;
+    border-bottom: 1px solid #e0e1e5;
 }
+.note-title {
+    height: 60px;
+    line-height: 60px;
+    padding: 15px 0px 0px 520px;
+    //text-align: center;
+    over-flow: hidden;
+    outline:0;
+    font: 25px "仿宋";
+}
+
 .edit-box {
     text-align:center;
     border: 1px solid #a4a8a7;
@@ -256,10 +283,10 @@ a{
     padding:5px;
 }
 .edit-area {
-    outline:0;
-    padding: 5px;
-    overflow-y: auto;
-}
+     outline:0;
+     padding: 5px;
+     overflow-y: auto;
+ }
 .isLoading {
 	position: fixed;
     top:50%;

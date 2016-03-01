@@ -1,15 +1,21 @@
-<div class="second-area" scroll>
-    <div tabindex="0" class="item"></div>
-    <div ng-repeat="noteLite in noteLites" tabindex="0" class="item-area" ng-click="getNoteDetail(noteLite.id)">
-		<div class="font-size:9px;">
-			<i class="icon gray-star-icon"></i>
-			<span ng-bind="noteLite.name" style="margin-left:5px;"></span>
-			<i class="icon delete-icon" style="float: right;" ng-click="deleteNote(noteLite)"></i>
+<div class="second-area">
+	<div class="search-area">
+		<div class="search-block">
+			<i class="icon search-icon" style="margin-left:8px;"></i><input type="text" class="input-search" placeholder="search..."/>
 		</div>
-		<div style="color: #898993;margin-top:6px;font-size:9px;"><span ng-bind="noteLite.digest"></span></div>
-		<div style="color: #c2c9d6;font-size:9px;margin-top:6px;">
-			<span ng-bind="noteLite.updateon"></span>
-			<span ng-bind="noteLite.size" style="margin-left: 20px;"></span>
+	</div>
+	<div style="overflow-y: auto;height: 100%;padding-bottom: 40px;" scroll>
+		<div ng-repeat="noteLite in noteLites" tabindex="0" class="item-area" ng-class="{'item-area-focus': currentNote.id==noteLite.id}" ng-click="getNoteDetail(noteLite)">
+			<div class="font-size:9px;">
+				<i class="icon gray-star-icon"></i>
+				<span ng-bind="noteLite.name" style="margin-left:5px;"></span>
+				<i class="icon delete-icon" style="float: right;" ng-click="deleteNote(noteLite)"></i>
+			</div>
+			<div style="color: #898993;margin-top:6px;font-size:9px;"><span ng-bind="noteLite.digest"></span></div>
+			<div style="color: #c2c9d6;font-size:9px;margin-top:6px;">
+				<span ng-bind="noteLite.updateon"></span>
+				<span ng-bind="noteLite.size" style="margin-left: 20px;"></span>
+			</div>
 		</div>
-    </div>
+	</div>
 </div>

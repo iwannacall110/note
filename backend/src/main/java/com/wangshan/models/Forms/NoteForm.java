@@ -13,6 +13,7 @@ public class NoteForm {
 
     private Long id;
     private String name;
+    private String title;
     private String content;
     private Integer size;
     private String digest;
@@ -56,5 +57,13 @@ public class NoteForm {
 
     public void setSize(Integer size) {
         this.size = size;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
