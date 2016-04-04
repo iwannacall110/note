@@ -43,8 +43,8 @@
     </insert>
 
     <insert id="addNoteBookGroup" parameterType="NoteBookGroup" useGeneratedKeys="true" keyProperty="id">
-        insert into note_book_group( name, note_count, remark, state_id, create_on, update_on)
-        values (#{name},#{noteCount},#{remark},#{state},#{createon},#{updateon})
+        insert into note_book_group( name, note_book_group_id, note_count, remark, state_id, create_on, update_on)
+        values (#{name},#{noteBookGroup},#{noteCount},#{remark},#{state},#{createon},#{updateon})
     </insert>
 
     <select id="selectNoteBookGroups" resultMap="NoteBookGroupResult">

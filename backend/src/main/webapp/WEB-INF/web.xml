@@ -16,6 +16,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!--自定义监听器-->
+	<listener>
+		<listener-class>com.wangshan.listeners.StartExecute</listener-class>
+	</listener>
 	<!--Spring字符集过滤器 -->
 	<filter>
 		<filter-name>SpringEncodingFilter</filter-name>
